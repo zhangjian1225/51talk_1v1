@@ -1,0 +1,76 @@
+@import '../../common/css/reset-title.css';
+// @import '../../common/css/animation.css';
+
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+/*reset reset.css*/
+.container {
+	position: relative;
+	background: url('../image/defaultBg.jpg') no-repeat;
+	background-size: 100% 100%;
+}
+.main {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+}
+.stage{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+    text-align: center;
+	.img-edge{
+		width: 19.20rem;
+		height: 7.6rem;
+		justify-content: center;
+		visibility: visible;
+		position: absolute;
+		top: 50%;
+		margin-top: -3.8rem;
+		// background: red;
+		.img-show{
+			img{
+				width:100%;
+				height: 100%;
+			}
+		}
+	}
+}
+.audio{
+	width:1.08rem;
+	height:1.08rem;
+	position:absolute;
+	bottom:0.6rem;
+	right:1.18rem;
+	box-sizing:border-box;
+	z-index: 2;
+	img{
+		width:100%;
+		height:100%;
+	}
+	audio{
+	opacity:0;
+	}
+}
+.main .startAudio{
+/*	width:0;
+	height:0;
+	visibility:hidden;*/
+	position: absolute;
+	top: 0;
+	left:100%;
+}
+.main .audio{
+	cursor: pointer;
+	width:1.08rem;
+	height:1.08rem;
+	opacity: 1;
+}
+
+

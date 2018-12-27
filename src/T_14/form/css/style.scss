@@ -1,0 +1,409 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+em {
+    font-style: normal;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.clearfix:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.txt-info em{
+    color: red;
+}
+#container {
+    width: 100%;
+    height: 100%;
+    .edit-form {
+        width: 470px;
+        padding: 20px 30px;
+        background-color: #f5f5f5;
+
+        .send-btn {
+            display: block;
+            width: 170px;
+            height: 40px;
+            border: 0;
+            border-radius: 5px;
+            font-size: 18px;
+            background-color: #fcc800;
+            margin-left: 150px;
+            cursor: pointer;
+        }
+    }
+
+    .edit-show {
+        width: calc(100% - 530px);
+    }
+}
+
+.show-fixed {
+    width: calc(100% - 530px - 130px);
+    position: fixed;
+    right: 65px;
+    top: 45px;
+    min-width:400px;
+    .show-img {
+        width: 100%;
+    }
+
+    .show-img img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .show-txt {
+        width: 100%;
+        padding: 30px;
+        box-sizing: border-box;
+        background-color: #fff7e5;
+        margin-top: 20px;
+    }
+
+    .show-txt > li {
+        font-size: 14px;
+        line-height: 28px;
+    }
+
+    .show-txt > li > em {
+        color: #999;
+    }
+}
+
+.c-group {
+    width: 100%;
+    border: 1px #ccc solid;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-bottom: 20px;
+
+    .c-title {
+        width: 100%;
+        height: 43px;
+        font-size: 16px;
+        color: #fff;
+        line-height: 43px;
+        text-indent: 2em;
+        border-radius: 5px 5px 0 0;
+        background-color: #525252;
+    }
+}
+
+.c-area {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #6e6e6e;
+    .c-area-title{
+        font-size: 16px;
+    }
+    label {
+        display: block;
+        margin: 10px 0;
+
+        em {
+            color: red;
+        }
+    }
+
+    .c-input-txt {
+        display: block;
+        width: 100%;
+        height: 28px;
+        border: 1px #d0d0d0 solid;
+        border-radius: 4px;
+        text-indent: 1em;
+        box-shadow: 0 3px 0 #ebebeb inset;
+    }
+    .option{
+        width: 70%;
+        float: left;
+    }
+    .c-well {
+        width: 100%;
+        background-color: #f1f1f1;
+        border-radius: 4px;
+        padding: 10px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+
+        .well-title {
+            p {
+                display: inline-block;
+            };
+
+            
+        }
+        span {
+                width: 10px;
+                height: 10px;
+                background: url("../img/close.png") no-repeat center;
+                display: inline-block;
+                float: right;
+                cursor: pointer;
+            }
+
+        .well-con {
+            textarea {
+                border: 1px #d0d0d0 solid;
+                border-radius: 4px;
+                max-width: 100%;
+                line-height: 28px;
+                box-shadow: 0 3px 0 #ebebeb inset;
+                padding: 10px;
+                box-sizing: border-box;
+                color: #000;
+                font-family: initial;
+            }
+        }
+
+        .add-tg-btn {
+            width: 30px;
+            height: 30px;
+            font-size: 26px;
+            color: #fff;
+            border: 0;
+            border-radius: 5px;
+            background-color: #fcc800;
+            margin-left: 200px;
+            cursor: pointer;
+        }
+    }
+}
+    .pos-center {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+
+    .circle {
+        border-radius: 50%;
+    }
+
+    .img-upload {
+        position: relative;
+
+        .img-preview {
+            width: 160px;
+            height: 120px;
+            margin: 10px 64px;
+            position: relative;
+
+            .img-tools {
+                width: 100%;
+                height: 100%;
+                display: none;
+                position: absolute;
+                top: 0;
+                background-color: rgba(0, 0, 0, .2);
+                left: 0;
+            }
+
+            &:hover {
+                .img-tools {
+                    display: block;
+                }
+            }
+        }
+
+        .btn-file {
+            display: none;
+            opacity: 0;
+            position: absolute;
+            left: 56px;
+            top: 9px;
+        }
+
+        
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .btn-delete {
+            width: 59px;
+            line-height: 30px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        .btn {
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #fcc800;
+            border: solid 1px #fcc800;
+        }
+    }
+
+    .field-wrap {
+      position:relative;
+        > label {
+            display: inline-block;
+        }
+
+        .upload {
+            width: 89px;
+            height: 30px;
+            border-radius: 5px;
+            background-color: #fcc800;
+            border: solid 1px #fcc800;
+            display: inline-block;
+            text-align: center;
+            line-height: 30px;
+            color: black;
+            letter-spacing: 4px;
+            margin: 0 20px;
+            cursor:pointer;
+            z-index:-1;
+        }
+        .txt-info {
+            font-size: 13px;
+        }
+    }
+.btn:hover{
+  opacity:.8;
+}
+
+/*------------pany--------*/
+.audio-preview{
+    width: 160px;
+    height: 30px;
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    position: relative;
+    left: 0px;
+    top: 9px;
+    .audio-tools{
+        width: 120px;
+        height: 30px;
+        float: left;
+        p{
+            width: 120px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            overflow: hidden;
+        }
+    }
+    .play-btn{
+        width: 38px;
+        display: block;
+        height: 30px;
+        border-left: 1px #d9d9d9 solid;
+        background: url(../img/sound.png) no-repeat center;
+        float: left;
+        cursor: pointer;
+    }
+}
+.btn-audio-dele{
+    width: 59px;
+    line-height: 30px;
+    display: inline-block;
+    margin-left: 10px;
+}
+.add-tg-btn{
+    width: 30px;
+    height: 30px;
+    font-size: 26px;
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+    background-color: #fcc800;
+    margin-left: 200px;
+    cursor: pointer;
+}
+.mar{
+    margin: 0 10px!important;
+}
+.field-tools {
+    float: right;
+
+    .radio-outer {
+        background-color: #ffffff;
+        width: 18px;
+        height: 18px;
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        border: 1px solid #ddd;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #fcc800;
+            border: 1px solid #ddd;
+        }
+
+        &.active {
+            background-color: #fcc800;
+        }
+
+        .radio-inner {
+            width: 6px;
+            height: 6px;
+            background-color: #ffffff;
+        }
+    }
+
+    .field-label {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 10px;
+    }
+}
+
+.field-radio-wrap {
+    width: 95px;
+    label{
+        display:inline;
+        margin: 0;
+    }
+}
+input[type=radio]{
+    appearance:none;
+    -webkit-appearance:none;
+    background-color: #ffffff;
+    width: 18px;
+    height: 18px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    border-radius: 100%;
+    outline: none;
+}
+input[type=radio]:checked{
+    background:url('../img/checked.png') center center;
+}
+input:disabled{
+    cursor: not-allowed;
+}
+

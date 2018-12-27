@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TPC0001_寻找宝藏</title>
+	<link rel="stylesheet" href="form/css/style.css">
+	<script src='form/js/jquery-2.1.1.min.js'></script>
+	<script src='form/js/vue.min.js'></script>
+</head>
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="h-title">TPC0001_寻找宝藏</div>
+			
+			<% include ./src/common/template/common_head %>
+
+			<div class="c-group">
+				<div class="c-title">设置学习内容（必填）</div>
+				<div class="c-area upload img-upload">
+					<span>学习内容的组数量：2～5组 。</span>
+					<ul>
+						<li v-for="(item, index) in configData.source.options">	
+							<div class="c-well">
+								<span class="dele-tg-btn" @click="delOption(item)" v-show="configData.source.options.length>2"></span>
+								<label :for="'content-text-'+index">选项{{index+1}}&nbsp;&nbsp;<em>单词考察的字母部分，用#前后包起来，如：ex#am#ple</em></label>
+								<div class="field-wrap">
+									<label>单词：&nbsp;&nbsp;<em>字符≤12</em></label>
+									<input type="text" class='c-input-txt' placeholder="请在此输入单词" v-model="item.text" maxlength="14">	
+								</div>
+								
+								<!-- 干扰项 -->
+								<div class="field-wrap">
+									<label>干扰字母：&nbsp;&nbsp;<em>字符≤3</em></label>
+									<input type="text" class='c-input-txt' maxlength="3" placeholder="请在此输入干扰项" v-model="item.interfere">
+								</div>
+								<!-- 上传声音 -->
+								<div class="field-wrap">
+									<label class="field-label"  for="">内容声音&nbsp;&nbsp;<em>文件大小≤50KB</em></label>
+									<div>
+										<label :for="'audio-upload-'+index" class="btn btn-show upload" v-if="item.audio==''?true:false">上传</label>
+										<label  :for="'audio-upload-'+index" class="btn upload re-upload mar" v-if="item.audio!=''?true:false">重新上传</label>
+									</div>
+									<div class="audio-preview" v-show="item.audio!=''?true:false">
+										<div class="audio-tools">
+											<p v-show="item.audio!=''?true:false">{{item.audio}}</p>
+										</div>
+										<span class="play-btn" v-on:click="play($event)">
+											<audio v-bind:src="item.audio"></audio>
+										</span>
+									</div>
+									<span class="btn btn-audio-dele" v-show="item.audio!=''?true:false" v-on:click="item.audio=''">删除</span>
+									<input type="file" :id="'audio-upload-'+index" class="btn-file upload" size="" accept=".mp3" v-on:change="audioUpload($event,item,'audio',50)" v-bind:key="Date.now()">
+								</div>	
+							</div>
+						</li>
+					</ul>
+					<button v-if="configData.source.options.length<5" type="button" class="add-tg-btn" @click="addSele" >+</button>	
+				</div>
+				<div class="c-title">上传宝箱图（选填）</div>
+				<div class="c-area upload img-upload radio-group">
+					<div class="field-wrap">
+						<label class="field-label"  for="">静态图</label>
+						<span class='txt-info'><em>尺寸：300*200。文件大小≤50KB</em></span>
+						<input type="file"  v-bind:key="Date.now()" class="btn-file" id="boxbg" size="300*200" v-on:change="imageUpload($event,configData.source,'boxBefore',50)" accept="image/png,image/gif,image/jpeg">
+					</div>
+					<div class="field-wrap">
+						<label for="boxbg" class="btn btn-show upload" v-if="configData.source.boxBefore==''?true:false">上传</label>
+						<label  for="boxbg" class="btn upload re-upload" v-if="configData.source.boxBefore!=''?true:false">重新上传</label>
+					</div>
+					<div class="img-preview" v-if="configData.source.boxBefore!=''?true:false">
+						<img v-bind:src="configData.source.boxBefore" alt=""/>
+						<div class="img-tools">
+							<span class="btn btn-delete" v-on:click="configData.source.boxBefore=''">删除</span>
+						</div>
+					</div>
+				</div>
+				<div class="c-area upload img-upload radio-group">
+					<div class="field-wrap">
+						<label class="field-label"  for="">动态图</label>
+						<span class='txt-info'><em>尺寸：300*200。文件大小≤50KB</em></span>
+						<input type="file"  v-bind:key="Date.now()" class="btn-file" id="box2bg" size="300*200" v-on:change="imageUpload($event,configData.source,'boxAfter',50)" accept="image/png,image/gif,image/jpeg">
+					</div>
+					<div class="field-wrap">
+						<label for="box2bg" class="btn btn-show upload" v-if="configData.source.boxAfter==''?true:false">上传</label>
+						<label  for="box2bg" class="btn upload re-upload" v-if="configData.source.boxAfter!=''?true:false">重新上传</label>
+					</div>
+					<div class="img-preview" v-if="configData.source.boxAfter!=''?true:false">
+						<img v-bind:src="configData.source.boxAfter" alt=""/>
+						<div class="img-tools">
+							<span class="btn btn-delete" v-on:click="configData.source.boxAfter=''">删除</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/preview.jpg?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li><em>图片格式：</em>JPG/PNG/GIF</li>
+					<li><em>声音格式：</em>MP3/WAV</li>
+					<li><em>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+</html>

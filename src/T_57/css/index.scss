@@ -1,0 +1,251 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@import '../../common/template/resultPage/style.scss';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.hide{
+    display: none;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.jpg) no-repeat;
+    background-size: auto 100%;
+	position: relative;
+    // font-family:"ARLRDBD";
+
+} 
+
+.pics{ 
+    position: absolute;
+    width: 8.48rem;
+    height: 3.9rem;
+    top: 2.8rem;
+    left: 5.34rem;
+    vertical-align: middle;
+    .disable{
+        opacity: 0.6;
+        cursor: not-allowed !important;
+    }
+    .pic{ 
+        background: #fff;
+        border-radius: .1rem; 
+        margin-left: 1.64rem;
+        width: 5.2rem;
+        height: 3.9rem;
+        img{
+            border-radius: .1rem;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .page{
+        position: absolute;
+        width: 1rem;
+        height: .5rem;
+        left: 5.84rem;
+        bottom: -0.6rem;
+        font-size: .3rem;
+        line-height: .5rem;
+        background: #eeeeee;
+        text-align: center;
+        border-radius: .4rem; 
+    }
+    .lrbtn-bg{
+        width: 1.28rem;
+        height: 1.28rem;
+        position: absolute;
+        top: 1.31rem;
+        background: url(../image/1.png) no-repeat;
+        background-size: auto 100% ;
+        display: flex;
+        justify-content:center; 
+        align-items:center; 
+        text-align: center; 
+        cursor: pointer;  
+        display: none;
+    }
+    .left{
+        left: 0rem; 
+        .change-btn{
+            display: block;
+            height: .6rem;
+            width: .36rem;
+            background: url(../image/lbtn.png) no-repeat;
+            background-size: auto 100% ;
+        }
+    }
+    .right{
+        right: 0rem;
+        .change-btn{
+            display: block;
+            height: .6rem;
+            width: .36rem;
+            background: url(../image/rbtn.png) no-repeat;
+            background-size: auto 100% ;
+        }
+    }
+}
+
+#pagenext{
+    position: absolute;
+    margin-left: 0rem;
+    left: 8.5rem; 
+    width: 2.25rem;
+    height:  1rem;
+    line-height: .8rem;
+    bottom: 2.25rem;
+    font-size: .5rem;
+    z-index: 501;
+    border: none;
+    background: url(../image/btn.png) no-repeat;
+    background-size: 100% auto ; 
+
+}
+#pageclose{
+    position: absolute;
+    margin-left: 0rem;
+    left: 8.5rem; 
+    width: 2.25rem;
+    height:  1rem;
+    line-height: .8rem;
+    bottom: 2.25rem;
+    font-size: .5rem;
+    z-index: 501;
+    border: none;
+    background: url(../image/btn.png) no-repeat;
+    background-size: 100% auto ;
+}
+
+.start-page{
+    position: absolute;
+    width: 7.2rem;
+    height: 4.8rem;
+    background: rgba($color: #000000, $alpha: 0.8);
+    top: 2.5rem;
+    left: 6rem;
+    border-radius: .4rem;   
+    z-index: 400; 
+    display: none; 
+    .shade{
+        position: absolute;
+        width:4.1rem;
+        height:3.94rem;  
+        top: .43rem;
+        left: 1.55rem;
+        z-index: 500; 
+        background: url(../image/bg_backnum.png) no-repeat;
+        background-size: auto 100% ;
+        line-height: 3.94rem;   
+        display: flex;
+        justify-content:center;
+        align-items:center; 
+        text-align: center; 
+        img{ 
+            height: 2rem;
+            vertical-align: middle;
+        }
+    }
+
+    .result-container{
+        display: flex;
+        justify-content:center;
+        flex-direction: column;
+        align-items:center; 
+        text-align: center; 
+        width:100%;
+        height: 100%;
+    } 
+}
+
+.fish{
+    position: absolute;
+    left: 0.4rem;
+    bottom: 1.48rem;
+    width: 3.70rem;
+    height: 1.80rem;
+    background: url(../image/370-180.png) no-repeat; 
+    background-size: 7.40rem 100%;
+    background-position-x: 0rem;  
+    z-index: 400;
+}
+ 
+.fish-move{ 
+    animation: fish 0.5s steps(2) infinite; 
+    -webkit-animation: fish 0.5s steps(2) infinite;
+}
+
+@keyframes fish {
+    0% { 
+        background-position-x: 0rem;
+    }
+    100% {
+        background-position-x: -7.40rem;
+    } 
+}
+
+.role{
+    position: absolute;
+    left: 3.8rem;
+    bottom: 2.01rem;
+    width: 3.84rem;
+    height: 1.59rem;
+    background: url(../image/384-159.png) no-repeat; 
+    background-size: 11.52rem 100%;
+    background-position-x: 0rem;  
+}
+
+.role-move{ 
+    animation: role 1s steps(3) infinite; 
+    -webkit-animation: role 1s steps(3) infinite;
+}
+
+@keyframes role {
+    0% { 
+        background-position-x: 0rem;
+    }
+    100% {
+        background-position-x: -11.52rem;
+    } 
+}
+ 
+#btngogo{
+    background: #ED6E21;
+    display: none;
+}
+
+.btn{
+    position: absolute;
+    bottom: 1.2rem;
+    color: #fff;
+    background: #F1A91E;
+    border: #ffffff 3px solid;
+    display: block;
+    font-size: .26rem;
+    width: 1.3rem;
+    height: .6rem;
+    line-height: .5rem;
+    border-radius: .4rem;
+    text-align: center;
+    margin-left: 9rem;
+    cursor: pointer;
+    z-index: 500;
+    display: none;
+}
+

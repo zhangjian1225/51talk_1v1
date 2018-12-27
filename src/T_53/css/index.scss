@@ -1,0 +1,170 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.container{
+	background-image: url(../image/bg_53.jpg);
+	position: relative;
+    font-family:"ARLRDBD";
+
+}
+audio{
+	width: 0;
+	height: 0;
+	opacity: 0;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.hide{
+    opacity:0;
+   
+}
+.mainArea{
+    position: relative;
+    height: 10.8rem;
+    .ans{
+        position: absolute;
+        top:9.8rem;
+        left: 50%;
+        width: 9.36rem;
+        height: 1rem;
+        line-height: 1rem;
+        margin-left: -4.68rem;
+        background: rgba(255, 255, 255, 0.80);
+        border-radius: .15rem;
+        font-size: .3rem;
+        text-align: center;
+        font-weight: bold;
+    }
+    .handShake{
+        position: absolute;
+        width: 3.8rem;
+        height: 3.2rem;
+        left: 2.57rem;
+        top: 4.38rem;
+        background:url('../image/handImg.png');
+        background-size: 7.6rem 3.2rem;
+    }
+    .btnArea{
+        position: absolute;
+        top: 6.85rem;
+        left: 6.38rem;
+        width: 1.98rem;
+        height: 1.07rem;
+        .hands{
+            position: absolute;
+            width:1.8rem;
+            height:1.8rem;
+            left: 50%;
+            top: 0.3rem;
+            margin-left: -0.25rem;
+            background: url('../image/hands.png');
+            background-size: 7.2rem 1.8rem;
+        }
+    }
+    .showStartPos{
+        position: absolute;
+        top: 4.25rem;
+        left:6.46rem ;
+        width: 1.82rem;
+        height: 1.82rem;
+        ul{
+            .listPos{
+                position: absolute;
+                top: 0;
+                left: -.19rem;
+                width: 2.2rem;
+                height: 2.2rem;
+                padding: .11rem;
+                box-sizing: border-box;
+                overflow: hidden;
+                img{
+                    position: absolute;
+                    // top:.78rem;
+                    top:2.2rem;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+    ul{
+        .pic{
+            position: absolute;
+            width:2.2rem;
+            height: 2.2rem;
+        }
+        .pic0{
+            top:2.30rem;
+            left: 13.15rem;
+        }
+        .pic1{
+            top: 5.6rem;
+            left: 9.9rem;
+        }
+        .pic2{
+            top: 4.52rem;
+            left: 12.1rem;
+        }
+        .pic3{
+          top: 5.32rem; 
+          left: 14.62rem; 
+        }
+        .pic4{
+           top: 6.86rem;
+           left: 12.42rem;
+        }
+    }
+
+}
+
+
+@keyframes hand {
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position:-7.2rem 0;
+    }
+}
+@-webkit-keyframes hand {
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position:-7.2rem 0;
+    }
+}
+@keyframes handShakes {
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position:-7.6rem 0;
+    }
+}
+@-webkit-keyframes handShakes {
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position:-7.6rem 0;
+    }
+}

@@ -1,0 +1,280 @@
+@import '../../common/css/reset.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.tae,.stu {
+    width: 100%;
+    height: 100%;
+}
+.container{
+	background-image: url(../image/defaultBg.png);
+	position: relative;
+    font-family:"ARLRDBD";
+
+}
+.stage{
+	width: 100%;
+    height: 100%;
+    position: relative;
+    .curtain{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        img{
+            width: 100%;
+        }
+    }
+    .box {
+        position: absolute;
+        bottom: 0;
+        left: 1.47rem;
+        width: 8.67rem;
+        height: 9.62rem;
+        background: url(../image/box.png) no-repeat;
+        background-size: 100%;
+        .animate{
+            height: 2rem;;
+            position: absolute;
+            left: .5rem;
+            bottom: 1rem;
+            width: 100%;
+            img{
+                width: 2rem;
+                height: auto;
+            }
+            .e_1{
+                position: absolute;
+                top: -1rem;
+                left: 1rem;
+            }
+            .e_2{
+                position: absolute;
+                top: -.8rem;
+                left: 2.8rem;
+            }
+            .e_3{
+                position: absolute;
+                top: -1rem;
+                right: 2.5rem;
+            }
+            .e_4{
+                position: absolute;
+                top: 0rem;
+                left: 3rem;
+            }
+            .e_5{
+                position: absolute;
+                top: -.2rem;
+                right: 2rem;
+            }
+        }
+        .rod{
+            position: absolute;
+            left: .55rem;
+            top: .4rem;
+            width:7.5rem;
+            height: .2rem;
+            background: url(../image/rod.png) no-repeat;
+            background-size: contain;
+        }
+        .move_box{
+            position: absolute;
+            left: .5rem;
+            top: .35rem;
+            width: 2rem;
+            height: auto;
+            .move{
+                width: .69rem;
+                height: .3rem;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                margin-left: -.345rem;;
+                background: url(../image/move.png) no-repeat;
+                background-size: contain;
+            }
+            .line{
+                width: .1rem;
+                height: 2rem;
+                position: absolute;
+                top: .1rem;
+                left: 50%;
+                margin-left: -.05rem;
+                background: #dee3f2;
+            }
+            .claw{
+                width: 1.7rem;
+                height: 1.65rem;
+                position: absolute;
+                left: 50%;
+                margin-left: -0.85rem;
+                top:2rem;
+                .init_img{
+                    width: 1.03rem;
+                    height: auto;
+                    position: absolute;
+                    left: 50%;
+                    margin-left: -0.5rem;
+                    top: 0;
+                }
+                .left_img{
+                    width: .58rem;
+                    height: auto;
+                    position: absolute;
+                    left: .1rem;
+                    top: .35rem;
+                    transform-origin: top right;
+                    transform: rotateZ(30deg);
+                    animation: left_animate 2s;
+
+                }
+                .right_img{
+                    position: absolute;
+                    right: .05rem;
+                    top: .35rem;
+                    width: .58rem;
+                    height: auto;
+                    transform-origin: top left;
+                    transform: rotateZ(-30deg);
+                }
+                @keyframes left_animate_start {
+                    from{
+                        transform: rotateZ(30deg)
+                    }
+                    to {
+                        transform: rotateZ(0deg)
+                    }
+                }
+                @keyframes left_animate_stop {
+                    from{
+                        transform: rotateZ(0deg)
+                    }
+                    to {
+                        transform: rotateZ(30deg)
+                    }
+                }
+                @keyframes right_animate_start {
+                    from{
+                        transform: rotateZ(-30deg)
+                    }
+                    to {
+                        transform: rotateZ(0deg)
+                    }
+                }
+                @keyframes right_animate_stop {
+                    from{
+                        transform: rotateZ(0deg)
+                    }
+                    to {
+                        transform: rotateZ(-30deg)
+                    }
+                }
+            }
+        }
+        .glass{
+            position: absolute;
+            width: 1.96rem;
+            left: 1rem;
+            bottom: .8rem;
+            height: 2.22rem;
+            background: url(../image/galss.png)  no-repeat;
+            background-size: contain;
+        }
+    }
+    .table{
+        width: 7.26rem;
+        height: 4.13rem;
+        background: url(../image/table.png)  no-repeat;
+        background-size: contain;
+        position: absolute;
+        right: 1.2rem;
+        bottom: 0;
+        .button{
+            position: absolute;
+            left: 1.5rem;
+            top: 1.2rem;
+            width:1.86rem;
+            height: 1.35rem ;
+            background: url(../image/button.png)  no-repeat;
+            background-size: contain;
+        }
+        .animateButton {
+            transform-origin: bottom left;
+            animation: buttonChange 1s;
+        }
+        @keyframes buttonChange {
+            0% {
+                transform: rotateX(0deg)
+            }
+            50% {
+                transform: rotateX(40deg)
+            }
+            100% {
+                transform: rotateX(0deg)
+            }
+        }
+        .rocker{
+            position: absolute;
+            right: 1.6rem;
+            top: -.2rem;
+            width:1.31rem;
+            height: 2.14rem ;
+            background: url(../image/rocker.png)  no-repeat;
+            background-size: contain;
+        }
+    }
+}
+
+// .path_1{
+//     animation: path_1 1s forwards;
+// }
+// @keyframes path_1 {
+//     0% {
+//         left: .5rem;
+//     }
+//     100% {
+//         left: .5rem;
+//     }
+// }
+
+.box_move {
+    animation: box_move_animate 1s forwards;
+}
+
+@keyframes box_move_animate {
+    0% {
+        left: .5rem;
+    }
+    100% {
+        left: 1.5rem;
+        top: .45rem;
+    }
+}
+
+.rodMove{
+    animation: rodMoveAnimate 1s forwards;
+}
+@keyframes rodMoveAnimate {
+    0% {
+        left: .55rem;
+        width:7.5rem;
+    }
+    100% {
+        left: 1rem;
+        top: .5rem;
+        width:6.5rem;
+    } 
+}

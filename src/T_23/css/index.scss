@@ -1,0 +1,126 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.hide{
+    display: none;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.png) no-repeat;
+    background-size: auto 100%;
+	position: relative;
+    // font-family:"ARLRDBD";
+
+}
+.stage{
+	width: 100%;
+    height: 100%;
+    position: relative;
+    height: 100%;
+    .box_list {
+        width: 15.3rem;
+        height: 4rem;
+        // background: red;
+        position: absolute;
+        left: 1.8rem;
+        top: 3.1rem;
+        display: flex;
+        justify-content: center;
+        .box {
+            // flex: 1;
+            width: 3.8rem;
+            height: 4rem;
+            position: relative;
+            cursor: pointer;
+            img {
+                width: 5rem;
+                position: absolute;
+                left: -1rem;
+                bottom: -.9rem;
+                display: none;
+            }
+
+            .max {
+                animation: maxAn 1s forwards;
+            }
+            @keyframes maxAn {
+                0% {
+                    transform: scale(1) rotate(0)
+                }
+                100% {
+                    transform: scale(2) rotate(20deg)
+                }
+            }
+        }
+    }
+}
+
+.TrueChoose{
+    clear: both;
+    height: .6rem;
+    width: 12.2rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -6.1rem;
+    bottom: 1rem;
+    background: rgba(255,255,255,.75);
+    border-radius: .3rem;
+    box-shadow: 0 0 0.2rem rgba(0,0,0,0.25);
+    overflow: hidden; 
+    span{
+        position: absolute;
+        width: .7rem;
+        height: 100%;
+        text-align: center;
+        line-height: .6rem;
+        top: 0;
+        font-size: .4rem;
+        font-weight: bold;
+        color: #ccc;
+        cursor: pointer;
+    }
+    .leftBtn{
+        left:0;
+    }
+    .rightBtn{
+        right:0;
+        color: orange;
+    }
+    .scoolBox{
+        width: 10.8rem;
+        height: 100%;
+        margin: auto;
+        overflow:hidden;
+        position: relative;
+        ul{
+            position: absolute;
+            li{
+                display: inline-block;
+                height: 100%;
+                font-size: .32em;
+                font-weight: bolder;
+                line-height: .6rem;
+                float: left;
+                margin-right: .36rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,174 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.hide{
+    display: none;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.jpg) no-repeat;
+    background-size: auto 100%;
+	position: relative;
+    // font-family:"ARLRDBD";
+} 
+
+.cards{ 
+    position: absolute;
+    top: 3rem;
+    left: 10%;
+    width: 80%;
+    height: 6rem; 
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row; 
+    justify-content: center;
+    align-items:center; 
+    .card-container{
+        width: 3.7rem;
+        height: 2.8rem; 
+        margin: .1rem;  
+        display: flex;
+        justify-content:center;
+        align-items:flex-start;
+        text-align: center; 
+        .card{  
+            width:100%;
+            height:100%;
+            display: flex;
+            justify-content:center;
+            align-items:center;
+            text-align: center; 
+            background: url(../image/tmp_cards_bg.png) no-repeat;
+            background-size: auto 100%;
+            position: relative;
+            .card-btn{
+                position: absolute;
+                top: 1.9rem;
+                left: .75rem;
+                height: .6rem;
+                width: 2.2rem;   
+                cursor: pointer; 
+                background: #DE7639; 
+                border-radius: .3rem;
+                border: solid 2px #ffffff;
+                font-size: .3rem; 
+                line-height: .6rem;
+                color: #fff;
+                display: none;
+            }
+            img {
+                width:80%;
+                height:80%;
+            } 
+        } 
+        .replace{
+            width:100%;
+            height:100%;
+            display: none;  
+            justify-content:center;
+            align-items:center;  
+            background: url(../image/xuxian.png) no-repeat;
+            background-size: 100% 100%;
+            img {
+                width:30%;
+            } 
+        }
+    } 
+    .card-2{
+        margin-left: 1.8rem;
+        margin-right:  1.8rem;
+    }
+}
+
+.thief{
+    position: absolute; 
+    width:2.7rem; 
+    height: 2.2rem;
+    left: 0rem;
+    top: 0rem; 
+    z-index: 500; 
+    .thief-go{
+        position: absolute;
+        width:0%;
+        z-index: 600;
+    }
+    .thief-back{
+        position: absolute;
+        width:0%;
+        z-index: 600;
+        -moz-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1); 
+        -o-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: fliph;
+    }
+    .effect{ 
+        position: absolute;
+        top: 1.2rem;
+        left: -50%;
+        width:200%;
+        z-index: 500;
+        display: none;
+    }
+}
+
+.alertBox {
+    height: 1rem;
+    width: 12rem;
+    background: #fff;
+    border-radius: .2rem .2rem .2rem .2rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -6rem; 
+    bottom: 0rem;
+    z-index: 230; 
+    display: none;
+    p{
+        height: 100%; 
+        line-height: 1rem;
+        text-align: center;
+        font-size: .3rem;
+        font-weight: 700;
+        #answer{
+            font-weight: 400;
+            margin-right: .6rem;
+        }
+        .btn{ 
+            height: .6rem;
+            width: 1.6rem;
+            color:#fff;
+            text-align: center;
+            line-height: .6rem;
+            font-size: .4rem;
+            border-radius: .3rem;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .correct-btn {  
+            width: 1.8rem;
+            background: #f1a91e; 
+        }
+        .reset-btn{  
+            background: #ED6E22; 
+        }
+    } 
+}
+ 

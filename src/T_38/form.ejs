@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>AHI0001_单词霓虹灯</title>
+  <link rel="stylesheet" href="form/css/style.css">
+  <script src='form/js/jquery-2.1.1.min.js'></script>
+  <script src='form/js/vue.min.js'></script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="edit-form">
+      <div class="h-title">AHI0001_单词霓虹灯</div>
+
+      <% include ./src/common/template/common_head %>
+
+        <div class="c-group">
+          <div class="c-title">设置组： 文字 + 文字底图</div>
+          <div class="c-area upload img-upload">
+            <div class="c-well" v-for="(item, index) in configData.source.words">
+              <label>输入文本:<em>&nbsp;&nbsp; * （字母数量:≤30, 换行时输入“ &lt;br&gt;”）</em></label>
+              <input type="text" class='c-input-words' placeholder="" maxlength="30" v-model="item.word">
+              <span class="dele-tg-btn" @click="delCards(item)" v-show="configData.source.words.length>2"></span>
+              <div class="field-wrap">
+                <label class="field-label" for="">文字底图(高亮状态)</label>
+                <span class='txt-info'><em> * (文件大小≤30KB,尺寸 500X300)</em></span>
+                <input type="file" v-bind:key="Date.now()" class="btn-file" :id="'content-pic-'+index" size="500*300" accept=".gif,.jpg,.jpeg,.png" @change="imageUpload($event,item,'pic',30)">
+              </div>
+
+              <div class="field-wrap">
+                <label :for="'content-pic-'+index" class="btn btn-show upload" v-if="!item.pic">上传</label>
+                <label :for="'content-pic-'+index" class="btn upload re-upload" v-if="item.pic">重新上传</label>
+              </div>
+              <div class="img-preview" v-if="item.pic">
+                <img :src="item.pic" alt="" />
+                <div class="img-tools">
+                  <span class="btn btn-delete" @click="delPrew(item)">删除</span>
+                </div>
+              </div>
+            </div>
+            <button v-if="configData.source.words.length<6" type="button" class="add-tg-btn" @click="addCards" >+</button>	 
+          </div> 
+        </div>
+        <div class="c-group">
+            <div class="c-title">图片素材_暗灰色灯</div>
+            <div class="c-area upload img-upload">
+              <div class="field-wrap">
+                <label class="field-label" for="">灰色灯图</label>
+                <span class='txt-info'><em>文件大小≤30KB 尺寸大小500x300  </em></span>
+                <input type="file" v-bind:key="Date.now()" class="btn-file" id="content-optBg" size="500*300" @change="imageUpload($event,configData.source,'imgBg',30)">
+              </div>
+            
+              <div class="field-wrap">
+                <label for="content-optBg" class="btn btn-show upload" v-if="!configData.source.imgBg">上传</label>
+                <label for="content-optBg" class="btn upload re-upload" v-if="configData.source.imgBg">重新上传</label>
+              </div>
+              <div class="img-preview" v-if="configData.source.imgBg">
+                <img :src="configData.source.imgBg" alt="" />
+                <div class="img-tools">
+                  <span class="btn btn-delete" @click="delPrewBg()">删除</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="c-group">
+            <div class="c-title">环境素材：终局动画_底部灯的颜色</div>
+            <div class="c-area upload img-upload">
+              <label class="field-label" for="">选择颜色：</label>
+              <div class="radioBox" style="display: flex;">
+                <div class="field-tools" style="display: flex;">
+                  <div class="field-radio-wrap radio ">
+                    <div class="circle radio-outer " v-bind:class="{ active:configData.source.colorNum == '0'}" v-on:click="isType(0)">
+                      <div class="circle radio-inner pos-center"></div>
+                    </div>
+                    <label class='field-label' for="">紫色</label>
+                  </div>
+                  <div class="field-radio-wrap radio ">
+                    <div class="circle radio-outer " v-bind:class="{ active:configData.source.colorNum == '1'}" v-on:click="isType(1)">
+                      <div class="circle radio-inner pos-center"></div>
+                    </div>
+                    <label class='field-label' for="">黄色</label>
+                  </div>
+                  <div class="field-radio-wrap radio ">
+                    <div class="circle radio-outer " v-bind:class="{ active:configData.source.colorNum == '2'}" v-on:click="isType(2)">
+                      <div class="circle radio-inner pos-center"></div>
+                    </div>
+                    <label class='field-label' for="">绿色</label>
+                  </div>
+                  <div class="field-radio-wrap radio ">
+                    <div class="circle radio-outer " v-bind:class="{ active:configData.source.colorNum == '3'}" v-on:click="isType(3)">
+                      <div class="circle radio-inner pos-center"></div>
+                    </div>
+                    <label class='field-label' for="">白色</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <button class="send-btn" v-on:click="onSend">提交</button>
+    </div>
+    <div class="edit-show">
+      <div class="show-fixed">
+        <div class="show-img">
+          <img src="form/img/preview.jpg?v=<%=new Date().getTime()%>" alt="">
+        </div>
+        <ul class="show-txt">
+          <li>
+            <em>图片格式：</em>JPG/PNG/GIF</li>
+          <li>
+            <em>声音格式：</em>MP3/WAV</li>
+          <li>
+            <em>视频格式：</em>MP4</li>
+          <li>带有“ * ”号为必填项</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+
+</html>

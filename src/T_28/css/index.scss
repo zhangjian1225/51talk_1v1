@@ -1,0 +1,173 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+.container{
+	background-image: url(../image/defaultBg.jpg);
+}
+.main {
+	height: 80%;
+	width: 100%;
+	position: absolute;
+	top: 2rem;
+}
+.tg{
+	z-index: 999;
+}
+.stu{
+	width: 100%;
+	height: 9.38rem
+}
+.tea{
+	width: 100%;
+	height: 9.38rem
+}
+.stage{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	left: 0;
+	top: 0;
+	.dis-area{
+		@include setEle(1.4rem,0rem,8rem,8rem);
+		background:rgba(255,255,255,.75);
+		border-radius: 0.6rem;
+		overflow: hidden;
+		box-shadow: 0 0 0.14rem rgba(0,0,0,0.25);
+		.dis-area-img{
+			width: 100%;
+			height: 100%;
+			border-radius: 0.6rem;
+			overflow: hidden;
+			box-shadow: 0 0 0.14rem rgba(0,0,0,0.25);
+			img{
+				width: 100%;
+				height: 100%;
+			}
+		}
+		.title-text{
+			position: relative;
+			font-size: .38rem;
+			height: 1rem;
+			width: 6.2rem;
+			color:#333;
+			font-weight: bolder;
+			margin: .45rem;
+			overflow: hidden;
+			p{
+				width: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				font-size: .38rem;
+				line-height: .48rem;
+			}
+			
+		}
+		.btns{
+			display: none;
+			width: .6rem;
+			height: 1.69rem;
+			position: absolute;
+			right: .34rem;
+			bottom: 0.16rem;
+			border-radius: .3rem;
+			z-index: 21;
+			overflow: hidden;
+			box-shadow: 0 0 0.12rem rgba(0,0,0,0.25);
+			background:#ffc600;
+			em{
+				display: block;
+				float: left;
+				height: 2px;
+				width: 100%;
+				background:#ffba00;
+			}
+			span{
+				display: block;
+				float: left;
+				width: 100%;
+				height: .83rem;
+				background: #ffc600;
+				position: relative;
+				cursor: pointer;
+				img{
+					width: .6rem;
+					position: absolute;
+					left: .024rem;
+				}
+			}
+			.upBtn{
+				background:#fdd132;
+				img{
+					top:.22rem;
+					opacity: .8;
+				}
+			}
+			.downBtn{
+				border-radius: 0 0 .3rem .3rem;
+				img{
+					bottom:.14rem;
+				}
+			}
+		}
+	}
+	.ans-area{
+		@include setEle(9.85rem,0.35rem,2rem,2rem);
+		line-height: 2rem;
+		border-radius: 0.3rem;
+		overflow: hidden;
+		cursor: pointer;
+		img{
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+		}
+	}
+	.ansBot-area{
+		@include setEle(9.85rem,0.35rem,2.16rem,2.16rem);
+		border-radius: 0.6rem;
+		background:rgba(255,255,255,.75);
+		border: .12rem transparent solid;
+		box-shadow: 0 0 0.14rem rgba(0,0,0,0.25);
+	}
+}
+.ansButton-area{
+	width: 3rem;
+	height: 1.54rem;
+    position: absolute;
+	right: 1.4rem;
+	bottom: 1.4rem;
+	z-index: 100;
+	display:none; 
+	.ans-btn{
+		width: 100%;
+		height: 100%;
+		cursor: pointer;
+		img{
+			width: 100%;
+			height: auto;
+		}
+	}
+	.tea-ans-btn{
+		color:#21C0DC;
+	}
+}
+.cover{
+	position: absolute;
+    z-index: 20;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+	display: none;
+}

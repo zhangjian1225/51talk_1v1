@@ -1,0 +1,73 @@
+// 遮罩层
+.resultMask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+    z-index: 10;
+    display: none;
+    .resultWin {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: url(../image/win.png) no-repeat;
+        background-size: 100% 100%;
+        .resultAPos {
+            position: absolute;
+            width: 2rem;
+            height: 4.7rem;
+            top: 11rem;
+        }
+        .resultAPos_1 {
+            left: 2rem;
+            background: url(../image/result_1.png) no-repeat;
+            background-size: 100% 100%;
+        }
+        .resultAPos_2 {
+            background: url(../image/result_2.png) no-repeat;
+            background-size: 100% 100%;
+            left: 5.6em;
+        }
+        .resultAPos_3 {
+            background: url(../image/result_3.png) no-repeat;
+            background-size: 100% 100%;
+            left: 15rem;
+        }
+        .resultAPos_4 {
+            background: url(../image/result_1.png) no-repeat;
+            background-size: 100% 100%;
+            left: 12rem;
+        }
+        .resultAPos_5 {
+            background: url(../image/result_3.png) no-repeat;
+            background-size: 100% 100%;
+            left: 3rem;
+        }
+        @keyframes resultAPosAn {
+            0% {
+                top: 11rem;
+            } 
+            100% {
+                top: -5rem;
+            }
+        }
+    }
+    .resultLose {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        width: 100%;
+        height: 100%;
+        background: url(../image/lose.png) no-repeat;
+        background-size: contain;
+    }
+}
+.resultHide{
+    display: none;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="./form/css/style.css">
+	<script src='./form/js/jquery-2.1.1.min.js'></script>
+	<script src='./form/js/vue.min.js'></script>
+</head>
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<h3 class="module-title">TSP0001_转盘</h3>
+
+			<% include ./src/common/template/common_head %>
+
+			<!-- 编辑问题 -->
+			<div class="c-group">
+				<div class="c-title">问题区域</div>
+				<div class="c-area upload img-upload">
+					<!-- 
+					<label>问题 （显示位置：2）字符：≤100</label>
+					<input type="text" class='c-input-txt' placeholder="请在此输入问题" 
+						v-model="configData.title" maxlength="100"> 
+					-->
+					
+					<label>句型（显示位置：3）字符：≤100</label>
+					<textarea name="" cols="56" rows="2" maxlength="100" placeholder="输入文字" v-model="configData.source.article"></textarea>
+					<label for=""><em>如需换行，请在段末位置输入“&lt;br&gt;”</em></label>
+					
+					<div class="field-wrap">
+						<label class="field-label"  for="">上传图片</label>
+						<span class='txt-info'>（显示位置：3）<em> * 尺寸：width(height):350~700，文件大小：≤100KB</em></span>
+						<input type="file"  v-bind:key="Date.now()" class="btn-file" id="content-pic" size="350*700" v-on:change="imageItemUpload($event,configData.source,'dial', 100)">
+					</div>
+
+					<div class="field-wrap">
+						<label for="content-pic" class="btn btn-show upload" v-if="!configData.source.dial">上传</label>
+						<label for="content-pic" class="btn upload re-upload" v-if="configData.source.dial">重新上传</label>
+					</div>
+					<div class="img-preview" v-if="configData.source.dial">
+						<img v-bind:src="configData.source.dial" alt=""/>
+						<div class="img-tools">
+							<span class="btn btn-delete" v-on:click="configData.source.dial=''">删除</span>
+						</div>
+					</div>
+					
+					<label>扇区数量 <em> * 正整数，最小值2，最大值20</em></label>
+					<input type="text" class='c-input-txt' placeholder="输入扇区数量" v-model="configData.source.dialNum">
+
+				</div>
+			</div>
+
+			<button class="send-btn" v-on:click="onSend">提交</button>
+
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="./form/img/bg.jpg?_=<%= Date.now() %>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li>图片格式：</em>JPG/PNG/GIF</li>
+					<li>声音格式：</em>MP3/WAV</li>
+					<li>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='./form/js/form.js?_=<%= Date.now() %>'></script>
+</html>

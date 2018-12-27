@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="max-age=60">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=0">
+    <title>TCO0001_大丰收(
+        <%= new Date().getFullYear()%>-
+            <%= new Date().getMonth()+1 %>-
+                <%= new Date().getDate() %>)</title>
+    <link rel="stylesheet" href="css/index.css?v=<%=new Date().getTime()%>">
+    <script src="../../jquery-2.1.1.min.js"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<script src="/assets/js/jquery/2.1.1/jquery.min.js"><\/script>');
+        } 
+    </script>
+    <script src="js/tracking.js?v=<%=new Date().getTime()%>"></script>
+    <script src="js/sdk.js?v=<%=new Date().getTime()%>"></script>
+    <script src="js/fit.js?v=<%=new Date().getTime()%>"></script>
+</head>
+
+<body> 
+    <div class="container" id="container" data-syncresult='show-result-1'>
+        <section class="commom">
+            <div class="desc"></div>
+            <div class="title">
+                <h3></h3>
+            </div>
+        </section>
+        <audio id="soundone" src="audio/01.mp3" preload="preload"></audio>
+        <audio id="soundtwo" src="audio/02.mp3" preload="preload"></audio>
+        <audio id="soundthree" src="audio/03.mp3" preload="preload"></audio>
+        <audio id="dong" src="audio/dong.mp3" preload="preload"></audio>
+        <section class="main"> 
+            <div class="word-container"></div>
+            <div class="start-page">
+                <div class="shade">
+                    <img src="image/num3.png" />
+                </div>
+                <span class="text">Click the word when the student reads it.</span>
+                <span id="btnstart" class="btn" data-syncactions="btnstart">START</span>
+                <div class="score-container">
+                    <img id="countimg" src="image/small.png" />
+                    <span class="connect">x</span>
+                    <span id="score">0</span>
+                </div> 
+            </div> 
+            <div class="total-container">
+                    <img id="totalimg" src="image/small.png" />
+                    <span class="connect">x</span>
+                    <span id="total">0</span>
+                </div> 
+        </section>
+
+    </div>
+    <script type="text/javascript" src="content.js?v=<%=new Date().getTime()%>"></script> 
+    <script type="text/javascript" src="js/index.js?v=<%=new Date().getTime()%>"></script> 
+</body>
+
+</html>

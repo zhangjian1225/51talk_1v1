@@ -1,0 +1,184 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.hide{
+    display: none;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.png) no-repeat;
+    background-size: auto 100%;
+	position: relative;
+    // font-family:"ARLRDBD";
+}
+.stage{
+	width: 100%;
+    height: 100%;
+    position: relative;
+    height: 100%;
+    .button {
+        width: 2.8rem;
+        height: 2.8rem;
+        position: absolute;
+        right: 8.15rem;
+        bottom:3.15rem;
+        border-radius: 100%;
+        cursor: pointer;
+        .hand{
+            width: 1.5rem;
+            height: 1.5rem;
+            background:  url('../image/hand.png') no-repeat;
+            background-size: contain;
+            position: absolute;
+            bottom: 0rem;
+            right: 0rem;
+            animation: handClick 1s infinite;
+            z-index: 4;
+            cursor: pointer;
+        }
+        @keyframes handClick {
+            0%{
+                transform: translateY(.2rem)
+            }
+            100%{
+                transform: translateY(-.2rem)
+            }
+        }
+    }
+    .ferrisWheel_box {
+        position: absolute;
+        left: 50%;
+        margin-left: -4.5rem;
+        bottom: 0;
+        width: 9rem;
+        height: 9rem;
+        .font {
+            position: absolute;
+            left: 3.3rem;
+            top: 4rem;
+            .main_span {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 2.5rem;
+                height: 1rem;
+                font-size: .7rem;
+                line-height: 1rem;
+                text-align: center;
+                word-wrap: break-word;
+                word-break: break-all; 
+                overflow: hidden;
+            }
+            .c_span{
+                position: absolute;
+                left: 0;
+                top: 0;
+                font-size: .7rem;
+                line-height: 1rem;
+                text-align: center;
+                height: 1rem;
+                word-wrap: break-word;
+                opacity: 0;
+            }
+        }
+        .ferrisWheel {
+            position: absolute;
+            bottom: -.1rem;;
+            left: 50%;
+            margin-left: -3.57rem;
+            width: 7.14rem;
+            height: 8.18rem;
+            background: url(../image/07.png) no-repeat;
+            background-size: contain;
+        }
+        .list{
+            width: 100%;
+            height: 100%;
+            .max{
+                transform: scale(1.2);
+            }
+            .list_ever {
+                width: 1.86rem;
+                height: 2.11rem;
+                position: absolute;
+                .glass{
+                    position: absolute;
+                    width: 1.6rem;
+                    height: .85rem;
+                    left: .25rem;
+                    top: .95rem;
+                    z-index: 3;
+                    // background: red;
+                    overflow: hidden;
+                    img{
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+                .light{
+                    width: 2.06rem;
+                    height: 2.56rem;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    z-index: 1;
+                    display: none;
+                }
+                .list_bg{
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    left: .18rem;
+                    top: .2rem;
+                    z-index: 2;
+                }
+                &:nth-child(1) {
+                    left: .7rem;
+                    top: 1.6rem;
+                }
+                &:nth-child(2) {
+                    left: 3.5rem;
+                    top: 0rem;
+                }
+                &:nth-child(3) {
+                    right: .9rem;
+                    top: 1.6rem;
+                }
+                &:nth-child(4) {
+                    right: .9rem;
+                    bottom: 2.1rem;
+                }
+                &:nth-child(5) {
+                    left: 3.5rem;
+                    bottom: .6rem;
+                }
+                &:nth-child(6) {
+                    left: .7rem;
+                    bottom: 2.1rem;
+                }
+                .choose {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+

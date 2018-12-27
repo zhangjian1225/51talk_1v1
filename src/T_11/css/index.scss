@@ -1,0 +1,169 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.png) no-repeat;
+    background-size: 100%;
+	position: relative;
+    // font-family:"ARLRDBD";
+
+}
+.stage{
+	width: 100%;
+    height: 100%;
+    position: relative;
+    .box{
+        height: 4.77rem;
+        height: 4.79rem;
+        position: absolute;
+        cursor: pointer;
+        img{
+            width: 4.77rem;
+            height: 4.79rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 10;
+            display: none;
+        }
+        .init_box{
+            position: absolute;
+            left: 1.3rem;
+            top: 1.3rem;
+            width: 2.5rem;
+            height: 2.3rem;
+            background: url('../image/init_box.png') no-repeat;
+            background-size: contain;
+            z-index: 11;
+            // display: none
+        }
+        .open_box{
+            position: absolute;
+            position: absolute;
+            left: 1.3rem;
+            top: 1.3rem;
+            width: 2.5rem;
+            height: 2.3rem;
+            width: 2.5rem;
+            height: 2.3rem;
+            background: url('../image/open_box.png') no-repeat;
+            background-size: contain;
+            z-index: 11;
+            display: none;
+            span{
+                position: absolute;
+                width: .5rem;
+                height: .5rem;
+                background: url('../image/star.png') no-repeat;
+                background-size: contain;
+            }
+            :nth-child(1){
+                left: 1rem;
+                top: .7rem;
+            }
+            :nth-child(2){
+                right: .2rem;
+                top: .8rem;
+            }
+            :nth-child(3){
+                left: .5rem;
+                top: 1rem;
+            }
+        }
+        .mask{
+            width: 2.95rem;
+            height: .8rem;
+            position: absolute;
+            left: 1.1rem;
+            bottom: 1rem;
+            z-index: 9;
+            border-radius: 100%;
+            background: rgba(0,0,0,.3)
+        }
+    }
+    .box_1{
+        left: 1rem;
+        top:-1rem;
+    }
+    .box_2{
+        right: 5rem;
+        top:-.5rem;
+    }
+    .box_3{
+        left: 6.5rem;
+        top:3.1rem;
+    }
+    .box_4{
+        left: 2.5rem;
+        bottom:.5rem;
+    }
+    .box_5{
+        right: 7.5rem;
+        bottom:.8rem;
+    }
+    .star_change {
+        animation: star_change 1s infinite alternate;
+    }
+    @keyframes star_change {
+        from {
+            transform: scale(0);
+        }
+        to {
+            transform: scale(1.1);
+        }
+    }
+    .light_animate {
+        animation: light_animate 20s linear infinite;
+    }
+    @keyframes light_animate {
+        from {
+            transform: rotateZ(0)
+        }
+        to {
+            transform: rotateZ(360deg)
+        }
+    }
+    .box_animate {
+        animation: box_animate .5s linear;
+        transform-origin: 2.5rem 3rem;
+    }
+    @keyframes box_animate {
+        0%{
+            transform: rotateZ(-10deg);
+        }
+        20%{
+            transform: rotateZ(10deg);
+        }
+        40%{
+            transform: rotateZ(-10deg);
+        }
+        60%{
+            transform: rotateZ(10deg);
+        }
+        80%{
+            transform: rotateZ(-10deg);
+        }
+        100%{
+            transform: rotateZ(0);
+        }
+    }
+}

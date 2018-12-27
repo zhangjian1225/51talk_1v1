@@ -1,0 +1,135 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.hide{
+    display: none;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.jpg) no-repeat;
+    background-size: auto 100%;
+	position: relative;
+    // font-family:"ARLRDBD";
+
+} 
+
+.img-container{
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    right: 0rem;
+    bottom: 0rem;
+    .img-background{
+        position: absolute;
+        top:1.92rem;
+        left: 0rem;
+        height:6.1rem;
+        width: 6.5rem;
+        background: rgba(0,0,0,0.5);
+        border-top-right-radius: 5%;
+        border-bottom-right-radius: 5%; 
+        z-index: 200;
+        .ring{
+            position: absolute;
+            width: .5rem;
+            height: 1rem;
+            border-radius: 0 1rem 1rem 0; 
+            background: rgba(0,0,0,0.5);
+            top:2.5rem;
+            left:6.5rem; 
+            cursor: pointer;
+            img{
+                position: absolute; 
+                width: 160%;
+                height: 80%;
+                right: 20%;
+                top: 10%;
+                transition: all 0.2s; 
+            } 
+        }
+    }
+    .drag{
+        position: absolute;
+        text-align: center;
+        width: 2.9rem;
+        height: 2.9rem; 
+        z-index: 202; 
+        line-height: 2.7rem;
+        display: inline-block; 
+        img{ 
+            vertical-align: middle;
+            display: inline;
+        }
+    }
+    .pic-0{ 
+        top: 2.02rem;
+        left: .1rem; 
+    } 
+    .pic-1{ 
+        top: 2.02rem;
+        left: 3.1rem; 
+    } 
+    .pic-2{ 
+        top: 5.02rem;
+        left: .1rem; 
+    } 
+    .pic-3{ 
+        top: 5.02rem;
+        left: 3.1rem; 
+    } 
+
+}
+
+.alertBox {
+    height: 1rem;
+    width: 7rem;
+    background: #fff;
+    border-radius: .2rem .2rem .2rem .2rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -3.5rem; 
+    bottom: 0rem;
+    z-index: 230;  
+    display: none;
+    p{
+        height: 100%; 
+        line-height: 1rem;
+        text-align: center;
+        font-size: .25rem;
+        font-weight: 400; 
+        .btn{ 
+            height: .6rem;
+            width: 1.6rem;
+            color:#fff;
+            text-align: center;
+            line-height: .6rem;
+            font-size: .3rem;
+            border-radius: .3rem;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .correct-btn {  
+            margin-left: .3rem;
+            width: 2.2rem;
+            background: #f1a91e; 
+        } 
+    } 
+}

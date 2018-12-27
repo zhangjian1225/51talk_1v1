@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TPI0001_纯图</title>
+	<link rel="stylesheet" href="form/css/style.css">
+	<script src='form/js/jquery-2.1.1.min.js?v=<%=new Date().getTime()%>'></script>
+	<script src='form/js/vue.min.js?v=<%=new Date().getTime()%>'></script>
+</head>
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="module-title">TPI0001_纯图</div>
+			
+			<% include ./src/common/template/common_head %>
+
+			<!-- 编辑问题 -->
+			<div class="c-group">
+				<div class="c-title">编辑问题</div>
+				<div class="c-area upload img-upload">
+					
+
+					<div class="field-wrap">
+						<label class="field-label"  for="">展示图片</label>
+						<span class='txt-info'>（显示位置：3）<em>尺寸：≤1920*1080。文件大小≤100KB</em><em style="font-size:1.3rem;">*</em ></span>
+						<input type="file"  v-bind:key="Date.now()" class="btn-file" id="content-pic" size="1920*1080" v-on:change="imgEdgeimgEdge($event,configData.source,'themePic',100)" accept="image/png,image/gif,image/jpeg">
+					</div>
+					<div class="field-wrap">
+						<label for="content-pic" class="btn btn-show upload" v-if="configData.source.themePic==''?true:false">上传</label>
+						<label for="content-pic" class="btn upload re-upload" v-if="configData.source.themePic!=''?true:false">重新上传</label>
+					</div>
+					<div class="img-preview" v-if="configData.source.themePic!=''?true:false">
+						<img v-bind:src="configData.source.themePic" alt=""/>
+						<div class="img-tools">
+							<span class="btn btn-delete" v-on:click="configData.source.themePic=''">删除</span>
+						</div>
+					</div>
+					<!-- 上传声音 -->
+					<div class="field-wrap">
+						<label class="field-label"  for="">内容声音（显示位置：4）<em>文件大小≤150KB</em></label>
+						<div>
+							<label for="audio-upload" class="btn btn-show upload" v-if="configData.source.audio==''?true:false">上传</label>
+							<label  for="audio-upload" class="btn upload re-upload mar" v-if="configData.source.audio!=''?true:false">重新上传</label>
+						</div>
+							<!-- <span class='txt-info'></span> -->
+						<div class="audio-preview" v-show="configData.source.audio!=''?true:false">
+							<div class="audio-tools">
+								<p v-show="configData.source.audio!=''?true:false">{{configData.source.audio}}</p>
+								<!-- <img src="" alt="" v-show="configData.source.audio==''?true:false"> -->
+							</div>
+							<span class="play-btn" v-on:click="play($event)">
+								<audio v-bind:src="configData.source.audio"></audio>
+							</span>
+						</div>
+						<span class="btn btn-audio-dele" v-show="configData.source.audio!=''?true:false" v-on:click="configData.source.audio=''">删除</span>
+						
+						<input type="file" id='audio-upload' class="btn-file upload" size="" accept=".mp3" v-on:change="audioUpload($event,configData.source,'audio',150)" v-bind:key="Date.now()">
+					</div>
+
+					<div class="field-wrap">
+						<label class="field-label"  for="">页面音效<em>&nbsp;&nbsp;文件大小≤50KB</em></label>
+						<div>
+							<label for="bkaudio-upload" class="btn btn-show upload" v-if="configData.source.bkaudio==''?true:false">上传</label>
+							<label  for="bkaudio-upload" class="btn upload re-upload mar" v-if="configData.source.bkaudio!=''?true:false">重新上传</label>
+						</div>
+							<!-- <span class='txt-info'></span> -->
+						<div class="audio-preview" v-show="configData.source.bkaudio!=''?true:false">
+							<div class="audio-tools">
+								<p v-show="configData.source.bkaudio!=''?true:false">{{configData.source.bkaudio}}</p>
+								<!-- <img src="" alt="" v-show="configData.source.audio==''?true:false"> -->
+							</div>
+							<span class="play-btn" v-on:click="play($event)">
+								<audio v-bind:src="configData.source.bkaudio"></audio>
+							</span>
+						</div>
+						<span class="btn btn-audio-dele" v-show="configData.source.bkaudio!=''?true:false" v-on:click="configData.source.bkaudio=''">删除</span>
+						
+						<input type="file" id='bkaudio-upload' class="btn-file upload" size="" accept=".mp3" v-on:change="audioUpload($event,configData.source,'bkaudio',50)" v-bind:key="Date.now()">
+					</div>
+				</div>
+			</div>
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>	
+
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/form-preview.jpg?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li>图片格式：</em>JPG/PNG/GIF</li>
+					<li>声音格式：</em>MP3/WAV</li>
+					<li>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+</html>

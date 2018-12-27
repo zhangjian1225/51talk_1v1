@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="max-age=60">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=0">
+    <title>THV0001_大小声(
+        <%= new Date().getFullYear()%>-
+            <%= new Date().getMonth()+1 %>-
+                <%= new Date().getDate() %>)</title>
+    <link rel="stylesheet" href="css/index.css?v=<%=new Date().getTime()%>">
+    <script src="../../jquery-2.1.1.min.js"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<script src="/assets/js/jquery/2.1.1/jquery.min.js"><\/script>');
+        } 
+    </script>
+    <script src="js/tracking.js?v=<%=new Date().getTime()%>"></script>
+    <script src="js/sdk.js?v=<%=new Date().getTime()%>"></script>
+    <script src="js/fit.js?v=<%=new Date().getTime()%>"></script>
+</head>
+
+<body>
+    <div class="container" id="container" data-syncresult='show-result-1'>
+        <section class="commom">
+            <div class="desc"></div>
+            <div class="title">
+                <h3></h3>
+            </div>
+        </section>
+
+        <section class="main">
+            <audio src="./audio/1.mp3" class="audioMp3_0"></audio>
+            <audio src="./audio/1.mp3" class="audioMp3_1"></audio>
+            <audio src="./audio/1.mp3" class="audioMp3_2"></audio>
+            <!-- 显示器 -->
+            <div class="tv">
+                <div class="list"></div>
+                <div class="pageNum">
+                    <span class="page">1</span>
+                    <span>/</span>
+                    <span class="num"></span>
+                </div>
+            </div>
+            <!-- 声音区 -->
+            <div class="control">
+                <span class="high" data-syncactions='high'><em class="highChoose"></em></span>
+                <span class="middle" data-syncactions='middle'><em class="middleChoose"></em></span>
+                <span class="low" data-syncactions='low'><em class="lowChoose"></em></span>
+            </div>
+            <!-- 选择按钮 -->
+            <div class="chooseBtns">
+                <div class="choose initPre" data-class="choosePre" data-syncactions="pre"></div>
+                <div class="choose initGreat" data-class="chooseGreat" data-syncactions="great"></div>
+                <div class="choose initGood" data-class="chooseGood" data-syncactions="good"></div>
+                <div class="monkey"></div>
+            </div>
+            <div class="leftBtn noClick" data-syncactions="leftBtn"></div>
+            <div class="rightBtn" data-syncactions="rightBtn"></div>
+            <div class="voice"></div>
+        </section>
+
+    </div>
+    <script type="text/javascript" src="content.js?v=<%=new Date().getTime()%>"></script>
+    <script type="text/javascript" src="js/index.js?v=<%=new Date().getTime()%>"></script>
+</body>
+
+</html>

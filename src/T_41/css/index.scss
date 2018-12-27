@@ -1,0 +1,230 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.container{
+	position: relative;
+    font-family:"ARLRDBD";
+
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.sec-middle{
+	width: 100%;
+	height: 6.62rem;
+}
+audio{
+	width:0;
+	height: 0;
+	opacity: 0;
+	position:absolute;
+}
+
+.content{
+	position: relative;
+	width:19.2rem;
+	height: 10.8rem;
+	.source{
+		width:19.2rem;
+		height: 10.8rem;
+		overflow: hidden;
+		position: relative;
+		box-shadow: 0 0 0.14rem rgba(0, 0, 0, 0.25);
+		text-align: center;
+		.pic{
+			width: 100%;
+			height:100%;
+			position: relative;
+			.picbox{
+				width: 100%;
+				height:100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: 0;
+			}
+			img{
+				width: 100%;
+				height: 100%;
+			}
+		}
+		.pic-btn{
+			width: 100%;
+			line-height:0.28rem; 
+			box-sizing: border-box;
+			position: absolute;
+			z-index: 10;
+			bottom: 0.9rem;
+			text-align: center;
+			span{
+				display: inline-block;
+				width: 0.54rem;
+				height: 0.54rem;
+				line-height: 0.58rem;
+				text-align: center;
+				margin: 0.2rem 0.08rem 0;
+				font-size: 0.32rem;
+				background: rgba(255, 255, 255, 0.46);;
+				border-radius: 100%;
+				color: rgba(51, 51, 51, 0.56);
+				cursor: pointer;
+				display: inline-block;
+			}
+			span:nth-child(1){
+				text-indent: -0.02rem;
+			}
+			.active{
+				width: 0.54rem;
+				height: 0.54rem;
+				line-height: 0.58rem;
+				background: #ffffff;
+				color: #333333;
+				box-shadow: 0 0 0.14rem rgba(0, 0, 0, 0.25);
+			}
+		}
+		.infor{
+			height:1.12rem;
+			line-height: 1.12rem;
+			position: relative;
+			font-size:0.64rem;
+			color: #333333;
+			border-radius: 0.56rem;
+			background: rgba(255, 255, 255, 0.75);
+			display: inline-block;
+			padding-left: 0.8rem;
+			padding-right: 0.5rem;
+			bottom: 2.9rem;
+			box-shadow: 0 0 0.14rem rgba(0, 0, 0, 0.25);
+			z-index: 200;
+			.source-audio{
+				position: absolute;
+				bottom: 0.03rem;
+				left: -0.35rem;
+				width: 0.95rem;
+				height: 0.98rem;
+				background: url('../image/btn-audio-bg.png') no-repeat;
+				background-size: 102% 91%;
+				cursor: pointer;
+				img{
+					width: 0.56rem;
+					height: 0.46rem;
+					position: absolute;
+					top:0.24rem;
+					left: 0.21rem;
+				}
+			}
+		}
+	}
+	.right-btn,.left-btn{
+		width: 1.36rem;
+		height:1.36rem;
+		position: absolute;
+		top: 0;
+		z-index: 10;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	.right-btn{
+		right: 1.24rem;
+	}
+	.left-btn{
+		left: 1.24rem;
+	}
+	.rightBtnBg{
+		background: url('../image/right.png') no-repeat;
+	}
+	.leftBtnBg{
+		background: url('../image/left.png') no-repeat;	
+		opacity: 0.5;  	
+	}
+	.rightBtnBg,.leftBtnBg{
+		width: 1.36rem;
+		height: 1.36rem;
+		background-size: contain;	
+		cursor: pointer;
+		visibility: hidden;
+	}
+}
+.content:hover .rightBtnBg,.content:hover .leftBtnBg{
+	visibility: visible;
+}
+.theme-pic{
+	width: 3.6rem;
+	height: 3.6rem;
+	box-sizing: border-box;
+	border: 0.12rem solid #fff;
+	border-radius: 1rem;
+}
+.btn-audio{
+	width: 1.2rem;
+	height: 1.2rem;
+	img{
+		width: 100%
+	}
+}
+
+@keyframes shake {
+	0% {
+        transform: translateX(2px) ;
+        
+    }
+    20% {
+        transform: translateX(-2px);
+
+    }
+    40% {
+        transform: translateX(2px);
+    }
+    60% {
+        transform: translateX(-2px);
+    }
+    80% {
+        transform: translateX(2px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+@-webkit-keyframes shake {
+	0% {
+        transform: translateX(2px) ;
+        
+    }
+    20% {
+        transform: translateX(-2px);
+
+    }
+    40% {
+        transform: translateX(2px);
+    }
+    60% {
+        transform: translateX(-2px);
+    }
+    80% {
+        transform: translateX(2px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+
+
+
+

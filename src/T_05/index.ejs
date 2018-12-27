@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="max-age=60">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=0">
+    <title>THP0001_单词师生PK(<%= new Date().getFullYear()%>-<%= new Date().getMonth()+1 %>-<%= new Date().getDate() %>)</title>
+    <link rel="stylesheet" href="css/index.css?v=<%=new Date().getTime()%>">
+    <script src="../../jquery-2.1.1.min.js"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<script src="/assets/js/jquery/2.1.1/jquery.min.js"><\/script>');
+        } 
+    </script>
+    <!-- <script src="/text/ccs/common/sdk.js?v=<%=new Date().getTime()%>"></script> -->
+    <!-- <script src="/text/ccs/common/tracking.js?v=<%=new Date().getTime()%>"></script> -->
+    <script src="js/tracking.js?v=<%=new Date().getTime()%>"></script>
+    <script src="js/sdk.js?v=<%=new Date().getTime()%>"></script>
+    <script src="js/fit.js?v=<%=new Date().getTime()%>"></script>
+</head>
+<body>
+<div class="container" id="container" data-syncresult='show-result-1'>
+    <section class="commom">
+        <div class="desc"></div>
+        <div class="title">
+            <h3></h3>
+        </div>
+    </section>
+    
+    <section class="main">
+        <div class="toys">
+            <ul class="toys-list" id="toys-list">
+            </ul>
+        </div>
+        <div class="cars" id="cars">
+            <div class="road road-stu"><img src="./image/car_stu.png" class="car stu_et" data-syncactions="car-1"><audio src="./audio/click.mp3"></audio></div>
+            <div class="road road-tea"><img src="./image/car_tea.png" class="car tea_et" data-syncactions="car-2"><audio src="./audio/click.mp3"></audio></div>
+            <div class="flag" id="flag" data-syncactions="flag-1"><img src="./image/flag.png" alt=""></div>
+        </div>
+        <div class="mask">
+            <audio src="./audio/win.mp3" class="winAudio"></audio>
+            <div class="winImg max"></div>
+        </div>
+    </section>
+
+</div>
+<script type="text/javascript" src="content.js?v=<%=new Date().getTime()%>"></script>
+<script type="text/javascript" src="js/index.js?v=<%=new Date().getTime()%>"></script>
+</body>
+</html>

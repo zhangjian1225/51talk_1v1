@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="./form/css/style.css?v=<%=new Date().getTime()%>">
+	<script src='./form/js/jquery-2.1.1.min.js'></script>
+	<script src='./form/js/vue.min.js'></script>
+</head>
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="module-title">TUN0001_句子排序</div>   
+			
+			<% include ./src/common/template/common_head_nontitle %>
+
+			<!-- 编辑问题 -->
+			<div class="c-group">
+				<div class="c-title">编辑内容</div>
+				<div class="c-area upload img-upload">
+					<div class="c-well">
+						<div class="c-area-title">问题区域</div>
+						<label>问题（显示位置：2）<em>字符：≤56</em></label>
+						<input type="text" class='c-input-txt' placeholder="请在此输入问题" v-model="configData.source.question" maxlength="56">
+
+						<div class="field-wrap">
+							<label class="field-label"  for="">上传图片</label>
+							<span class='txt-info'>（显示位置：3）<em>尺寸：800*450。文件大小≤50KB</em></span>
+							<input type="file"  v-bind:key="Date.now()" class="btn-file" id="content-pic" size="800*450" v-on:change="imageUpload($event,configData.source,'themePic',50)">
+						</div>
+
+						<div class="field-wrap">
+							<label for="content-pic" class="btn btn-show upload" v-if="configData.source.themePic==''?true:false">上传</label>
+							<label  for="content-pic" class="btn upload re-upload" v-if="configData.source.themePic!=''?true:false">重新上传</label>
+						</div>
+
+						<div class="img-preview" v-if="configData.source.themePic!=''?true:false">
+							<img v-bind:src="configData.source.themePic" alt=""/>
+							<div class="img-tools">
+								<span class="btn btn-delete" v-on:click="configData.source.themePic=''">删除</span>
+							</div>
+						</div>
+					
+					<!-- 上传声音 -->
+						<div class="field-wrap">
+							<label class="field-label"  for="">上传声音</label>
+							<span class='txt-info'>（显示位置：3）<em>文件大小≤50KB</em></span>
+							<div>
+								<label for="audio-upload" class="btn btn-show upload" v-if="configData.source.audio==''?true:false">上传</label>
+								<label  for="audio-upload" class="btn upload re-upload mar" v-if="configData.source.audio!=''?true:false">重新上传</label>
+							</div>
+							<div class="audio-preview" v-show="configData.source.audio!=''?true:false">
+								<div class="audio-tools">
+									<p v-show="configData.source.audio!=''?true:false">{{configData.source.audio}}</p>
+									<!-- <img src="" alt="" v-show="configData.source.audio==''?true:false"> -->
+								</div>
+								<span class="play-btn" v-on:click="play($event)">
+									<audio v-bind:src="configData.source.audio"></audio>
+								</span>
+							</div>
+							<span class="btn btn-audio-dele" v-show="configData.source.audio!=''?true:false" v-on:click="configData.source.audio=''">删除</span>
+							
+							<input type="file" id='audio-upload' class="btn-file upload" size="" accept=".mp3" v-on:change="audioUpload($event,configData.source,'audio', 50)" v-bind:key="Date.now()">
+						</div>
+					</div>
+
+					<div class="c-well">
+						<div class="c-area-title">句子呈现区域</div>
+						<div class="well-con">	
+							<label>文字 （显示位置：4）<em>字符：≤100。需断词位置输入"#"符号 *</em></label>
+							<textarea name="" cols="56" rows="2" placeholder="I#am#a#student" v-model="configData.source.words" maxlength="100"></textarea>
+						</div>
+					</div>
+
+					<div class="c-well" v-for="(item,index) in configData.source.editJames">
+						<div class="c-eara-title">干扰项（选填）</div>
+						<span class="dele-tg-btn" v-on:click="deleJames(item)" v-show="configData.source.editJames.length>1"></span>
+						<div class="well-con">
+							<label>单词 （显示位置：5）<em>字符：≤20。</em></label>
+							<input type="text" class='c-input-txt' placeholder="请在此输入干扰项单词" v-model="configData.source.editJames[index]" maxlength="20">
+						</div>
+						
+					</div>
+					<button type="button" class="add-tg-btn" v-on:click="addJames" >+</button>
+				</div>
+			</div>
+
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="./form/img/bg.jpg?_=<%= Date.now() %>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li>图片格式：JPG/PNG/GIF</li>
+					<li>声音格式：MP3/WAV</li>
+					<li>视频格式：MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='./form/js/form.js?v=<%=new Date().getTime()%>'></script>
+</html>

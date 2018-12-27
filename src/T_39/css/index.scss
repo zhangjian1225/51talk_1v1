@@ -1,0 +1,95 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc,.title{
+    z-index: 25;
+    color: #fff;
+    h3 {
+        color: #fff;
+    }
+}
+.container{
+	background-image: url(../image/defaultBg.png);
+	position: relative;
+    font-family:"ARLRDBD";
+
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.mask {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, .9);
+    z-index: 22;
+    .move_item {
+        position: absolute;
+        width: 4.75rem;
+        height: 4.4rem;
+        left: 14.5rem;
+        top: 6.5rem;
+        transform-origin: center center;
+        // background: white;
+    }
+    .glass {
+        transition: .2s;
+        position: absolute;
+        width: 4.1rem;
+        height: 4.31rem;
+        background: url('../image/glass.png') no-repeat;
+        background-size: 100% 100%;
+        cursor: move;
+        p {
+            transition: .2s;
+            width: 3.35rem;
+            height: 3.37rem;
+            position: absolute;
+            left:.36rem;
+            top: .55rem;
+            border-radius: 1.68rem;
+            overflow: hidden;
+            background: url(../image/defaultBg.png) no-repeat;
+        }   
+    }
+    .btns {
+        transition: .2s;
+        width: .85rem;
+        height: .99rem;
+        position: absolute;
+        right: .12rem;
+        bottom: .12rem;
+        background: url('../image/btn.png') no-repeat;
+        background-size: 100% 100%;
+        cursor: pointer;
+        .btn_1 {
+            position: absolute;
+            right: 0;
+            width: .5em;
+            height: .5rem;
+            border-radius: .35rem;
+        }
+        .btn_2 {
+            position: absolute;
+            bottom: 0;
+            width: .5rem;
+            height: .5rem;
+            border-radius: .35rem;
+        }
+    }
+}
+
+

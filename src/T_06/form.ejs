@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>赛车</title>
+	<link rel="stylesheet" href="form/css/style.css">
+	<script src='form/js/jquery-2.1.1.min.js'></script>
+	<script src='form/js/vue.min.js'></script>
+</head>
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="h-title">赛车</div>
+			
+			<% include ./src/common/template/common_head_nondesc %>
+
+			<div class="c-group">
+				<div class="c-title">编辑问题</div>
+				<div class="c-area upload img-upload">
+					<em style="color: red">注：必填起始位置</em>
+					<p class="sel">
+						<span>起始位置</span>
+						<select v-model="configData.source.step">
+							<option v-for="conPos in updata" name="optive" :value="conPos">{{conPos}}</option>
+						</select>
+					</p>
+				</div>
+			</div>
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/preview.jpg?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li><em>图片格式：</em>JPG/PNG/GIF</li>
+					<li><em>声音格式：</em>MP3/WAV</li>
+					<li><em>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+</html>

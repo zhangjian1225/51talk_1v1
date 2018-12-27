@@ -1,0 +1,275 @@
+#!/usr/bin/env node
+
+const program = require('commander');
+const exec = require('child_process').exec;
+const readline = require('readline');
+const os = require('os');
+const fs = require('fs');
+const stat = fs.stat;
+const appInfo = require('./../package.json');
+const path = require('path');
+const $path = path;
+
+var _exit = process.exit;
+
+process.exit = exit
+
+
+// CLI
+
+before(program, 'outputHelp', function() {
+  this.allowUnknownOption();
+});
+
+program
+  .version(appInfo.version)
+  .usage('[options] [dir]');
+
+//生成项目
+program
+  .command('create')
+  .action(function() {
+    let remote_path = path.resolve(__dirname, '../');
+    // Path
+    var destinationPath = '.';
+    if (typeof program.args[0] === 'string') {
+      destinationPath = program.args[0];
+    } else {
+      console.log("缺少参数");
+      return;
+    }
+    // project name
+    var appName = path.basename(path.resolve(destinationPath));
+
+    var templateName = '';
+    if (typeof program.args[1] === 'string') {
+      templateName = program.args[1];
+    }
+
+    // Generate application
+    emptyDirectory(destinationPath, function(empty) {
+      if (empty || program.force) {
+        createApplication(appName, templateName, destinationPath, remote_path);
+      } else {
+        confirm('destination is not empty, continue? [y/n] ', function(ok) {
+          if (ok) {
+            process.stdin.destroy();
+            createApplication(appName, templateName, destinationPath, remote_path);
+          } else {
+            console.error('aborting');
+            exit(1);
+          }
+        });
+      }
+    });
+  });
+
+
+program.parse(process.argv)
+
+/**
+ * Install a before function; AOP.
+ */
+
+function before(obj, method, fn) {
+  var old = obj[method];
+
+  obj[method] = function() {
+    fn.call(this);
+    old.apply(this, arguments);
+  };
+}
+
+
+function emptyDirectory(path, fn) {
+  fs.readdir(path, function(err, files) {
+    if (err && 'ENOENT' != err.code) throw err;
+    fn(!files || !files.length);
+  });
+}
+
+/**
+ * Graceful exit for async STDIO
+ */
+
+function exit(code) {
+  function done() {
+    if (!(draining--)) _exit(code);
+  }
+
+  var draining = 0;
+  var streams = [process.stdout, process.stderr];
+
+  exit.exited = true;
+
+  streams.forEach(function(stream) {
+    // submit empty write request and wait for completion
+    draining += 1;
+    stream.write('', done);
+  });
+
+  done();
+}
+
+/**
+ * Prompt for confirmation on STDOUT/STDIN
+ */
+
+function confirm(msg, callback) {
+  var rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  rl.question(msg, function(input) {
+    rl.close();
+    callback(/^y|yes|ok|true$/i.test(input));
+  });
+}
+
+
+/**
+ * Create application at the given directory `path`.
+ *
+ * @param {String} path
+ */
+
+function createApplication(app_name, templateName, path, remote_path) {
+
+  var prompt = launchedFromCmd() ? '>' : '$';
+
+
+  let flag = fs.existsSync(path);
+  // 不存在
+  if (!flag) {
+    fs.mkdirSync(path);
+    fs.mkdirSync(path + "/assets");
+  }
+  // 复制目录
+  copy(remote_path + "/template", path, function() {
+    //替换模板名称
+    if (templateName) {
+      replaceTemplateName(path + "/form.ejs", templateName);
+      replaceTemplateName(path + "/index.ejs", templateName);
+    }
+  });
+
+  // package.json
+  var pkg = {
+    name: templateName ? templateName : app_name,
+    version: "0.1.1",
+    author: "",
+    type: 1
+  }
+  fs.writeFileSync(path + "/package.json", JSON.stringify(pkg, null, 2));
+}
+
+function replaceTemplateName(path, templateName) {
+  var data = fs.readFileSync(path, 'utf8');
+  data = data.replace(/h5course_template_name/g, templateName);
+  fs.writeFileSync(path, data);
+}
+
+
+/*
+ * 复制目录中的所有文件包括子目录
+ * @param{ String } 需要复制的目录或文件
+ * @param{ String } 复制到指定的目录或文件
+ */
+function copyFile(src, dst) {
+  stat(src, function(err, st) {
+    if (err) {
+      throw err;
+    }
+    // 判断是否为文件
+    if (st.isFile()) {
+      // 创建读取流
+      readable = fs.createReadStream(src);
+      // 创建写入流
+      writable = fs.createWriteStream(dst);
+      // 通过管道来传输流
+      readable.pipe(writable);
+    }
+    // 如果是目录则递归调用自身
+    else if (st.isDirectory()) {
+      exists(src, dst, copy);
+    }
+  });
+}
+
+/*
+ * 复制目录中的所有文件包括子目录
+ * @param{ String } 需要复制的目录
+ * @param{ String } 复制到指定的目录
+ */
+var copy = function(src, dst, callback) {
+  let len = 0;
+  const callbackFunc = function(most) {
+      if (len == most) {
+        callback && callback();
+      }
+    }
+    // 读取目录中的所有文件/目录
+  fs.readdir(src, function(err, paths) {
+    if (err) {
+      throw err;
+    }
+    let most = paths.length;
+    paths.forEach(function(path) {
+      var _src = src + '/' + path,
+        _dst = dst + '/' + path,
+        readable, writable;
+      stat(_src, function(err, st) {
+        if (err) {
+          throw err;
+        }
+        // 判断是否为文件
+        if (st.isFile()) {
+          // 创建读取流
+          readable = fs.createReadStream(_src);
+          // 创建写入流
+          writable = fs.createWriteStream(_dst);
+          // 通过管道来传输流
+          readable.pipe(writable);
+          writable.on('close', function() {
+            len++;
+            callbackFunc(most);
+          });
+        }
+        // 如果是目录则递归调用自身
+        else if (st.isDirectory()) {
+          exists(_src, _dst, function(_s, _d) {
+            copy(_s, _d, function() {
+              len++;
+              callbackFunc(most);
+            });
+          });
+        }
+      });
+    });
+  });
+
+};
+// 在复制目录前需要判断该目录是否存在，不存在需要先创建目录
+var exists = function(src, dst, callback) {
+  let flag = fs.existsSync(dst);
+  // 已存在
+  if (flag) {
+    callback(src, dst);
+  }
+  // 不存在
+  else {
+    fs.mkdir(dst, function() {
+      callback(src, dst);
+    });
+  }
+};
+
+/**
+ * Determine if launched from cmd.exe
+ */
+
+function launchedFromCmd() {
+  return process.platform === 'win32' &&
+    process.env._ === undefined;
+}

@@ -1,0 +1,75 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.container{
+	background-image: url(../image/defaultBg.png);
+	position: relative;
+    font-family:"ARLRDBD";
+
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.audioBg {
+    position: absolute;
+    right: 1.4rem;
+    bottom: 1.2rem;
+    width: 1rem;
+    height: 1rem;
+    background: url(../image/btn-audio-bg.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    display: none;
+    img {
+        position: absolute;
+        top: 0.25rem;
+        left: 0.23rem;
+        width: 0.56rem;
+        height: 0.45rem;
+    }
+    .audioInit {
+        display: block;
+    }
+    .audioGif {
+        display: none;
+    }
+}
+.mask {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    right: -100%;
+    z-index: 22;
+    p{
+        height: 1rem;
+        width: .7em;
+        background: url(../image/btn.png) no-repeat;
+        background-size: contain;
+        position: absolute;
+        left:-.7rem;
+        top: 2rem;
+        cursor: pointer;
+    }
+    .res {
+        transform: rotateY(180deg);
+        transform-origin: right;
+    }
+}
+
+

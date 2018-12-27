@@ -1,0 +1,64 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.commom {
+    position: relative;
+    z-index: 100;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.container{
+    background: url(../image/defaultBg.png) no-repeat;
+    background-size: auto 100%;
+    position: relative;
+    overflow: hidden;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    .drag_box{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    .right_box{
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 4.3rem;
+        background:#f3ecc6; 
+    }
+    .ans-area{
+        position: absolute;
+        height: 2rem;
+        width: 2rem;
+        left: 15.2rem;
+        top: 0;
+        box-sizing: border-box;
+        z-index: 100;
+        cursor: pointer;
+        img{
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            height: 100%;
+        }
+    }
+}

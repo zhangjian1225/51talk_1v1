@@ -1,0 +1,303 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.container{
+	background-image: url(../image/back_49bg.jpg);
+	position: relative;
+    font-family:"ARLRDBD";
+
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.visibility{
+    visibility: hidden;
+}
+.hide{
+    display: none !important;
+}
+.time{
+    position: absolute;
+    left: 1.35rem;
+    bottom: 1.2rem;
+    width: 2.16rem;
+    height: .95rem;
+    line-height: 1.08rem;
+    font-size: .32rem;
+    background:  url('../image/timeBk.png') no-repeat;  
+    background-size: contain;
+    padding-right: 0.5rem;
+    box-sizing: border-box;
+    text-align: right;
+    color:#fff;
+}
+.timeBtn{
+    position: absolute;
+    left: 3.78rem;
+    bottom: 1.2rem;
+    width: 2.45rem;
+    height: .74rem;
+    background:  url('../image/startTime.png') no-repeat;  
+    background-size: contain;
+    z-index: 20;
+}
+.answBtn{
+    position: absolute;
+    left: 5.55rem;
+    top: 9.8rem;
+    width:7.9rem;
+    height: 1rem; 
+    line-height: 1rem;
+    font-size: .32rem;
+    background: #fff;
+    padding: 0 .85rem;
+    border-radius: 0.2rem;
+    box-sizing: border-box;
+    z-index: 20;
+    opacity: 0;
+    .ansright,.answrong{
+        position: absolute;
+        top:.25rem;
+        width: .67rem;
+        height: .66rem;
+        cursor: pointer;
+    }
+    .ansright{
+        left: 4.9rem;
+        background:  url('../image/rightBefore.png') no-repeat;  
+        background-size: contain; 
+    }
+    .answrong{
+        left: 6.1rem;
+        background:  url('../image/wrongBefore.png') no-repeat;  
+        background-size: contain;
+    }
+    .ansRafter{
+        background:  url('../image/right.png') no-repeat;  
+        background-size: contain;
+    }
+    .ansLafter{
+        background:  url('../image/wrong.png') no-repeat;  
+        background-size: contain;
+    }
+}
+.mainArea{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    // background:  url('../image/city.png') no-repeat;  
+    // background-size: contain;
+    padding: 2.27em 1.4rem 0;
+    box-sizing:border-box;
+    z-index: 1;
+    .left{
+        position: absolute;
+        top: 2.41rem;
+        left: 1.75rem;
+        width: 8.34rem;
+        height: 7.37rem;
+        .goUpBOx{
+          position: absolute;
+          top: 2.4rem;
+          left: 2.35rem;
+          width: 1.51rem;  
+          height: 4.97rem;
+          .line{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background:  url('../image/line.png') no-repeat 0.75rem 0;  
+            background-size: contain;
+            z-index: 10;
+          }
+          .king,.leg{
+              position: absolute;
+              left: 0;
+              bottom: 0;
+              width: 1.51rem;
+              height: 2.52rem;
+              background:  url('../image/goKing.png') no-repeat;  
+              background-size: contain;
+              z-index: 9;
+          }
+          .leg{
+            background:  url('../image/legKing.png') no-repeat center 1.3rem;  
+            background-size: .57rem .69rem;
+            z-index: 11;
+          }
+        }
+        .wall{
+            position: absolute;
+            top: 1.93rem;
+            left: 0;
+            width: 8.34rem;
+            height: 2.55rem;
+            background: url('../image/wall.png') no-repeat;  
+            background-size: contain;
+            z-index: 5;
+        }
+        .singelFamily{
+            position: absolute;
+            top: 0;
+            left: 1.5rem;
+            width: 3.1rem;
+            height: 2.52rem;
+            background: url('../image/cryAngel.png') no-repeat right 0;  
+            background-size: 1.46rem 2.49rem;
+        }
+        .family{
+            background: url('../image/kingSmile.png') no-repeat 0 0, url('../image/smileAngel.png') no-repeat  1.25rem 0.05rem;
+            background-size: 1.46rem 2.49rem;
+        }
+
+    }
+    .right{
+        position: absolute;
+        top: 2.65rem;
+        right: 1.75rem;
+        width: 6.35rem;
+        height: 6.75rem;
+        .page{
+            position: absolute;
+            right: 0;
+            bottom:-0.1rem;
+            width: .92rem;
+            height: .4rem;
+            line-height: .4rem;
+            background: #1c6c90;
+            border-radius: .2rem;
+            text-align: center;
+            font-size:.3rem;
+            color: #fff;
+        }
+        .picArea{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6.35rem;
+            height: 4.75rem;
+            .list{
+               position: absolute; 
+               width: 100%;
+               height: 100%;
+               border: .08rem solid #fff;
+               border-radius: 0.28rem;
+               img{
+                   width: 100%;
+                   height: 100%;
+                   border-radius: 0.28rem;
+               }
+            }
+        }
+        .text{
+            position: absolute;
+            top: 4.95rem;
+            left: 0;
+            width: 6.35rem;
+            height: 1.4rem;
+            padding: .2rem 0.65rem;
+            border-radius: 0.28rem;
+            box-sizing: border-box;
+            background: #fff; 
+            font-size: 0.32rem;
+            display: flex;
+            display: -webkit-flex;
+            align-items: center;
+            // justify-content:center;
+            -webkit-align-items: center;
+            -webkit-box-align: center;
+            // text-align: center;
+        }
+        .bigText{
+            height: 4.22rem;
+            top: 1.3rem;
+        }
+        .audioList{
+            position: absolute;
+            width: 1rem;
+            height: 1rem;
+            background: url('../image/btn-audio-bg.png') no-repeat;
+            background-size: 102% 92%;
+            z-index: 10;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -0.35rem;
+            cursor: pointer;
+            img{
+                position: absolute;
+                top: 0.25rem;
+                left: 0.23rem;
+                width: 0.56rem;
+                height: 0.45rem;
+            }
+            audio{
+                width:0;
+                height: 0;
+                opacity: 0;
+                position:absolute;
+            }
+        }
+    }
+}
+
+// @keyframes showOptions{
+//     0%{
+//       background:  url('../image/light1.png') no-repeat;  
+//       background-size: contain;
+//     }
+//     33%{
+//         background:  url('../image/light2.png') no-repeat;  
+//         background-size: contain;
+//     }
+//     66%{
+//         background:  url('../image/light3.png') no-repeat;  
+//         background-size: contain;
+//     }
+//     100%{
+//         background:  url('../image/light4.png') no-repeat;  
+//         background-size: contain;
+//     }
+// }
+// @-webkit-keyframes showOptions{
+//     0%{
+//         background:  url('../image/light1.png') no-repeat;  
+//         background-size: contain;
+//       }
+//       33%{
+//           background:  url('../image/light2.png') no-repeat;  
+//           background-size: contain;
+//       }
+//       66%{
+//           background:  url('../image/light3.png') no-repeat;  
+//           background-size: contain;
+//       }
+//       100%{
+//           background:  url('../image/light4.png') no-repeat;  
+//           background-size: contain;
+//       }
+// }
+
+
+
+
+
+

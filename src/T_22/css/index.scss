@@ -1,0 +1,223 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.commom {
+    position: relative;
+    z-index: 100;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.container{
+    background: url(../image/defaultBg.png) no-repeat;
+    background-size: auto 100%;
+    position: relative;
+}
+
+.audio-left,.audio-right{
+    width: 1.45rem;
+    height: 1.34rem;
+    position: absolute;
+    top: 2.65rem;
+    left: 3.6rem;
+    background: url('../image/btn-audio-bg.png') no-repeat;
+    background-size: contain;
+    background-position: 0 0.03rem;
+    cursor: pointer;
+    img{
+        width: 0.83rem;
+        height: 0.8rem;
+        position: absolute;
+        top: 0.3rem;
+        left: 0.3rem;
+    }
+}
+.audio-right{
+    left: 13.9rem;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    .person-left, .person-right {
+        position: absolute;
+        top: 3.9rem;
+        width: 13.2rem;
+        height: 26.8rem;
+        background-size: 39.6rem auto;
+        transform: scale(.25);
+        transform-origin: left top;
+
+        .ani1, .ani2 {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .person.talk {
+        animation: talking .5s steps(3, end) infinite;
+    }
+    @keyframes talking {
+        to {
+            background-position: -39.6rem 0;
+        }
+    }
+    .person-left {
+        left: 4.9rem;
+    }
+    .person-right {
+        left: 10.7rem;
+    }
+
+    .toy-left, .toy-right {
+        position: absolute;
+        top: 5.8rem;
+        width: 1.9rem;
+        height: 2.4rem;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .toy-left {
+        left: 7.4rem;
+    }
+    .shake {
+        animation: shakes .6s 1 ease;
+    }
+    @keyframes shakes {
+        0% {
+            transform: rotateZ(0deg);
+        }
+        25% {
+            transform: rotateZ(15deg);
+        }
+        50% {
+            transform: rotateZ(-15deg);
+        }
+        75% {
+            transform: rotateZ(15deg);
+        }
+        100% {
+            transform: rotateZ(0deg);
+        }
+    }
+    .toy-right {
+        left: 9.8rem;
+    }
+
+    .text-left, .text-right {
+        font-weight: bold;
+        position: absolute;
+        // padding: .7rem .9rem;
+        font-size: .5rem;
+        width: 9.6rem;
+        height: 4rem;
+        // display: flex;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+    .text-left {
+        left: 0;
+        top: 0;
+    }
+    .text-right {
+        right: 0;
+        top: 0;
+    }
+    .text-flex {
+        display: flex;
+    }
+    .text-none {
+        display: none;
+    }
+
+    .tips-left, .tips-right {
+        position: absolute;
+        bottom: 0;
+        // border: 1px solid #fff;
+        font-size: .5rem;
+        width: 4.9rem;
+        height: 6.8rem;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 100%;
+        }
+    }
+    .tips-left {
+        left: 0;
+    }
+    .tips-right {
+        right: 0;
+    }
+}
+.hand{
+    width: 1.55rem;
+    height: 0.8rem;
+    background: url('../image/btnText.png') no-repeat;
+    background-size: 3.1rem .8rem;
+    position: absolute;
+    bottom: 1.48rem;
+    right: 1.78rem;
+    // animation: handClick 1s infinite;
+    // animation:hand 1s steps(4) infinite;
+    cursor: pointer;
+    .handStyle{
+        position: absolute;
+        width: 1.8rem;
+        height: 1.8rem;
+        background: url('../image/hands.png') no-repeat;
+        background-size: 7.2rem 1.8rem;
+        position: absolute;
+        bottom: -1.2rem;
+        right: -1rem;
+        // animation: handClick 1s infinite;
+        animation:hand 1s steps(4) infinite;
+    }
+}
+@keyframes handClick {
+    0%{
+        transform: translateY(.2rem)
+    }
+    100%{
+        transform: translateY(-.2rem)
+    }
+}
+
+@keyframes hand {
+    0%{
+        background-position-x: 0 ;
+    }
+    100%{
+        background-position-x:133% ;
+    }
+}
+@-webkit-keyframes hand {
+    0%{
+        background-position-x: 0 ;
+    }
+    100%{
+        background-position-x:133% ;
+    }
+}

@@ -1,0 +1,256 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.hide{
+    display: none;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.jpg) no-repeat;
+    background-size: auto 100%;
+	position: relative;
+    // font-family:"ARLRDBD";
+
+} 
+
+.word-container{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    .hide{
+        display: none;
+    }
+    .word{
+        color: #ffffff;  
+        text-align: center;
+        font-size: .5rem;
+        cursor: pointer;
+    }
+    .word:hover {
+        transform:scale(1.05);
+    }
+    .word-0{  /*中号*/
+        position: absolute;
+        background: url(../image/middle.png) no-repeat;
+        background-size: auto 100%;
+        top: 3.4rem;
+        left: 2.86rem;
+        width: 4.35rem;
+        height: 1.50rem;
+        line-height: 1.50rem;
+    }
+    .word-1{  /*大号*/
+        position: absolute;
+        background: url(../image/big.png) no-repeat;
+        background-size: auto 100%;
+        top: 4.3rem;
+        left: 7.47rem;
+        width: 4.60rem;
+        height: 1.90rem;
+        line-height: 1.90rem;
+    }
+    .word-2{  /*小号*/
+        position: absolute;
+        background: url(../image/small.png) no-repeat;
+        background-size: auto 100%;
+        top: 4.6rem;
+        left: 12.85rem;
+        width: 4.15rem;
+        height: 1.20rem;
+        line-height: 1.20rem;
+    }
+    .word-3{ /*小号*/
+        position: absolute;
+        background: url(../image/small.png) no-repeat;
+        background-size: auto 100%;
+        top: 5.1rem;
+        left: 1.38rem;
+        width: 4.15rem;
+        height: 1.20rem;
+        line-height: 1.20rem;
+    }
+    .word-4{  /*中号*/
+        position: absolute;
+        background: url(../image/middle.png) no-repeat;
+        background-size: auto 100%;
+        top: 6.35rem;
+        left: 2.30rem;
+        width: 4.35rem;
+        height: 1.50rem;
+        line-height: 1.50rem;
+    }
+    .word-5{  /*中号*/
+        position: absolute;
+        background: url(../image/middle.png) no-repeat;
+        background-size: auto 100%;
+        top: 6.30rem;
+        left: 7.38rem;
+        width: 4.35rem;
+        height: 1.50rem;
+        line-height: 1.50rem;
+    }
+    .word-6{  /*中号*/
+        position: absolute;
+        background: url(../image/middle.png) no-repeat;
+        background-size: auto 100%;
+        top: 6.10rem;
+        left: 13.40rem;
+        width: 4.35rem;
+        height: 1.50rem;
+        line-height: 1.50rem;
+    }
+    .word-7{  /*小号*/
+        position: absolute;
+        background: url(../image/small.png) no-repeat;
+        background-size: auto 100%;
+        top: 8.3rem;
+        left: 5.5rem;
+        width: 4.15rem;
+        height: 1.20rem;
+        line-height: 1.20rem;
+    }
+    .word-8{ /*大号*/
+        position: absolute;
+        background: url(../image/big.png) no-repeat;
+        background-size: auto 100%;
+        top: 7.75rem;
+        left: 11.15rem;
+        width: 4.60rem;
+        height: 1.90rem;
+        line-height: 1.90rem;
+    }
+} 
+
+.start-page{
+    position: absolute;
+    width: 7.2rem;
+    height: 4.8rem;
+    background: rgba($color: #000000, $alpha: 0.8);
+    top: 3rem;
+    left: 6rem;
+    border-radius: .4rem;
+    display: none;
+    span {
+        display: block; 
+        color: #ffffff;
+        font-size: 0.5rem;
+        line-height: 0.5rem;
+    }
+    .text{
+        margin: .5rem;
+        margin-top: 1.28rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+    .btn{
+        background: #F1A91E;
+        border: #ffffff 2px solid;
+        display: block;
+        font-size: .26rem;
+        width: 1.3rem;
+        border-radius: .4rem;
+        text-align: center;
+        margin-left: 2.95rem;
+        cursor: pointer;
+    }
+    .shade{
+        position: absolute;
+        width:4.1rem;
+        height:3.94rem;  
+        top: .43rem;
+        left: 1.55rem;
+        z-index: 500; 
+        background: url(../image/bg_backnum.png) no-repeat;
+        background-size: auto 100% ;
+        line-height: 3.94rem;   
+        display: none;
+        justify-content:center;
+        align-items:center; 
+        text-align: center; 
+        img{ 
+            height: 2rem;
+            vertical-align: middle;
+        }
+    }
+
+    .score-container{
+        display: flex;
+        justify-content:center;
+        align-items:center; 
+        text-align: center; 
+        width:100%;
+        height: 100%;
+        opacity: 0;
+        #countimg{ 
+            width: 2.48rem;
+            margin-left: -0.8rem;
+            transform:rotate(-70deg);
+            -webkit-transform:rotate(-70deg); /* Safari 和 Chrome */
+    
+        }
+    
+        .connect{
+            display: inline-block;
+            color: #FFFF33; 
+            margin-right: .4rem;
+        }
+    
+        #score{
+            font-size: .8rem;
+            display: inline-block;
+            color: #FFFF33;
+        }
+    } 
+}
+.total-container{
+    display: flex;
+    justify-content:center;
+    align-items:center; 
+    text-align: center;  
+    position: absolute;
+    left: 2.05rem;
+    bottom: 1.36rem;
+    font-size: 0.40rem;
+    font-weight: 700;
+    width: 1.4rem;
+    height: 0.9rem;
+    line-height: 0.9rem;
+    vertical-align: middle;
+    #totalimg{ 
+        width: 0.8rem;
+        margin-left: -0.4rem;
+        transform:rotate(-70deg);
+        -webkit-transform:rotate(-70deg); /* Safari 和 Chrome */ 
+    }
+
+    .connect{
+        display: inline-block;
+        color: #29140A;  
+        margin-left: -0.2rem;
+        font-size: 0.30rem;
+    }
+
+    #total{ 
+        display: inline-block;
+        color: #29140A;
+    }
+} 
+

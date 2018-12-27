@@ -1,0 +1,313 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+// .desc-visi{
+// 	visibility: hidden;
+// }
+// .desc {
+//     color: black;
+// }
+// .title h3{
+//     color: black;
+// }
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.png) no-repeat;
+    background-size: auto 100%;
+	position: relative;
+    font-family:"ARLRDBD";
+
+}
+.stage{
+	width: 100%;
+    height: 100%;
+    position: relative;
+    height: 100%;
+    .top_img{
+        width: 100%;
+        height: .87rem;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: url(../image/top_img.png) no-repeat;
+        background-size:100% 100%;
+        z-index: 2;
+    }
+    #light {
+        width: 17.3rem;
+        height: 10.8rem;
+        position: absolute;
+        top: 0;
+        background: url(../image/light.png) no-repeat;
+        background-size:contain;
+        z-index:1;
+        display: none;
+    }
+    .light_one{
+        left: -4.5rem;
+    }
+    .light_two{
+        left: 1rem;
+    }
+    .light_three{
+        left: 6.5rem;
+    }
+    .light_four{
+        left: 1rem;
+    }
+    .stage_one{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        // display: none;
+        .person_one {
+            position: absolute;
+            width: 5.53rem;
+            height: 8rem;
+            left: .88rem;
+            top: 2.06rem;
+            background: url(../image/magic_3.png) no-repeat;
+            background-size:contain;
+            z-index: 4;
+            filter: sepia(.2);
+            // filter: grayscale(100%);
+        }
+        .person_two {
+            position: absolute;
+            width: 4.43rem;
+            height: 6.76rem;
+            left: 7.6rem;
+            top: 2.86rem;
+            background: url(../image/magic_1.png) no-repeat;
+            background-size:contain;
+            z-index: 4;
+            filter: sepia(.2);
+            // filter: grayscale(100%);
+        }
+        .person_three {
+            position: absolute;
+            width: 4.45rem;
+            height: 7.6rem;
+            right: 1.58rem;
+            top: 2.4rem;
+            background: url(../image/magic_2_2.png) no-repeat;
+            background-size:contain;
+            filter: sepia(.2);
+            // filter: grayscale(100%);
+            z-index: 4;
+        }
+        .choose {
+            filter: sepia(0);
+        }
+        .tag{
+            position: absolute;
+            width: .97rem;
+            height: .97rem;
+            bottom: .5rem;
+            right: 1rem;;
+            // background: url(../image/button.png) no-repeat;
+            // background-size:contain;
+            z-index: 4;
+            cursor: pointer;
+        }
+        .hand{
+            width: 1.5rem;
+            height: 1.5rem;
+            background:  url('../image/hand.png') no-repeat;
+            background-size: contain;
+            position: absolute;
+            bottom: -.8rem;
+            right: -.4rem;
+            animation: handClick 1s infinite;
+            z-index: 4;
+            cursor: pointer;
+        }
+        .hand{
+            width:1rem;
+            height:1rem;
+            background: url('../image/hands.png');
+            background-size: 4rem 1rem;
+            position: absolute;
+            bottom: 0rem;
+            right: -.4rem;
+            animation: handClick 1s steps(4) infinite;
+            z-index: 4;
+            cursor: pointer;
+        }
+        @keyframes handClick {
+            0%{
+                background-position: 0 0;
+            }
+            100%{
+                background-position:-4rem 0;
+            }
+        }
+    }
+    .stage_two{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: none;
+        .person{
+            position: absolute;
+            z-index: 4;
+        }
+        .per_one {
+            left: 2.5rem;
+            top: 2.8rem;
+            width: 6rem;
+            height: 7.13rem;
+            background: url(../image/magic_3_change.png) no-repeat;
+            background-size:contain;
+            z-index: 5;
+            .animate {
+                width: 100%;
+                height: 4rem;
+                // background: red;
+                overflow: hidden;
+                position: absolute;
+                top: -.6rem;
+                left: 3.6rem;
+                img {
+                    width: 2rem;
+                    height: auto;
+                    position: absolute;
+                    bottom: -1.3rem;
+                    left:-.5rem;
+                    z-index: 5;
+                }
+            }
+        }
+        .per_two {
+            left: 3rem;
+            top: 3.4rem;
+            width: 6rem;
+            height: 6.14rem;
+            background: url(../image/magic_1_change.png) no-repeat;
+            background-size:contain;
+            z-index: 5;
+            .animate {
+                width: 100%;
+                height: 4rem;
+                // background: red;
+                overflow: hidden;
+                position: absolute;
+                top: -1.2rem;
+                left: 3rem;
+                img {
+                    width: 2rem;
+                    height: auto;
+                    position: absolute;
+                    bottom: -1.3rem;
+                    left:-.5rem;
+                    z-index: 5;
+                }
+            }
+        }
+        .per_three {
+            left:1.5rem;
+            top: 3rem;
+            width: 6.73rem;
+            height: 6.75rem;
+            background: url(../image/magic_2_change_2.png) no-repeat;
+            background-size:contain;
+            z-index: 5;
+            .animate {
+                width: 100%;
+                height: 4rem;
+                // background: red;
+                overflow: hidden;
+                position: absolute;
+                top: -.7rem;
+                left: 4rem;
+                img {
+                    width: 2rem;
+                    height: auto;
+                    position: absolute;
+                    bottom: -1.3rem;
+                    left:.1rem;
+                    z-index: 5;
+                }
+            }
+        }
+        .none{
+            background: url('')
+        }
+        .table{
+            position: absolute;
+            top: 5.8rem;
+            left: 8.4rem;
+            width: 3.59rem;
+            height: 3.58rem;
+            background: url(../image/table.png) no-repeat;
+            background-size:contain;
+            z-index: 4;
+            .box{
+                position: absolute;
+                width: 1rem;
+                height: 1rem;
+                top: -1.2rem;
+                left: 1.5rem;
+            }
+        }
+        .child {
+            width: 3rem;
+            height: 6rem;
+            position: absolute;
+            right: 2rem;
+            bottom: 1.2rem;
+        }
+        .childAnt {
+            animation: animate steps(3) 1s infinite;
+        }
+        @keyframes animate {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: -9rem 0;
+            }
+        }
+        .cloud {
+            width: 4rem;
+            height: 3rem;
+            position: absolute;
+            right: 2.5rem;
+            bottom: 6.7rem;
+            opacity: 0;
+        }
+    }
+    .toMax {
+        animation: toMax 2s forwards;
+    }
+    @keyframes toMax {
+        0% {
+            transform: scale(1);
+        }
+        100% {
+            left: -5rem;
+            top: 2rem;
+            transform: scale(1.5)
+        }
+    }
+}
+

@@ -1,0 +1,222 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.jpg) no-repeat;
+    background-size: 100%;
+	position: relative;
+    // font-family:"ARLRDBD";
+
+}
+.stage{
+	width: 100%;
+    height: 100%;
+    position: relative;
+   .dice{
+        position: absolute;
+        left: 1.3rem;
+        top: .9rem;
+        width: 2.6rem;
+        height: 2.6rem;
+        // background: red;
+        cursor: pointer;
+        .end_Dice {
+            position: absolute;
+            height: 2.6rem;
+            width:2.6rem; 
+            background: url('../image/end.png') no-repeat;
+            background-size: 15.6rem 100%;
+            background-position:0;
+            transform: scale(.8)
+        }
+        .animate_Dice {
+            position: absolute;
+            height: 2.6rem;
+            width:2.6rem; 
+            background: url('../image/animate.png') no-repeat;
+            background-size: 15.6rem 100%;
+            display: none;
+            transform: scale(.8)
+        }
+   }
+    .mask{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, .5);
+        display: none;
+        z-index: 11;
+        .boxAni {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -0.86rem;
+            margin-top: -.77rem;
+            height: 2.6rem;
+            width:2.6rem; 
+        }
+        .animateMax_Dice {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 2.6rem;
+            width:2.6rem; 
+            background: url('../image/animate.png') no-repeat;
+            background-size: 15.6rem auto;
+            transform: scale(2);
+        }
+        .animateMax_end {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 2.6rem;
+            width:2.6rem; 
+            background: url('../image/end.png') no-repeat;
+            background-size: 15.6rem auto;
+            transform: scale(2);
+            display: none;
+        }
+    }
+    .show_animate {
+        animation: show_animate steps(6) .8s 3;
+    }
+    .box_animate {
+        animation: box_animate 2s forwards;
+    }
+    @keyframes box_animate {
+        0%{
+            left: 50%;
+            top: 50%;
+            transform: scale(1);
+        }
+        100% {
+            left: 2.15rem;
+            top: 1.65rem;
+            transform: scale(.4); 
+        }
+    } 
+    @keyframes show_animate {
+        0%{
+            background-position: 0 0;
+        }
+        100% {
+            background-position: -15.6rem 0;
+        }
+    } 
+    .pos{
+        width: 2rem;
+        height: 2rem;
+        // background: red;
+    }
+    .pos_1{
+        position: absolute;
+        left: 6.4rem;
+        top:.8rem;
+    }
+    .pos_2{
+        position: absolute;
+        left: 10.5rem;
+        top:0rem;  
+    }
+    .pos_3{
+        position: absolute;
+        left: 14.8rem;
+        top:.7rem;
+    }
+    .pos_4{
+        position: absolute;
+        left: 5.6rem;
+        top:4.5rem;
+    }
+    .pos_5{
+        position: absolute;
+        left: 10.6rem;
+        top:4.6rem;
+    }
+    .pos_6{
+        position: absolute;
+        left: 16.3rem;
+        top:4.7rem;
+    }
+    .per_pos_1{
+        position: absolute;
+        left: 6.4rem;
+        top:.8rem;
+    }
+    .per_pos_2{
+        position: absolute;
+        left: 10.5rem;
+        top:0rem; 
+    }
+    .per_pos_3{
+        position: absolute;
+        left: 14.8rem;
+        top:.7rem;
+    }
+    .per_pos_4{
+        position: absolute;
+        left: 5.6rem;
+        top:4.5rem;
+    }
+    .per_pos_5{
+        position: absolute;
+        left: 10.6rem;
+        top:4.6rem;
+    }
+    .per_pos_6{
+        position: absolute;
+        left: 16.3rem;
+        top:4.7rem;
+    }
+    #person {
+        position: absolute;
+        width: 2rem;
+        height: 2rem;
+        z-index: 10;
+        img {
+            width: 100%;
+            height:100%;
+        }
+    }
+    .hand{
+        width:1.8rem;
+        height:1.8rem;
+        background: url('../image/hands.png');
+        background-size: 7.2rem 1.8rem;
+        position: absolute;
+        bottom: 0;
+        left: .78rem;
+        animation: handClick 1s steps(4) infinite;
+        cursor: pointer; 
+    }
+    @keyframes handClick {
+        0% {
+            background-position-x: 0%;
+        }
+        100% {
+            background-position-x: 133%;
+        }
+    }
+}
+

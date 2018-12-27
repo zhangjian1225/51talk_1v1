@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>T18过渡页(过渡页)</title>
+	<link rel="stylesheet" href="form/css/style.css">
+	<script src='form/js/jquery-2.1.1.min.js'></script>
+	<script src='form/js/vue.min.js'></script>
+</head>
+
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="h-title">T18过渡页</div>
+			
+			<% include ./src/common/template/common_head %>
+
+			<div class="c-group">
+				<div class="c-title">编辑问题</div>
+				<div class="c-area upload img-upload">
+					<div class="c-well">
+						<div class="well-con">
+							<div class="c-well">
+								<div class="well-con">
+									<div class="field-wrap">
+										<label class="field-label"  for="">位置</label>
+										<select v-model="configData.source.part" style="width:50px;height: 25px;margin-left: 20px;">
+											<option v-for="index in 6">{{ index }}</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<!-- 上传图片 -->
+							<div class="c-well">
+								<div class="field-wrap">
+									<label class="field-label">人物</label>
+									<label for="person" class="btn btn-show upload" v-if="configData.source.person==''?true:false">上传</label>
+									<label for="person" class="btn upload re-upload" v-if="configData.source.person!=''?true:false">重新上传</label>
+									<span class='txt-info'><em>*</em> （尺寸：220X220，大小：≤50KB）</span>
+									<input type="file" 
+										v-bind:key="Date.now()" class="btn-file" id="person" 
+										size="220*220" 
+										accept=".gif,.jpg,.jpeg,.png"
+										v-on:change="imageUpload($event,configData.source,'person',50)">
+								</div>
+								<div class="img-preview" v-if="configData.source.person!=''?true:false">
+									<img v-bind:src="configData.source.person" alt="" />
+									<div class="img-tools">
+										<span class="btn btn-delete" v-on:click="configData.source.person=''">删除</span>
+									</div>
+								</div>
+							</div>
+							<!-- 上传图片 -->
+							<div class="c-well">
+								<div class="field-wrap">
+									<label class="field-label">门牌</label>
+									<label for="mom" class="btn btn-show upload" v-if="configData.source.door==''?true:false">上传</label>
+									<label for="mom" class="btn upload re-upload" v-if="configData.source.door!=''?true:false">重新上传</label>
+									<span class='txt-info'>（尺寸：350X380，大小：≤50KB）</span>
+									<input type="file" 
+										v-bind:key="Date.now()" class="btn-file" id="mom" 
+										size="350*380" 
+										accept=".gif,.jpg,.jpeg,.png"
+										v-on:change="imageUpload($event,configData.source,'door',50)">
+								</div>
+								<div class="img-preview" v-if="configData.source.door!=''?true:false">
+									<img v-bind:src="configData.source.door" alt="" />
+									<div class="img-tools">
+										<span class="btn btn-delete" v-on:click="configData.source.door=''">删除</span>
+									</div>
+								</div>
+							</div>
+							<!-- 上传图片 -->
+							<div class="c-well" v-for="(item,index) in configData.source.boxList">
+								<div class="well-title">
+									<p>选项{{index+1}}</p>
+									<span class="dele-tg-btn" v-on:click="delSele(item)" v-show='configData.source.boxList.length>3?true:false'></span>
+								</div>
+								<div class="well-con">
+									<div class="field-wrap">
+										<label class="field-label"  for="">图片</label>
+										<label v-bind:for="'img-upload'+index" class="btn btn-show upload" v-if="item.img==''?true:false">上传</label>
+										<label  v-bind:for="'img-upload'+index" class="btn upload re-upload" v-if="item.img!=''?true:false">重新上传</label>
+										<span class='txt-info'>（尺寸：400X300，大小：≤50KB）</span>
+										<input type="file"   
+											class="btn-file" 
+											v-bind:key="Date.now()"
+											v-bind:id="'img-upload'+index" 
+											size="400*300" 
+											accept=".gif,.jpg,.jpeg,.png" 
+											v-on:change="imageUpload($event,item,'img',50)">
+									</div>
+									<div class="img-preview" v-if="item.img!=''?true:false">
+										<img v-bind:src="item.img" alt=""/>
+										<div class="img-tools">
+											<span class="btn btn-delete" v-on:click="item.img=''">删除</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<button type="button" class="add-tg-btn" v-on:click="addSele()" v-show='configData.source.boxList.length<6?true:false'>+</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/preview.jpg?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li>
+						<em>图片格式：</em>JPG/PNG/GIF</li>
+					<li>
+						<em>声音格式：</em>MP3/WAV</li>
+					<li>
+						<em>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+
+</html>

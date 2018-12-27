@@ -1,0 +1,253 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+.container{
+	// background-image: url(../image/defaultBg.png);
+}
+.drag{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 101;
+	display: none;
+}
+.desc-visi{
+	    visibility: hidden;
+}
+.tg{
+	z-index: 999;
+}
+.main{
+	width: 100%;
+	height: 100%;
+}
+.stage{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	left: 0;
+	top: 0;
+	display: flex;
+	// 左边图片、文字列表
+	.imgList{
+		width: 2.8rem;
+		height: 100%;
+		background: #e9e3d2;
+		position: relative;
+		.upMask{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 1.6rem;
+			z-index: 40;
+			background: #e9e3d2;
+		}
+		.downMask{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 2.3rem;
+			z-index: 40;
+			background: #e9e3d2;
+		}
+		.btns{
+			position: absolute;
+			width: 2.4rem;
+			height: .73rem;
+			left: .2rem;
+			bottom: 1.29rem;;
+			box-shadow: 0 0 0.12rem rgba(0,0,0,0.25);
+			background: #ffc600;
+			border-radius: .37rem;
+			overflow: hidden;
+			z-index: 41;
+			.upBtn{
+				float: left;
+				width: 1.2rem;
+				height: 100%;
+				cursor: pointer;
+				background: #fdd132;
+				position: relative;
+				img{
+					width: auto;
+					height: .5rem;
+					position: absolute;
+					left:.3rem;
+					top: .12rem;
+					opacity: .8;
+				}
+			}
+			.downBtn{
+				float: left;
+				width: 1.2rem;
+				height: 100%;
+				cursor: pointer;
+				background: #ffc600;
+				position: relative;
+				img{
+					width: auto;
+					height: .5rem;
+					position: absolute;
+					left:.25rem;
+					top: .13rem;
+				}
+			}
+
+		}
+		
+	}
+	.imgFont{
+		position: absolute;
+		left:0rem;
+		top: 0rem;
+		width: 100%;
+		height:100%;
+		overflow: hidden;
+		.ans-area{
+			position: absolute;
+			width: 2.4rem;
+			height: 1.8rem;
+			left: .2rem;
+			z-index: 20;
+			cursor: move;
+			img{
+				position:absolute;
+				left:0;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				margin: auto; 
+			}
+			p{
+				width: 100%;
+				height: .96rem;
+
+				position:absolute;
+				left:0;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				margin: auto;
+				
+				background:#fff;
+				border-radius: .32rem;
+				box-shadow: 0 0.04rem 0.08rem rgba(0,0,0,0.3);
+				overflow: hidden; 
+				box-sizing: border-box;
+				padding: .1rem;
+				font-size: .32rem;
+				display: flex;
+				align-items: center;
+				text-align: center;
+				justify-content: center;
+				word-break:break-all;
+			}
+		}
+	}
+	// 右边自由区域
+	.freeArea{
+		flex: 1;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column; 
+		// background-image: url(../assets/images/defaultBg.jpg);
+		background-size: 100% 100%;
+		//标题
+		//自由区
+		.freeDom{
+			flex: 1;
+			width: 100%;
+			#ansFont{
+				width: 2.4rem;
+				height: .96rem;
+				background:#fff;
+				border-radius: .32rem;
+				box-shadow: 0 0 0.2rem rgba(0,0,0,0.3);
+				left: .2rem;
+				box-sizing: border-box;
+				overflow: hidden;
+				padding: 0 .09rem 0 .09rem;
+				p{
+					width: 100%;
+					height: 100%;
+					font-size: .32rem;
+					display: flex;
+					align-items: center;
+					text-align: center;
+					justify-content: center;
+					word-break:break-all;
+				}
+			}
+			ul{
+				width: 14.75rem;
+				height: 100%;
+				margin-left: .3rem;;
+				margin-top: 1.98rem;
+				position: relative;
+				li{
+					width: 2.44rem;
+					height: 2.44rem;
+					position: absolute;
+					div{
+						z-index: 20;
+					}
+				}
+			}
+		}
+	}
+	.cloneHtml{
+		position: absolute;
+		width: 2rem;
+		height: 2rem;
+		img{
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+.line{
+	width: 14.75rem;
+	height: 7.4rem;
+	background: url(../image/lines.png) no-repeat;
+	background-size: 100%;
+	position: absolute;
+	left: 3.1rem;
+	top: 2.15rem;
+	z-index: 10;
+	display: none;
+}
+.emShake{
+	animation: shake 0.5s;
+}
+@keyframes shake {
+	0%{
+		transform: translateX(.05rem)
+	}
+	20%{
+		transform: translateX(-.1rem)
+	}
+	40%{
+		transform: translateX(.1rem)
+	}
+	60%{
+		transform: translateX(-.1rem)
+	}
+	80%{
+		transform: translateX(.1rem);
+	}
+	100%{
+		transform: translateX(0)
+	}
+}
+.showDrag{
+	display: block;
+}

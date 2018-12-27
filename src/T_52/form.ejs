@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TMU0001_定点音频</title>
+	<link rel="stylesheet" href="form/css/style.css">
+	<script src='form/js/jquery-2.1.1.min.js'></script>
+	<script src='form/js/vue.min.js'></script>
+</head>
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="h-title">TMU0001_定点音频</div>
+			
+			<% include ./src/common/template/common_head %>
+
+			<div class="c-group">
+				<div class="c-title">设置学习内容（必填）</div>
+				<div class="c-area upload img-upload">
+					<span>学习内容的组数量：1～6组 。</span>
+					<ul>
+						<li v-for="(item, index) in configData.source.options">	
+							<div class="c-well">
+								<span>选项{{index+1}}</span><span class="dele-tg-btn" @click="delOption(item)" v-show="configData.source.options.length>1"></span>
+								<!-- 时间 -->
+								<div class="field-wrap">
+									<label>音频位置&nbsp;&nbsp;<em>填写音频放置的坐标值</em></label>
+									<input type="text" class='c-input-txt' maxlength="" placeholder="请在此输入≤50不为空的正整数" v-model="item.pos">
+								</div>
+								<!-- 上传声音 -->
+								<div class="field-wrap">
+									<label class="field-label"  for="">内容声音&nbsp;&nbsp;<em>文件大小≤50KB</em></label>
+									<div>
+										<label :for="'audio-upload-'+index" class="btn btn-show upload" v-if="item.audio==''?true:false">上传</label>
+										<label  :for="'audio-upload-'+index" class="btn upload re-upload mar" v-if="item.audio!=''?true:false">重新上传</label>
+									</div>
+									<div class="audio-preview" v-show="item.audio!=''?true:false">
+										<div class="audio-tools">
+											<p v-show="item.audio!=''?true:false">{{item.audio}}</p>
+										</div>
+										<span class="play-btn" v-on:click="play($event)">
+											<audio v-bind:src="item.audio"></audio>
+										</span>
+									</div>
+									<span class="btn btn-audio-dele" v-show="item.audio!=''?true:false" v-on:click="item.audio=''">删除</span>
+									<input type="file" :id="'audio-upload-'+index" class="btn-file upload" size="" accept=".mp3" v-on:change="audioUpload($event,item,'audio',50)" v-bind:key="Date.now()">
+								</div>
+							</div>
+						</li>
+					</ul>
+					<button v-if="configData.source.options.length<6" type="button" class="add-tg-btn" @click="addSele" >+</button>	
+				</div>
+				
+			</div>
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/preview.jpg?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li><em>图片格式：</em>JPG/PNG/GIF</li>
+					<li><em>声音格式：</em>MP3/WAV</li>
+					<li><em>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+</html>

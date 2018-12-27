@@ -1,0 +1,90 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.hide{
+    display: none;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.png) no-repeat;
+    background-size: auto 100%;
+	position: relative;
+    // font-family:"ARLRDBD";
+
+}
+.stage{
+	width: 100%;
+    height: 100%;
+    position: relative;
+    height: 100%;
+    .left{
+        width: 6.3rem;
+        height: 6.5rem;
+        overflow: hidden;
+        // background: url(../image/girl.png) no-repeat;
+        background-size: auto 100%;
+        position: absolute;
+        left: 3rem;
+        bottom:1.8rem;
+    }
+    .right{
+        width: 6.3rem;
+        height: 6.5rem;
+        overflow: hidden;
+        // background: url(../image/boy.png) no-repeat;
+        background-size: auto 100%;
+        position: absolute;
+        right: 3rem;
+        bottom:1.8rem;
+    }
+    .person_animate {
+        animation: animate steps(5) 6s forwards;
+    }
+    @keyframes animate {
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: -31.5rem 0;
+        }
+    }
+    .hand{
+        width:1rem;
+        height:1rem;
+        background: url('../image/hands.png');
+        background-size: 4rem 1rem;
+        position: absolute;
+        bottom: 0rem;
+        right: 0rem;
+        animation: handClick 1s steps(4) infinite;
+        cursor: pointer;
+        opacity: 0;
+    }
+    @keyframes handClick {
+        0%{
+            background-position: 0 0;
+        }
+        100%{
+            background-position:-4rem 0;
+        }
+    }
+}
+

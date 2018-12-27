@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>T26图文匹配</title>
+	<link rel="stylesheet" href="form/css/style.css">
+	<script src='form/js/jquery-2.1.1.min.js'></script>
+	<script src='form/js/vue.min.js'></script>
+</head>
+
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="h-title">T26图文匹配</div>
+			
+			<% include ./src/common/template/common_head %>
+
+			<div class="c-group">
+				<div class="c-title">编辑问题</div>
+				<div class="c-area upload img-upload">
+					<!-- 上传人物图片 -->
+					<div class="c-well" v-for="(item, index) in configData.source.items">
+
+						<div class="field-wrap">
+							<div class="well-title">
+								<p>选项{{index+1}}</p>
+								<span class="dele-tg-btn" v-on:click="delSele(item)" v-show='configData.source.items.length>2?true:false'>
+								</span>
+							</div>
+							<label class="field-label">图片</label>
+							<label :for="'img'+index" class="btn btn-show upload" v-if="item.img==''?true:false">上传</label>
+							<label :for="'img'+index" class="btn upload re-upload" v-if="item.img!=''?true:false">重新上传</label>
+							<span class='txt-info'><em>*</em> （尺寸：360X230，大小：≤50KB）</span>
+							<input type="file" 
+								v-bind:key="Date.now()" class="btn-file" 
+								:id="'img'+index" 
+								size="360*230" 
+								accept=".gif,.jpg,.jpeg,.png"
+								v-on:change="imageUpload($event,item,'img',50)">
+						</div>
+						<div class="img-preview" v-if="item.img!=''?true:false">
+							<img v-bind:src="item.img" alt="" />
+							<div class="img-tools">
+								<span class="btn btn-delete" v-on:click="item.img=''">删除</span>
+							</div>
+						</div>
+
+
+						<div class="field-wrap">
+							<label class="field-label">糖果</label>
+							<label :for="'sugarImg'+index" class="btn btn-show upload" v-if="item.sugarImg==''?true:false">上传</label>
+							<label :for="'sugarImg'+index" class="btn upload re-upload" v-if="item.sugarImg!=''?true:false">重新上传</label>
+							<span class='txt-info'>（尺寸：350X215，大小：≤50KB）</span>
+							<input type="file" 
+								v-bind:key="Date.now()" class="btn-file" 
+								:id="'sugarImg'+index" 
+								size="350*215" 
+								accept=".gif,.jpg,.jpeg,.png"
+								v-on:change="imageUpload($event,item,'sugarImg',50)">
+						</div>
+						<div class="img-preview" v-if="item.sugarImg!=''?true:false">
+							<img v-bind:src="item.sugarImg" alt="" />
+							<div class="img-tools">
+								<span class="btn btn-delete" v-on:click="item.sugarImg=''">删除</span>
+							</div>
+						</div>
+						
+
+						<label>单词&nbsp;&nbsp; <em>*</em> </label>
+						<input type="text" 
+							v-model="item.text"
+							class='c-input-txt' 
+							placeholder="请在此输入单词" maxlength="15">
+						<br>
+
+						<div class="field-wrap">
+							<label class="field-label"  for="">上传音频</label>
+							<span class='txt-info'>&nbsp;&nbsp; 大小：≤50KB</span>
+							<input type="file" accept=".mp3" class="btn-file"
+								v-bind:key="Date.now()"  
+								:id="'audio'+index" 
+								volume="50"
+								@change="audioUpload($event,item,'audio',50)">
+						</div>
+						<div class="field-wrap">
+							<label :for="'audio'+index" class="btn btn-show upload" v-if="!item.audio">上传</label>
+							<div class="audio-preview" v-show="item.audio">
+								<div class="audio-tools">
+									<p v-show="item.audio">{{item.audio}}</p>
+								</div>
+								<span class="play-btn" v-on:click="play($event)">
+									<audio v-bind:src="item.audio"></audio>
+								</span>
+							</div>
+							<label :for="'audio'+index" class="btn upload btn-audio-dele" v-if="item.audio" @click="item.audio=''">删除</label>
+							<label :for="'audio'+index" class="btn upload re-upload" v-if="item.audio">重新上传</label>
+						</div>
+					</div>
+					<button type="button" class="add-tg-btn" 
+						v-on:click="addSele()" 
+						v-show='configData.source.items.length<4?true:false'>+
+					</button>
+
+				</div>
+			</div>
+
+			<button class="send-btn" v-on:click="onSend">提交</button>
+
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/preview.png?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li>
+						<em>图片格式：</em>JPG/PNG/GIF</li>
+					<li>
+						<em>声音格式：</em>MP3/WAV</li>
+					<li>
+						<em>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+
+</html>

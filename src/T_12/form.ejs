@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>宝箱</title>
+	<link rel="stylesheet" href="form/css/style.css">
+	<script src='form/js/jquery-2.1.1.min.js'></script>
+	<script src='form/js/vue.min.js'></script>
+</head>
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="h-title">宝箱</div>
+			
+			<% include ./src/common/template/common_head_nondesc %>
+
+			<div class="c-group">
+				<div class="c-title">编辑问题</div>
+				<div class="c-area upload img-upload radio-group">
+						<div class="field-wrap">
+							<label class="field-label"  >素材图片</label><label for="bg-upload"  class="btn btn-show upload" v-if="configData.source.img==''?true:false">上传</label><label  for="bg-upload" class="btn upload re-upload" v-if="configData.source.img!=''?true:false">重新上传</label><span class='txt-info'>（尺寸：500X500，大小：≤50KB）</span>
+							<input type="file"  v-bind:key="Date.now()" class="btn-file" id="bg-upload" size="500*500" accept=".gif,.jpg,.jpeg,.png" v-on:change="imageUpload($event,configData.source,'img',50)">
+						</div>
+						<div class="img-preview" v-if="configData.source.img!=''?true:false">
+							<img v-bind:src="configData.source.img" alt=""/>
+							<div class="img-tools">
+								<span class="btn btn-delete" v-on:click="configData.source.img=''">删除</span>
+							</div> 
+						</div>
+					</div>
+				<div class="c-area upload img-upload">
+					<p><em>输入填写的单词(最多为8个)</em><input type="text" style="margin-left: 10px; width: 90px" v-model="configData.source.font" placeholder="输入填写的单词" :maxlength="(10-configData.source.list.length)>8?8:10-configData.source.list.length" onkeyup="this.value=this.value.replace(/[^a-zA-Z]/g,'')"/><em style="color: red;">*</em></p>
+					<p style="margin-top: 10px;"><em>输入干扰的字母</em><em style="color: red">(还可输入{{10-configData.source.font.length-configData.source.list.length}})</em><input type="text" style="margin-left: 10px; width: 80px" v-model="configData.source.list" placeholder="干扰字母" :maxlength="10-configData.source.font.length" onkeyup="this.value=this.value.replace(/[^a-zA-Z]/g,'')"/><em> 例如：abcd</em><em style="color: red;">*</em></p>
+				</div>
+			</div>
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/preview.png?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li><em>图片格式：</em>JPG/PNG/GIF</li>
+					<li><em>声音格式：</em>MP3/WAV</li>
+					<li><em>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+</html>

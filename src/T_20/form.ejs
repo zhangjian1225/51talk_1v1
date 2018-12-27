@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>T20动物商店</title>
+	<link rel="stylesheet" href="form/css/style.css">
+	<script src='form/js/jquery-2.1.1.min.js'></script>
+	<script src='form/js/vue.min.js'></script>
+</head>
+
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="h-title">T20动物商店</div>
+			
+			<% include ./src/common/template/common_head %>
+
+			<div class="c-group">
+				<div class="c-title">编辑问题</div>
+				<div class="c-area upload img-upload">
+					<div class="c-well">
+						<div class="well-con">
+							<em style="color: red;">每个位置图片成对上传，可都不传，不可单传</em>
+							<!-- 位置一 -->
+							<label class="field-label">位置一</label>
+							<div class="field-wrap">
+								<label for="dad" class="btn btn-show upload" v-if="configData.source.dadImg.personImg==''?true:false">上传</label>
+								<label for="dad" class="btn upload re-upload" v-if="configData.source.dadImg.personImg!=''?true:false">重新上传</label>
+								<label class="field-label">人物图片</label>
+								<span class='txt-info'>(尺寸:400X900大小:≤50KB)
+									<input type="file" v-bind:key="Date.now()" class="btn-file" id="dad" size="400*900" accept=".gif,.jpg,.jpeg,.png" v-on:change="imageUpload($event,configData.source.dadImg,'personImg',50)">
+							</div>
+							<div class="img-preview" v-if="configData.source.dadImg.personImg!=''?true:false">
+								<img v-bind:src="configData.source.dadImg.personImg" alt="" />
+								<div class="img-tools">
+									<span class="btn btn-delete" v-on:click="configData.source.dadImg.personImg=''">删除</span>
+								</div>
+							</div>
+
+							<div class="field-wrap">
+								<label for="dad_good" class="btn btn-show upload" v-if="configData.source.dadImg.goodImg==''?true:false">上传</label>
+								<label for="dad_good" class="btn upload re-upload" v-if="configData.source.dadImg.goodImg!=''?true:false">重新上传</label>
+								<label class="field-label">物品图片</label>
+								<span class='txt-info'>(尺寸:200X200大小:≤50KB)
+									<input type="file" v-bind:key="Date.now()" class="btn-file" id="dad_good" size="200*200" accept=".gif,.jpg,.jpeg,.png" v-on:change="imageUpload($event,configData.source.dadImg,'goodImg',50)">
+							</div>
+							<div class="img-preview" v-if="configData.source.dadImg.goodImg!=''?true:false">
+								<img v-bind:src="configData.source.dadImg.goodImg" alt="" />
+								<div class="img-tools">
+									<span class="btn btn-delete" v-on:click="configData.source.dadImg.goodImg=''">删除</span>
+								</div>
+							</div>
+							<!-- 位置二 -->
+							<label class="field-label">位置二</label>
+							<div class="field-wrap">
+								<label for="mom" class="btn btn-show upload" v-if="configData.source.momImg.personImg==''?true:false">上传</label>
+								<label for="mom" class="btn upload re-upload" v-if="configData.source.momImg.personImg!=''?true:false">重新上传</label>
+								<label class="field-label">人物图片</label>
+								<span class='txt-info'>(尺寸:400X900,大小:≤50KB)</span>
+								<input type="file" v-bind:key="Date.now()" class="btn-file" id="mom" size="400*900" accept=".gif,.jpg,.jpeg,.png" v-on:change="imageUpload($event,configData.source.momImg,'personImg',50)">
+							</div>
+							<div class="img-preview" v-if="configData.source.momImg.personImg!=''?true:false">
+								<img v-bind:src="configData.source.momImg.personImg" alt="" />
+								<div class="img-tools">
+									<span class="btn btn-delete" v-on:click="configData.source.momImg.personImg=''">删除</span>
+								</div>
+							</div>
+
+							<div class="field-wrap">
+								<label for="mom_good" class="btn btn-show upload" v-if="configData.source.momImg.goodImg==''?true:false">上传</label>
+								<label for="mom_good" class="btn upload re-upload" v-if="configData.source.momImg.goodImg!=''?true:false">重新上传</label>
+								<label class="field-label">物品图片</label>
+								<span class='txt-info'>(尺寸:200X200大小:≤50KB)
+									<input type="file" v-bind:key="Date.now()" class="btn-file" id="mom_good" size="200*200" accept=".gif,.jpg,.jpeg,.png" v-on:change="imageUpload($event,configData.source.momImg,'goodImg',50)">
+							</div>
+							<div class="img-preview" v-if="configData.source.momImg.goodImg!=''?true:false">
+								<img v-bind:src="configData.source.momImg.goodImg" alt="" />
+								<div class="img-tools">
+									<span class="btn btn-delete" v-on:click="configData.source.momImg.goodImg=''">删除</span>
+								</div>
+							</div>
+							<!-- 位置三 -->
+							<label class="field-label">位置三</label>
+							<div class="field-wrap">
+								<label for="child" class="btn btn-show upload" v-if="configData.source.childImg.personImg==''?true:false">上传</label>
+								<label for="child" class="btn upload re-upload" v-if="configData.source.childImg.personImg!=''?true:false">重新上传</label>
+								<label class="field-label">人物图片</label>
+								<span class='txt-info'>(尺寸:400X900,大小:≤50KB)</span>
+								<input type="file" v-bind:key="Date.now()" class="btn-file" id="child" size="400*900" accept=".gif,.jpg,.jpeg,.png" v-on:change="imageUpload($event,configData.source.childImg,'personImg',50)">
+							</div>
+							<div class="img-preview" v-if="configData.source.childImg.personImg!=''?true:false">
+								<img v-bind:src="configData.source.childImg.personImg" alt="" />
+								<div class="img-tools">
+									<span class="btn btn-delete" v-on:click="configData.source.childImg.personImg=''">删除</span>
+								</div>
+							</div>
+
+							<div class="field-wrap">
+								<label for="child_good" class="btn btn-show upload" v-if="configData.source.childImg.goodImg==''?true:false">上传</label>
+								<label for="child_good" class="btn upload re-upload" v-if="configData.source.childImg.goodImg!=''?true:false">重新上传</label>
+								<label class="field-label">物品图片</label>
+								<span class='txt-info'>(尺寸:200X200大小:≤50KB)
+									<input type="file" v-bind:key="Date.now()" class="btn-file" id="child_good" size="200*200" accept=".gif,.jpg,.jpeg,.png" v-on:change="imageUpload($event,configData.source.childImg,'goodImg',50)">
+							</div>
+							<div class="img-preview" v-if="configData.source.childImg.goodImg!=''?true:false">
+								<img v-bind:src="configData.source.childImg.goodImg" alt="" />
+								<div class="img-tools">
+									<span class="btn btn-delete" v-on:click="configData.source.childImg.goodImg=''">删除</span>
+								</div>
+							</div>
+							<!-- <button type="button" class="add-tg-btn" v-on:click="addSele()" v-show='configData.source.cardList.length<4?true:false'>+</button> -->
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/preview.png?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li>
+						<em>图片格式：</em>JPG/PNG/GIF</li>
+					<li>
+						<em>声音格式：</em>MP3/WAV</li>
+					<li>
+						<em>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+
+</html>

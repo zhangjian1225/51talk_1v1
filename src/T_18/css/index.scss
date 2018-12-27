@@ -1,0 +1,217 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.commom {
+    position: relative;
+    z-index: 100;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.hide{
+    display: none;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.png) no-repeat;
+    background-size: auto 100%;
+	position: relative;
+    // font-family:"ARLRDBD";
+
+}
+
+.door {
+    width: 3.5rem;
+    height: 3.8rem;
+    // background: url(../image/door.png) no-repeat center;
+    // background-size: cover;
+    position: absolute;
+    left: 7.8rem;
+    top: 7rem;
+    z-index: 100;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+#posi {
+    width: 2.1rem;
+    height: 2.2rem;
+    position: absolute;
+}
+#family {
+    width: 2.2rem;
+    height: 2.2rem;
+    position: absolute;
+    // transition: 1.5s;
+    display: none;
+    z-index: 101;
+    // background: url(../image/family.png) no-repeat center;
+    // background-size: cover;
+    .person {
+        width: 100%;
+        height: 100%;
+        transition: 1s;
+    }
+    .light {
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        margin-left: -50%;
+        margin-top: -50%;
+        display: none;
+    }
+}
+#family .person.ani {
+    transform: scale(.5) !important;
+}
+.p0 {
+    left: 7.75rem;
+    top: 8.5rem;
+}
+.p1 {
+    left: 11.4rem;
+    top: 7rem;
+    z-index: 99;
+}
+.p2 {
+    left: 15.1rem;
+    top: 4.9rem;
+    z-index: 99;
+}
+.p3 {
+    left: 14rem;
+    top: 1.2rem;
+    z-index: 99;
+}
+.p4 {
+    left: 8rem;
+    top: 2.8rem;
+    z-index: 99;
+}
+.p5 {
+    left: 1.5rem;
+    top: 2rem;
+    z-index: 99;
+}
+.p6 {
+    left: 4.5rem;
+    top: 7rem;
+    z-index: 99;
+}
+.hand{
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url('../image/hand.png') no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: 0;
+    right: 0rem;
+    animation: handClick 1s infinite;
+    cursor: pointer;
+}
+@keyframes handClick {
+    0%{
+        transform: translateY(.2rem)
+    }
+    100%{
+        transform: translateY(-.2rem)
+    }
+}
+.stage{
+	width: 100%;
+    height: 100%;
+    position: relative;
+    height: 100%;
+    
+    ul {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        .scene {
+            width: 4rem;
+            height: 3rem;
+            position: absolute;
+
+            .scene-img {
+                max-width: 4rem;
+                max-height: 3rem;
+                position: absolute;
+            }
+            .scene-box {
+                display: inline-block;
+                position: absolute;
+                width: 1.65rem;
+                height: 1.3rem;
+                background: url(../image/box.png) no-repeat center;
+                background-size: cover;
+            }
+        }
+        .scene-1 {
+            left: 10.5rem;
+            top: 5.5rem;
+            .scene-box {
+                left: 3.2rem;
+                top: 2rem;
+            }
+        }
+        .scene-2 {
+            left: 15.9rem;
+            top: 3.25rem;
+            .scene-box {
+                left: 1.4rem;
+                top: 2.6rem;
+            }
+        }
+        .scene-3 {
+            left: 13rem;
+            top: 0rem;
+            .scene-box {
+                left: 1.3rem;
+                top: 2.6rem;
+            }
+        }
+        .scene-4 {
+            left: 9.1rem;
+            top: 1.5rem;
+            .scene-box {
+                left: .9rem;
+                top: 2.5rem;
+            }
+        }
+        .scene-5 {
+            left: 3.3rem;
+            top: .95rem;
+            .scene-box {
+                left: 2.1rem;
+                top: 2rem;
+            }
+        }
+        .scene-6 {
+            left: 2.5rem;
+            top: 6.35rem;
+            .scene-box {
+                left: 2.5rem;
+                top: 1.6rem;
+            }
+        }
+    }
+}
+

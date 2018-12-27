@@ -1,0 +1,172 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.png) no-repeat;
+    background-size: 100%;
+	position: relative;
+    // font-family:"ARLRDBD";
+
+}
+.stage{
+	width: 100%;
+    height: 100%;
+    position: relative;
+    .goods{
+        width: 100%;
+        height:100%;
+        position: absolute;
+        top:0rem;
+        overflow: hidden;
+        z-index: 100;
+    }
+   
+    .pos{
+        position: absolute;
+        width: 3rem;
+        height: 3.6rem;
+        transition: 0.5s;
+        z-index: 10;
+        cursor: move;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .endGoods{
+        width: 100%;
+        height:7.8rem;
+        position: absolute;
+        top:0rem;
+        overflow: hidden;
+        z-index: 100;
+        .pos {
+            z-index: 11;
+        }
+    }
+    .pos_1{
+        left: 1.4rem;
+        top: 3.37rem;
+    }
+    .pos_2{
+        left: 4.1rem;
+        top: 2.37rem;
+    }
+    .pos_3{
+        left: 6.8rem;
+        top: 3.4rem;
+    }
+    .pos_4{
+        left: 9.4rem;
+        top: 2.37rem;
+    }
+    .pos_5{
+        left: 12.15rem;
+        top: 3.4rem;
+    }
+    .pos_6{
+        left: 14.8rem;
+        top: 2.37rem;
+    }
+    .allBox {
+        width: 100%;
+        height: 2.45rem;
+        position: absolute;
+        bottom:1.3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // z-index: 9;
+        .box{
+            position: relative;
+            height: 2.45rem;
+            width: 4.05rem;
+            overflow: hidden;
+            cursor: pointer;
+            p {
+                position: absolute;
+                top: 1.12rem;
+                width: 2.4rem;
+                height: .8rem;
+                line-height: .8rem;
+                text-align: center;
+                font-size: .4rem;
+                overflow:hidden;
+                text-overflow:ellipsis;
+                white-space:nowrap
+            }
+        }
+        .box_1 {
+            background: url('../image/box_1.png') no-repeat;
+            background-size: contain;
+            p{
+                left: .55rem;
+            }
+        }
+        .box_2 {
+            background: url('../image/box_2.png') no-repeat;
+            background-size: contain;
+            p{
+                left: .6rem;
+            }
+        }
+        .box_3 {
+            background: url('../image/box_3.png') no-repeat;
+            background-size: contain;
+            p{
+                left: .95rem;
+            }
+        }
+        .box_4 {
+            background: url('../image/box_4.png') no-repeat;
+            background-size: contain;
+            p{
+                left: 1.05rem;
+            }
+        }
+    }
+}
+
+.shake {
+    animation:shake .8s;
+}
+@keyframes shake {
+    0%{
+        transform: scale(1.2);
+    }
+    20%{
+        transform: scale(1.1);
+    }
+    40%{
+        transform: scale(.9);
+    }
+    60%{
+        transform: scale(1.1);
+    }
+    80%{
+        transform: scale(.9);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TCA0001_气球倒计时</title>
+	<link rel="stylesheet" href="./form/css/style.css?v=<%=new Date().getTime()%>">
+	<script src='./form/js/jquery-2.1.1.min.js'></script>
+	<script src='./form/js/vue.min.js'></script>
+</head>
+<body>
+	<div id="container">
+
+		<div class="edit-form">
+			<div class="module-title">TCA0001_气球倒计时</div>
+			
+			<% include ./src/common/template/common_head %>
+
+			<!-- 编辑问题 -->
+			<div class="c-group">
+				<div class="c-title">编辑问题</div>
+				<div class="c-area upload img-upload" >
+					<div class="c-well" v-for="(item, index) in configData.source.options"> 
+							<font>注:</font><em>图片和音频至少上传一项，如不上传图片则显示默认图片&nbsp;&nbsp;</em><font>
+							<span>展示項:{{index+1}}</span>
+							<!-- 编辑问题 -->
+
+							<div class="field-wrap">
+								<label class="field-label"  for="">图片</label>
+								<span class='txt-info'>（显示位置：3）<em>图片大小：720*405&nbsp;&nbsp;</em><em>文件大小≤50KB  </em></span>
+								<span class="dele-tg-btn" @click="delOption(item)" v-show="configData.source.options.length>2"></span>
+								<input type="file"  v-bind:key="Date.now()" class="btn-file" :id="'content-pic-'+index" size="720*405" @change="imageUpload($event,item,'themePic',50)">
+							</div>
+							<div class="field-wrap">
+								<label :for="'content-pic-'+index" class="btn btn-show upload" v-if="!item.themePic">上传</label>
+								<label :for="'content-pic-'+index" class="btn upload re-upload" v-if="item.themePic">重新上传</label>
+							</div>
+							<div class="img-preview" v-if="item.themePic">
+								<img :src="item.themePic" alt=""/>
+								<div class="img-tools">
+									<span class="btn btn-delete" @click="delPrew(item)">删除</span>
+								</div>
+							</div>
+							<!-- 上传声音 -->
+							<div class="field-wrap">
+								<label class="field-label"  for="">内容声音（显示位置：3）<em>文件大小≤50KB</em></label>
+								<div>
+									<label :for="'audio-upload-'+index" class="btn btn-show upload" v-if="item.audio==''?true:false">上传</label>
+									<label  :for="'audio-upload-'+index" class="btn upload re-upload mar" v-if="item.audio!=''?true:false">重新上传</label>
+								</div>
+								<div class="audio-preview" v-show="item.audio!=''?true:false">
+									<div class="audio-tools">
+										<p v-show="item.audio!=''?true:false">{{item.audio}}</p>
+									</div>
+									<span class="play-btn" v-on:click="play($event)">
+										<audio v-bind:src="item.audio"></audio>
+									</span>
+								</div>
+								<span class="btn btn-audio-dele" v-show="item.audio!=''?true:false" v-on:click="item.audio=''">删除</span>
+								<input type="file" :id="'audio-upload-'+index" class="btn-file upload" size="" accept=".mp3" v-on:change="audioUpload($event,item,'audio',50)" v-bind:key="Date.now()">
+							</div> 
+					</div>
+					<button v-if="configData.source.options.length<6" type="button" class="add-btn" @click="addOption" >+</button>
+				</div>
+			</div>
+
+			<div class="c-group">
+				<div class="c-title">编辑内容</div>
+				<div class="c-area upload img-upload">
+					<div class="c-well">
+						<label>倒计时<em> * 只允许输入1~99之间的正整数；单位：s</em></label>
+						<input type="number" class='c-input-txt' placeholder="通过上下键选择时间" v-model="configData.source.time" min="1" max="99" >
+
+<!-- 						<div class="field-wrap">
+							<label class="field-label"  for="">炸弹音效</label>
+							<span class='txt-info'><em>大小：≤50KB</em></span>
+							<div>
+								<label for="bomb-upload" class="btn btn-show upload" v-if="!configData.source.bomb">上传</label>
+								<label  for="bomb-upload" class="btn upload re-upload mar" v-if="configData.source.bomb">重新上传</label>
+							</div>
+							<div class="audio-preview" v-show="configData.source.bomb">
+								<div class="audio-tools">
+									<p>{{configData.source.bomb}}</p>
+								</div>
+								<span class="play-btn" v-on:click="play($event)">
+									<audio v-bind:src="configData.source.bomb"></audio>
+								</span>
+							</div>
+							<span class="btn btn-audio-dele" v-show="configData.source.bomb" v-on:click="configData.source.bomb=''">删除</span>
+							
+							<input type="file" id='bomb-upload' class="btn-file upload" size="" accept=".mp3" v-on:change="audioUpload($event,configData.source,'bomb',50)" v-bind:key="Date.now()">
+						</div> -->
+
+					</div>
+				</div>
+			</div>
+
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="./form/img/bg.jpg?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li><em>图片大小：</em>≤200KB；<em>格式：</em>JPG/PNG/GIF</li>
+					<li><em>声音大小：</em>≤100KB；<em>格式：</em>MP3/WAV</li>
+					<li><em>视频大小：</em>≤700KB；<em>格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='./form/js/form.js?v=<%=new Date().getTime()%>'></script>
+</html>

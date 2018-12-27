@@ -1,0 +1,179 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.commom {
+    position: relative;
+    z-index: 100;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.container{
+    background: url(../image/defaultBg.png) no-repeat;
+    background-size: auto 100%;
+    position: relative;
+    overflow: hidden;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: 1.2s;
+    transform-origin: 6.5rem 6.5rem;
+    .textBox {
+        position: absolute;
+        width: 10rem;
+        height: 4rem;
+        left: 8rem;
+        top: 0;
+        .text {
+            position: absolute;
+            width: 10rem;
+            height: 4rem;
+            left: 0;
+            top: 0;
+        }
+        .ans-audio{
+            width: 1.45rem;
+            height: 1.34rem;
+            position: absolute;
+            bottom: -.5rem;
+            left:50%;
+            margin-left: -.72rem;
+            z-index: 10;
+            cursor: pointer;
+            background:url(../image/sound_bg.png) no-repeat;
+            background-size: contain;
+            img{
+                width: .83rem;
+                height: .8rem;
+                height:auto;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    margin: auto;
+            } 
+        }
+    }
+
+    .main-box {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform-origin: 6.5rem 6.5rem;
+    }
+
+    .transition {
+        transition: 1.2s;
+    }
+
+    .person {
+        width: 6rem;
+        height: 8.5rem;
+        position: absolute;
+        left: 4.9rem;
+        bottom: 0rem;
+
+        .box {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-position: 0 0;
+            background-size: 18rem auto;
+        }
+
+        .box.talk {
+            animation: talking .75s steps(3, end) infinite;
+        }
+
+        @keyframes talking {
+            to {
+                background-position: -18rem 0;
+            }
+        }
+
+        .toy {
+            position: absolute;
+            width: 3.3rem;
+            height: 4.1rem;
+            left: 3.1rem;
+            top: 3.2rem;
+        }
+        .shake {
+            animation: shakes 1s 1 ease;
+        }
+        @keyframes shakes {
+            0% {
+                transform: rotateZ(0deg);
+            }
+            25% {
+                transform: rotateZ(15deg);
+            }
+            50% {
+                transform: rotateZ(-15deg);
+            }
+            75% {
+                transform: rotateZ(15deg);
+            }
+            100% {
+                transform: rotateZ(0deg);
+            }
+        }
+    }
+
+}
+.btns {
+    position: absolute;
+    width: 1.55rem;
+    height: .8rem;
+    right: 1.8rem;
+    bottom: 1.5rem;
+    background: url('../image/btns.png') no-repeat;
+    background-size:3.1rem 100%; 
+    background-position: 0 0;
+    z-index: 100;
+    cursor: pointer;
+}
+.again{
+    background-position: -1.55rem 0;
+}
+.hand{
+    position: absolute;
+    width:1.8rem;
+    height:1.8rem;
+    right: -1rem;
+    bottom: -1rem;
+    margin-left: -0.25rem;
+    background: url('../image/hands.png');
+    background-size: 7.2rem 1.8rem;
+    animation: hand 1s steps(4) infinite;
+    z-index: 100;
+}
+@keyframes hand {
+    0% {
+        background-position-x: 0%;
+    }
+    100% {
+        background-position-x: 133%;
+    }
+}
+
+.main-bg {
+    background: url(../image/defaultBg.png) no-repeat center;
+    background-size: cover;
+}

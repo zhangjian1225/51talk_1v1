@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>TDR0003_音素拖拽</title>
+	<link rel="stylesheet" href="form/css/style.css"> 
+	<script src='form/js/jquery-2.1.1.min.js'></script>
+	<script src='form/js/vue.min.js'></script> 
+</head>
+
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="h-title">TDR0003_音素拖拽</div>
+			
+			<% include ./src/common/template/common_head %>
+
+			<!-- 添加选项 -->
+			<div class="c-group">
+				<div class="c-title">添加选项</div>
+				<div class="c-area upload img-upload">
+					<div class="c-well" v-for="(item, index) in configData.source.options">
+						<label>词汇{{index+1}}:（显示位置3）<em>&nbsp;&nbsp; * 每个文本框字符:≤3</em><span class="dele-btn" @click="delOption(item)" v-show="configData.source.options.length>1"></span></label>
+						
+						<ul class="c-input-List" >
+		<!-- 					<button v-if="item.letter.length>1" type="button" class="del-wordsBtn wordsbtn" @click="delWordOption(item.letter,index)" >-</button> -->
+							<button v-if="item.letter.length<4" type="button" class="add-wordsBtn wordsbtn" @click="addWordOption(item)" >+</button>
+							<li v-for="(arr, i) in item.letter">
+								<label class="words-label">正确字母{{i+1}}</label>
+								<input type="text" class='c-input-words' placeholder=""  maxlength="3" v-model="arr.words" :class="{borderColor:arr.color==i}">
+								<button v-if="item.letter.length>1" type="button" class="del-wordsBtn wordsbtn" @click="delWordOption(item.letter,index,i)" >-</button>
+							</li>
+						</ul>
+						<ul class="c-input-List">
+							<!-- <button v-if="item.wrongLetter.length>0" type="button" class="del-wordsBtn wordsbtn" @click="delWrongOption(item.wrongLetter,index)" >-</button> -->
+							<!-- <button v-if="item.wrongLetter.length<2" type="button" class="add-wordsBtn wordsbtn" @click="addWrongOption(item)" >+</button> -->
+							<li v-for="(arr, i) in item.wrongLetter">
+								<label class="words-label">干扰字母{{i+1}}</label>
+								<input type="text" class='c-input-words' placeholder="选填"  maxlength="3" v-model="arr.interfere" :class="{borderColor:arr.wcolor==i}">
+							</li>
+						</ul>
+						<div class="answer">
+							<span class="words-infor">正确单词：</span>
+							<span class="words">{{spelWords(index)}}</span>							
+						</div>
+						<!-- 语音评测 -->
+						<!--item.text为空或者全为空格时  禁用语音测评 -->
+						<!--
+						<div class="field-wrap record">
+							<input type="checkbox" :id="'record-upload-'+index" class="c-input-record" name="" v-model="item.recordStatus" :disabled='item.words== ""||new RegExp("^[ ]+$").test(item.words)'>启用语音评测
+							<div class="timeBox">
+								录音时长&nbsp;<input type="number" class='c-input-time' placeholder="" v-model="item.timeLong" min="3" max="20"  :disabled="item.recordStatus!=true">&nbsp;秒							
+							</div>
+						</div>
+						-->
+						<!-- 上传声音 -->
+						<div class="field-wrap">
+							<label class="field-label"  for="">内容声音（显示位置：4）<em>文件大小≤50KB</em></label>
+							<div>
+								<label :for="'audio-upload-'+index" class="btn btn-show upload" v-if="item.audio==''?true:false">上传</label>
+								<label  :for="'audio-upload-'+index" class="btn upload re-upload mar" v-if="item.audio!=''?true:false">重新上传</label>
+							</div>
+							<div class="audio-preview" v-show="item.audio!=''?true:false">
+								<div class="audio-tools">
+									<p v-show="item.audio!=''?true:false">{{item.audio}}</p>
+								</div>
+								<span class="play-btn" v-on:click="play($event)">
+									<audio v-bind:src="item.audio"></audio>
+								</span>
+							</div>
+							<span class="btn btn-audio-dele" v-show="item.audio!=''?true:false" v-on:click="item.audio=''">删除</span>
+							<input type="file" :id="'audio-upload-'+index" class="btn-file upload" size="" accept=".mp3" v-on:change="audioUpload($event,item,'audio',50)" v-bind:key="Date.now()">
+						</div>
+
+
+					</div>
+					<button v-if="configData.source.options.length<10" type="button" class="add-btn" @click="addOption" >+</button>
+				</div>
+			</div>
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/bg.jpg?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li>
+						<em>图片格式：</em>JPG/PNG/GIF</li>
+					<li>
+						<em>声音格式：</em>MP3/WAV</li>
+					<li>
+						<em>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+
+</html>

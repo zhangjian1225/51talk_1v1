@@ -1,0 +1,406 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.hide{
+    display: none;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.jpg) no-repeat;
+    background-size: auto 100%;
+    position: relative;
+    //记分台
+    .intSatge {
+        position: absolute;
+        bottom: 2.4rem;
+        left: 1.7rem;
+        width: 1.7rem;
+        height: .6rem;
+        border-radius: .3rem;
+        .face {
+            position: absolute;
+            left: -1.1rem;
+            top: -.65rem;
+            width: 2.15rem;
+            height: 1.67rem;
+            background: url(../image/face.png) no-repeat;
+            background-size: 12.9rem 100%;
+            background-position-x: 0rem;
+            transform: scale(.65);
+            z-index: 1;
+        }
+        .wrong {
+            background-position-x: -10.75rem;
+        }
+        .score {
+            width: 100%;
+            height: 100%;
+            border-radius: .3rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #00895e;
+            font-size: .46rem;
+            color: #f9bc2e;
+            box-sizing: border-box;
+            padding-left: .7rem;
+            line-height: .6rem;
+        }
+    }
+    // 计时器
+    .time {
+        position: absolute;
+        left: 1.3rem;
+        bottom: 1.05rem;
+        height: 1.2rem;
+        width: 5.5rem;
+        .proprogressBarBox {
+            position: absolute;
+            left: .5rem;
+            bottom: 0;
+            width: 5rem;
+            height: .65rem;
+            border: .1rem solid #00a884;
+            border-radius: 1rem;
+            background: #fff;
+            .proprogressBar {
+                width: 100%;
+                height: 100%;
+                background: #f9bc2e;
+                border-radius: 1rem;
+                transition: .5s;
+            }
+        }
+        .watch {
+            position: absolute;
+            left: -.2rem;
+            top: 0;
+            width: 1.36rem;
+            height: 1.32rem;
+            background: url(../image/watch.png) no-repeat;
+            background-size: 100% 100%;
+        }
+    }
+    // 遮罩层
+    .mask {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 20;
+        .startBox {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            height: 4.8rem;
+            width: 7.2rem;
+            background: rgba(0,0,0,.8);
+            border-radius: .5rem;
+            .startFont {
+                width:100%;
+                height: auto;
+                position: absolute;
+                top: 1rem;
+            }
+            .startBtn {
+                width: 1.74rem;
+                height: auto;
+                position: absolute;
+                left: 2.7rem;
+                bottom: .65rem;
+                cursor: pointer;
+            }
+        }
+        .timeChangeBox {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            height: 4.8rem;
+            width: 7.2rem;
+            background: rgba(0,0,0,.8);
+            border-radius: .5rem;
+            .timeBg {
+                width:3.79rem;
+                height: 3.84rem;
+                position: absolute;
+                top: 1rem;
+                background: url(../image/timeBg.png) no-repeat;
+                background-size: 100% 100%;
+                left: 50%;
+                margin-left: -1.9rem;
+                top: 50%;
+                margin-top: -1.92rem;
+                .numberList {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    top:0;
+                    margin: auto;
+                    background: url(../image/number1.png) no-repeat;
+                    background-size: 6rem 100%;
+                    background-position-x: .1rem;
+                }
+                // .timeChange {
+                //     animation: timeChange steps(3) 4s forwards;
+                // }
+                // @keyframes timeChange {
+                //     0% {
+                //         background-position-x: 0.1rem;
+                //     }
+                //     100% {
+                //         background-position-x: -3.72rem;
+                //     }
+                // }
+            }
+        }
+        .endAlert {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            height: 4.8rem;
+            width: 7.2rem;
+            background: rgba(0,0,0,.8);
+            border-radius: .5rem;
+            .endImg {
+                position: absolute;
+                left: 1rem;
+                top: 1.5rem;
+                width: 2.15rem;
+                height: 1.67rem;
+                background: url(../image/face.png) no-repeat;
+                background-size: 12.9rem 100%;
+                background-position-x: 0rem;
+                transform: scale(1.2);
+                z-index: 1;
+            }
+            .wrong {
+                background-position-x: -10.75rem;
+            }
+            h2{
+                position: absolute;
+                left: 3.5rem;
+                top: 1.5rem;
+                font-weight: normal;
+                color: #ffff33;
+                span{
+                    position: relative;
+                    top: .1rem;
+                }
+            }
+        }
+    }
+    // 地鼠
+    .diglettList {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        .diglet{
+            width: 4.4rem;
+            height: 6rem;
+            position: absolute;
+            .item {
+                position: absolute;
+                left: -.2rem;
+                bottom: 0rem;
+                width: 4.24rem;
+                height: 4.94rem;
+                .hammer {
+                    width: 3.12rem;
+                    height:2.95rem;
+                    position: absolute;
+                    background: url(../image/hammer.png) no-repeat;
+                    background-size: 100% 100%;
+                    right: -1.5rem;
+                    transform: rotateZ(20deg);
+                    transform-origin: right bottom;
+                    display: none;
+                }
+                .hammerPlay {
+                    animation: hammerPlay .2s forwards;
+                }
+                @keyframes hammerPlay {
+                    0% {
+                        transform: rotateZ(20deg);
+                    }
+                    100% {
+                        transform: rotateZ(-10deg);
+                    }
+                }
+                .choose {
+                    position: absolute;
+                    width: 2.59rem;
+                    height: 1.62rem;
+                    background: url(../image/chooses.png) no-repeat;
+                    background-size: 7.77rem 100%;
+                    background-position-x: 0;
+                    border-radius: .4rem;
+                    bottom: -.3rem;
+                    left: 1.8rem;
+                    z-index: 2;
+                    span{
+                        cursor: pointer;
+                        position: absolute;
+                        width: .7rem;
+                        height: .7rem;
+                        border-radius: .4rem;
+                        top: .45rem;
+                    }
+                    .trueChoose {
+                        left: .35rem;
+                    }
+                    .falseChoose {
+                        right: .35rem;
+                    }
+                }
+                .trueBg {
+                    background-position-x: -2.59rem
+                }
+                .falseBg {
+                    background-position-x: -5.18rem
+                }
+                .digletBox {
+                    position: absolute;
+                    left: 0rem;
+                    bottom: 1rem;
+                    width: 4.24rem;
+                    height: 4.94rem; 
+                    overflow: hidden;
+                    .digletImg{
+                        position: absolute;
+                        left: 0rem;
+                        bottom: -4.5rem;
+                        width: 4.24rem;
+                        height: 4.94rem;
+                        background: url(../image/diglett.png) no-repeat;
+                        background-size: 100% 100%;
+                        transform: scale(0);
+                        .imgMsg {
+                            position: absolute;
+                            width: 3rem;
+                            height: 2rem;
+                            left: .57rem;
+                            top: .47rem;
+                            img {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                        .head {
+                            position: absolute;
+                            right: .2rem;
+                            bottom: .5rem;
+                            width: 2.15rem;
+                            height: 1.67rem;
+                            background: url(../image/face.png) no-repeat;
+                            background-size: 12.9rem 100%;
+                            background-position-x: 0rem;
+                        }
+                        .initFace {
+                            animation: initFace steps(2) 1s infinite;
+                        }
+                        @keyframes initFace {
+                            0% {
+                                background-position-x: 0rem;
+                            }
+                            100% {
+                                background-position-x: -4.2rem;
+                            }
+                        }
+                        .wrongFace {
+                            animation: wrongFace steps(2) .8s 2;
+                        }
+                        @keyframes wrongFace {
+                            0% {
+                                background-position-x: -4.2rem;
+                            }
+                            100% {
+                                background-position-x: -8.4rem;
+                            }
+                        }
+                        .trueFace {
+                            animation: trueFace steps(2) .8s 2;
+                        }
+                        @keyframes trueFace {
+                            0% {
+                                background-position-x: -8.6rem;
+                            }
+                            100% {
+                                background-position-x: -12.9rem;
+                            }
+                        }
+                    }
+                    .showAn {
+                        animation: showAn .3s forwards;
+                    }
+                    @keyframes showAn{
+                        0% {
+                            transform: scale(0);
+                            bottom: -4.94rem;
+                        }
+                        100% {
+                            transform: scale(1);
+                            bottom: -.25rem;
+                        }
+                    }
+                }
+            }
+        }
+        .diglet_1 {
+            left:2rem;
+            top: 2.2rem;
+        }
+        .diglet_2 {
+            left:7.5rem;
+            top: 1.95rem;
+        }
+        .diglet_3 {
+            right:2.4rem;
+            top: 2rem;
+        }
+        .diglet_4 {
+            left:4.5rem;
+            top: 2.9rem;
+        }
+        .diglet_5 {
+            right: 4.1rem;
+            top: 3.34rem;
+        }
+    }
+}
+.hide {
+    display: none;
+}
+

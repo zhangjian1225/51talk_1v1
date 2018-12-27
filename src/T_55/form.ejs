@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>TCO0001_大丰收</title>
+	<link rel="stylesheet" href="form/css/style.css">
+	<script src='form/js/jquery-2.1.1.min.js'></script>
+	<script src='form/js/vue.min.js'></script>
+</head>
+
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="module-title">TCO0001_大丰收</div>
+
+			<% include ./src/common/template/common_head %>
+
+			<div class="c-group">
+				<div class="c-title">设置学习内容_单词</div>
+				<div class="c-area upload img-upload">
+					<div class="c-well"> 
+						<label><em>* 每个单词的字符数:≤10</em> </label>   
+						<ul class="c-input-List"> 
+							<button  type="button" class="add-wordsBtn wordsbtn" @click="addWordOption()">+</button>
+							<li v-for="(item, index) in configData.source.words"> 
+								<input type="text" class='c-input-words' placeholder="" maxlength="10" v-model="configData.source.words[index]" >
+								<button v-if="configData.source.words.length>4" type="button" class="del-wordsBtn wordsbtn" @click="delWordOption(index)">-</button>
+							</li>
+						</ul>   
+					</div>
+				</div>
+			</div> 
+			<div class="c-group">
+				<div class="c-title">单词列表的重复次数</div>
+				<div class="c-area upload img-upload">
+					<div class="c-well"> 
+						<label>默认1次</label>   
+						<input type="number" class='c-input-words' placeholder="" min="1" maxlength="10" v-model="configData.source.repeats" > 
+					</div>
+				</div>
+			</div>
+			<div class="c-group">
+				<div class="c-title">环境素材-学习内容的底图</div>
+				<div class="c-area upload img-upload">
+					<div class="c-well"> 
+						<div class="field-wrap">
+							<label class="field-label"  for="">图片一（大图）:</label>
+							<span class='txt-info'><em>文件大小≤50KB,尺寸460x190 </em></span> 
+							<input type="file"  v-bind:key="Date.now()" class="btn-file" id="content-pic-big" size="460*190" accept=".gif,.jpg,.jpeg,.png" @change="imageUpload($event,configData.source.basepic,'big',50)">
+						</div> 
+						<div class="field-wrap">
+							<label for="content-pic-big" class="btn btn-show upload" v-if="!configData.source.basepic.big">上传</label>
+							<label for="content-pic-big" class="btn upload re-upload" v-if="configData.source.basepic.big">重新上传</label>
+						</div>
+						<div class="img-preview" v-if="configData.source.basepic.big">
+							<img :src="configData.source.basepic.big" alt=""/>
+							<div class="img-tools">
+								<span class="btn btn-delete" @click="delPrew(configData.source.basepic,'big')">删除</span>
+							</div>
+						</div> 
+					</div>
+
+					<div class="c-well"> 
+						<div class="field-wrap">
+							<label class="field-label"  for="">图片二（中图）:</label>
+							<span class='txt-info'><em>文件大小≤50KB,尺寸435x150 </em></span> 
+							<input type="file"  v-bind:key="Date.now()" class="btn-file" id="content-pic-middle" size="435*150" accept=".gif,.jpg,.jpeg,.png" @change="imageUpload($event,configData.source.basepic,'middle',50)">
+						</div> 
+						<div class="field-wrap">
+							<label for="content-pic-middle" class="btn btn-show upload" v-if="!configData.source.basepic.middle">上传</label>
+							<label for="content-pic-middle" class="btn upload re-upload" v-if="configData.source.basepic.middle">重新上传</label>
+						</div>
+						<div class="img-preview" v-if="configData.source.basepic.middle">
+							<img :src="configData.source.basepic.middle" alt=""/>
+							<div class="img-tools">
+								<span class="btn btn-delete" @click="delPrew(configData.source.basepic,'middle')">删除</span>
+							</div>
+						</div> 
+					</div>
+
+
+					<div class="c-well"> 
+						<div class="field-wrap">
+							<label class="field-label"  for="">图片三（小图）:</label>
+							<span class='txt-info'><em>文件大小≤50KB,尺寸415x120 </em></span> 
+							<input type="file"  v-bind:key="Date.now()" class="btn-file" id="content-pic-small" size="415*120" accept=".gif,.jpg,.jpeg,.png" @change="imageUpload($event,configData.source.basepic,'small',50)">
+						</div> 
+						<div class="field-wrap">
+							<label for="content-pic-small" class="btn btn-show upload" v-if="!configData.source.basepic.small">上传</label>
+							<label for="content-pic-small" class="btn upload re-upload" v-if="configData.source.basepic.small">重新上传</label>
+						</div>
+						<div class="img-preview" v-if="configData.source.basepic.small">
+							<img :src="configData.source.basepic.small" alt=""/>
+							<div class="img-tools">
+								<span class="btn btn-delete" @click="delPrew(configData.source.basepic,'small')">删除</span>
+							</div>
+						</div> 
+					</div>
+				</div> 
+			</div>
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/preview.jpg?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li>
+						<em>图片格式：</em>JPG/PNG/GIF</li>
+					<li>
+						<em>声音格式：</em>MP3/WAV</li>
+					<li>
+						<em>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+
+</html>

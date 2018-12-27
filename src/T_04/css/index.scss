@@ -1,0 +1,64 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.jpg) no-repeat;
+    background-size: 100%;
+	position: relative;
+    // font-family:"ARLRDBD";
+
+}
+.stage{
+	width: 100%;
+    height: 100%;
+    position: relative;
+    .monkey_one{
+        width: 1.73rem;
+        height: 1.74rem;
+        background: url('../image/left.png') 0 0 no-repeat;
+        background-size: 13.84rem auto;
+        transform: scale(1.5);
+        position: absolute;
+        left: 3rem;
+        bottom:0;
+        cursor: pointer;
+    }
+    .monkey_two{
+        width: 1.73rem;
+        height: 1.74rem;
+        background: url('../image/right.png') 0 0 no-repeat;
+        background-size: 13.84rem auto;
+        transform: scale(1.5);
+        position: absolute;
+        right: 4.7rem;
+        bottom:0;
+        cursor: pointer;
+    }
+    @keyframes monkeyMove {
+        0%{
+            background-position: 0 0;
+        }
+        100%{
+            background-position: -13.84rem 0;
+        }
+    }
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TCP0001_拼图翻转选择</title>
+	<link rel="stylesheet" href="./form/css/style.css?v=<%=new Date().getTime()%>">
+	<script src='./form/js/jquery-2.1.1.min.js'></script>
+	<script src='./form/js/vue.min.js'></script>
+</head>
+<body>
+	<div id="container">
+
+		<div class="edit-form">
+			<div class="module-title">TCP0001_拼图翻转选择</div>
+			
+			<% include ./src/common/template/common_head %>
+
+			<!-- 编辑问题 -->
+			<div class="c-group">
+				<div class="c-title">编辑问题</div>
+				<div class="c-area upload img-upload radio-group">
+					<div class="field-wrap">
+						<label class="field-label"  for="">题干图片（显示位置：3）</label>
+						<span class='txt-info'><em>尺寸：800X600。文件大小≤50KB&nbsp;*</em></span>
+						<input type="file"  v-bind:key="Date.now()" class="btn-file" id="image" size="800*600" v-on:change="imageUpload($event,configData.source,'image',50)">
+					</div>
+					<div class="field-wrap">
+						<label for="image" class="btn btn-show upload" v-if="!configData.source.image">上传</label>
+						<label  for="image" class="btn upload re-upload" v-if="configData.source.image">重新上传</label>
+					</div>
+					<div class="img-preview" v-if="configData.source.image">
+						<img v-bind:src="configData.source.image" alt=""/>
+						<div class="img-tools">
+							<span class="btn btn-delete" v-on:click="configData.source.image=''">删除</span>
+						</div>
+					</div>
+					<!-- 题干声音-->
+					<div class="field-wrap">
+						<label class="field-label"  for="">上传声音</label>
+						<span class='txt-info'>（显示位置：3） 大小：≤50KB</span>
+						<input type="file" accept=".mp3" v-bind:key="Date.now()" class="btn-file" id="content-audios" v-on:change="audioUpload($event,configData.source,'mainAudio',50)">
+					</div>
+					<div class="field-wrap">
+						<label for="content-audios" class="btn btn-show upload" v-if="!configData.source.mainAudio">上传</label>
+						<div class="audio-preview" v-show="configData.source.mainAudio">
+							<div class="audio-tools">
+								<p v-show="configData.source.mainAudio">{{configData.source.mainAudio}}</p>
+							</div>
+							<span class="play-btn" v-on:click="play($event)">
+								<audio v-bind:src="configData.source.mainAudio"></audio>
+							</span>
+						</div>
+						<label for="content-audios" class="btn upload btn-audio-dele" v-if="configData.source.mainAudio" @click="configData.source.mainAudio=''">删除</label>
+						<label for="content-audios" class="btn upload re-upload" v-if="configData.source.mainAudio">重新上传</label>
+					</div>
+				</div>
+				<!-- 题干描述-->
+				<div class="c-area">
+					<label>题干描述 （显示位置：3）<em>字符：≤20 </em></label>
+					<input type="text" class='c-input-txt' maxlength="20" placeholder="请在此输入描述" v-model="configData.source.words">
+				</div>
+			</div>
+			<!-- 编辑图片 -->
+			<div class="c-group">
+				<div class="c-title">编辑内容</div>
+					<div class="c-area"><span class='txt-info'><em>位置4的内容全为文字或者全为图片</em></span></div>
+				
+					<div class="c-area upload img-upload" >
+						<div class="c-well" v-for="(item, index) in configData.source.options">
+							<em>选项{{index+1}}</em>								
+							<!-- 上传图片 -->
+							<div class="field-wrap">
+								<label class="field-label"  for="">上传图片</label>
+								<span class="dele-btn" @click="delOptions(item)" v-show="configData.source.options.length>2"></span>
+								<span class='txt-info'>（显示位置：4）<em>尺寸：360x270&nbsp;大小≤50KB</em></span>
+								<input type="file"  v-bind:key="Date.now()" class="btn-file" :id="'content-pic-'+index" size="360*270" :disabled="item.text!=''"@change="imageUpload($event,item,'img',50)">
+							</div>
+							<div class="field-wrap">
+								<label :for="'content-pic-'+index" class="btn btn-show upload" v-if="!item.img">上传</label>
+								<div class="img-preview" v-if="item.img">
+								<img v-bind:src="item.img" alt=""/>
+								<div class="img-tools">
+									<span class="btn btn-delete" v-on:click="item.img=''">删除</span>
+								</div>
+							</div>
+								<label  :for="'content-pic-'+index" class="btn upload re-upload" v-if="item.img">重新上传</label>
+							</div>
+							<!-- 上传声音 -->
+							<div class="field-wrap">
+								<label class="field-label"  for="">上传声音</label>
+								<span class='txt-info'>（显示位置：5） 大小：≤50KB</span>
+								<input type="file" accept=".mp3" v-bind:key="Date.now()" class="btn-file" :id="'content-audio'+index" @change="audioUpload($event,item,'audio',50)">
+							</div>
+							<div class="field-wrap">
+								<label :for="'content-audio'+index" class="btn btn-show upload" v-if="!item.audio">上传</label>
+								<div class="audio-preview" v-show="item.audio">
+									<div class="audio-tools">
+										<p v-show="item.audio">{{item.audio}}</p>
+									</div>
+									<span class="play-btn" v-on:click="play($event)">
+										<audio v-bind:src="item.audio"></audio>
+									</span>
+								</div>
+								<label for="content-audio" class="btn upload btn-audio-dele" v-if="item.audio" @click="item.audio=''">删除</label>
+								<label :for="'content-audio'+index" class="btn upload re-upload" v-if="item.audio">重新上传</label>
+							</div>
+						<!-- 上传单词 -->
+							<label>上传文字 （显示位置：4）<em>字符：≤34 </em></label>
+							<input type="text" class='c-input-txt' placeholder="请在此输入问题" v-model="configData.source.options[index].text" maxlength="34" :disabled="item.img!=''">
+							<!-- 勾选正确答案 -->
+							<div class="field-radio-wrap fr">
+								<input type="radio"   v-bind:value="index"  :disabled="!item" v-model="configData.source.right">
+								<label for="answer" class="fr">正确答案</label>
+							</div>
+						</div>
+						<button v-if="configData.source.options.length<4" type="button" class="add-btn" @click="addOptions" >+</button>
+					</div> 
+			</div>
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+
+
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="./form/img/bg.jpg?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li><em>图片大小：</em>≤200KB；<em>格式：</em>JPG/PNG/GIF</li>
+					<li><em>声音大小：</em>≤100KB；<em>格式：</em>MP3/WAV</li>
+					<li><em>视频大小：</em>≤700KB；<em>格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='./form/js/form.js?v=<%=new Date().getTime()%>'></script>
+</html>

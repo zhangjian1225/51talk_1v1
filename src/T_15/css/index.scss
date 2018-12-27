@@ -1,0 +1,213 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+
+.desc-visi{
+	visibility: hidden;
+}
+.container{
+	background-image: url(../image/defaultBg.png);
+	position: relative;
+    // font-family:"ARLRDBD";
+
+}
+*{
+    box-sizing: border-box;
+}
+// .tea .stage{
+//     margin-top: .35rem;
+// }
+.stage{
+	width: 100%;
+    height: 100%;
+    margin-top: .25rem;
+    .ans-area{
+    	width: 17rem;
+        height: 7.8rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -8.5rem;
+        margin-top: -3rem;
+    	display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        -webkit-justify-content: center;
+        /* align-items: center; */
+    	flex-wrap:wrap;
+        -webkit-flex-wrap:wrap; 
+    	.ans-box{
+            margin-left: .25rem;
+            margin-bottom: .45rem;
+            width : 5.3rem;
+            height : 3.3rem;
+            border-radius: .3rem;
+            background: none;
+            cursor: pointer;
+            // transition: 1s;
+            .ans-img{
+            	width: 100%;
+            	border-radius: .3rem;
+                height : 3.3rem;
+            	overflow: hidden;
+            	box-shadow: 0 0 0.2rem rgba(0,0,0,0.25);
+                position: relative;
+            	img{
+	            	width: 100%;
+	            	height: 100%;
+	            }
+                p{
+                    width: 100%;
+                    height: 100%;
+                    display: none;
+                    background: rgba(0,0,0,.5);
+                    position: absolute;
+                    border-radius: .3rem;
+                    left: 0;
+                    top: 0;
+                    z-index:8;
+                    text-align: center;
+                    line-height: 3.43rem;
+                    color: white;
+                    cursor: pointer;
+                    img{
+                        width: 1.11em;
+                        height: auto;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        margin: auto;
+                    }
+                }
+            }
+            .ans-audio{
+            	width: .9rem;
+            	height: .9rem;
+            	margin: auto;
+            	position: relative;
+            	top: -.5rem;
+                z-index: 10;
+                cursor: pointer;
+                background:url(../image/sound_bg.png) no-repeat;
+                background-size: contain;
+            	 img{
+                    width: .5rem;
+                    height:auto;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        margin: auto;
+                } 
+            }
+
+    	}
+    }
+}
+.TrueChoose{
+    clear: both;
+    height: .6rem;
+    width: 12.2rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -6.1rem;
+    bottom: .14rem;
+    background: rgba(255,255,255,.75);
+    border-radius: .3rem;
+    box-shadow: 0 0 0.2rem rgba(0,0,0,0.25);
+    overflow: hidden; 
+    span{
+        position: absolute;
+        width: .7rem;
+        height: 100%;
+        text-align: center;
+        line-height: .6rem;
+        top: 0;
+        font-size: .4rem;
+        font-weight: bold;
+        color: #ccc;
+        cursor: pointer;
+    }
+    .leftBtn{
+        left:0;
+    }
+    .rightBtn{
+        right:0;
+        color: orange;
+    }
+    .scoolBox{
+        width: 10.8rem;
+        height: 100%;
+        margin: auto;
+        overflow:hidden;
+        position: relative;
+        ul{
+            position: absolute;
+            li{
+                display: inline-block;
+                height: 100%;
+                font-size: .32em;
+                font-weight: bolder;
+                line-height: .6rem;
+                float: left;
+                margin-right: .36rem;
+            }
+        }
+    }
+     /*
+    }
+    .clickBtn{
+        width: .7rem;
+        height: 100%;
+        display: inline-block;
+        text-align: center;
+        line-height: .6rem;
+        font-weight: bold;
+        font-size: .3em;
+        cursor: pointer;
+        color: orange;
+        display: inline-block;
+    }
+    .scoolBox{
+        height: 10.8rem;
+        height: 100%;
+        overflow:hidden;
+        position: relative;
+    }*/
+    /*.leftBtn{
+        color: #ccc;
+    }
+    .scoolBox{
+        height: 100%;
+        flex: 1;
+        -webkit-flex:1;
+        overflow:hidden;
+        position: relative;
+    }
+    
+    .fontScrol{
+        height: 100%;
+        position: absolute;
+        left:0;
+        top: 0;
+        span{
+            width: auto;
+            font-size: .32rem;
+            float: left;
+            background: red;
+            height: 100%;
+            font-weight: bold;
+            line-height: .6rem;
+            margin-right: .38rem; 
+        }
+    }*/
+}

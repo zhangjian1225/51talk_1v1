@@ -1,0 +1,227 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.audio{
+    width: 0;
+    height: 0;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.container{
+	background-image: url(../image/back_47bg.jpg);
+	position: relative;
+    font-family:"ARLRDBD";
+
+}
+.hide{display: none;}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.mainArea{
+    width:16.44rem;
+    height: 8.53rem;
+    margin: 2.27rem auto 0;
+    position: relative;
+    .lineBox{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        background: transparent;
+        .line{
+            position: absolute;
+            width:0.02rem;
+            height: 2rem;
+            // background: #fff;
+            border-left: 0.08rem dashed #fff;
+            transform-origin: left top;
+        }
+        .line0{
+            height: 6.5rem;
+            height: 0;
+            top:4.12rem;
+            left:1.92rem;
+            transform: rotate(-78deg);
+        }
+        .line1{
+            height: 4.01rem;
+            height: 0;
+            top:1.42rem;
+            left: 8.15rem;
+        }
+        .line2{
+            height: 6.5rem;
+            height: 0;
+            top:4.12rem;
+            left:14.55rem;
+            transform: rotate(78.4deg);
+        }
+    }
+    .listBox{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        .list{
+            position: absolute;
+            width:3.85rem;
+            height: 2.85rem;
+             .back,.before,.showWu{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                img{
+                    width: 100%;
+                    height: 100%;  
+                }
+            }
+            .back{
+               opacity: 1;
+               z-index: 10;
+               .btn{
+                    position: absolute;
+                    left: 50%;
+                    bottom:.32rem;
+                    width: 2.08rem;
+                    height: 0.61rem;
+                    margin-left: -1.04rem;
+                    background: url('../image/btn_47.png') no-repeat center center;
+                    background-size: contain;
+                }
+            }
+            .before{
+                opacity: 0;
+                z-index: 9;
+            }
+            .showWu{
+                z-index: 11;
+                background: url('../image/light.png') no-repeat;
+                background-size: 15.4rem 2.85rem;
+            }
+        }
+        .list0{
+            top: 2.68rem;
+            left: 0;
+        }
+        .list1{
+            top: 0;
+            left:6.3rem;
+        }
+        .list2{
+            top: 2.68rem;
+            left: 12.6rem;
+        }
+    }
+    .answeBox{
+        position: absolute;
+        top:3.5rem;
+        left:5.75rem ;
+        width: 4.92rem;
+        height: 3.78rem;
+        .openBefor,.openAfter,.showLight{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            img{
+                width: 100%;
+                height: 100%;  
+            }
+        }
+        .openBefor{
+            opacity: 1;
+            z-index: 10;
+            .answerBtn{
+                position: absolute;
+                left: 50%;
+                bottom:.6rem;
+                width: 2.08rem;
+                height: 0.61rem;
+                margin-left: -1.04rem;
+                background: url('../image/ansBtn.png') no-repeat center center;
+                background-size: contain;
+            }
+        }
+        .openAfter{
+            opacity: 0;
+            z-index: 9;
+        }
+        .showLight{
+            z-index: 11;
+            background: url('../image/ansLight.png') no-repeat;
+            background-size: contain; 
+        }
+    }
+}
+@keyframes showOptions{
+    0%{
+        background-position: 0 0,
+    }
+    100%{
+        background-position: -15.4rem 0,
+    }
+}
+@-webkit-keyframes showOptions{
+    0%{
+        background-position: 0 0,
+    }
+    100%{
+        background-position: -15.4rem 0,
+    }
+}
+// @-webkit-keyframes showOptions{
+//     0%{
+//         background:  url('../image/light1.png') no-repeat;  
+//         background-size: contain;
+//       }
+//       33%{
+//           background:  url('../image/light2.png') no-repeat;  
+//           background-size: contain;
+//       }
+//       66%{
+//           background:  url('../image/light3.png') no-repeat;  
+//           background-size: contain;
+//       }
+//       100%{
+//           background:  url('../image/light4.png') no-repeat;  
+//           background-size: contain;
+//       }
+// }
+@keyframes showAns{
+    0%{
+        transform: scale(0,0) rotate(0deg);
+    }
+    100%{
+        transform: scale(1,1)  rotate(360deg)
+    }
+}
+@-webkit-keyframes showAns{
+    0%{
+        transform: scale(0,0) rotate(0deg);
+    }
+    100%{
+        transform: scale(1,1)  rotate(360deg)
+    }
+}
+
+
+
+
+

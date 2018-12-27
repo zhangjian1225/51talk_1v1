@@ -1,0 +1,120 @@
+.bouncing { -webkit-animation-fill-mode: both; animation-fill-mode: both; -webkit-animation-duration: .75s; animation-duration: .75s; -webkit-animation-name: bounce; animation-name: bounce }
+@-webkit-keyframes bounce {
+	from, 20%, 40%, 60%, 80%, to { -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1) }
+	0% { -webkit-transform: scale3d(0.3, 0.3, 0.3); transform: scale3d(0.3, 0.3, 0.3) }
+	20% { -webkit-transform: scale3d(1.1, 1.1, 1.1); transform: scale3d(1.1, 1.1, 1.1) }
+	40% { -webkit-transform: scale3d(0.9, 0.9, 0.9); transform: scale3d(0.9, 0.9, 0.9) }
+	60% { -webkit-transform: scale3d(1.03, 1.03, 1.03); transform: scale3d(1.03, 1.03, 1.03) }
+	80% { -webkit-transform: scale3d(0.97, 0.97, 0.97); transform: scale3d(0.97, 0.97, 0.97) }
+	to { -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1) }
+}
+@keyframes bounce {
+	from, 20%, 40%, 60%, 80%, to { -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1) }
+	0% { -webkit-transform: scale3d(0.3, 0.3, 0.3); transform: scale3d(0.3, 0.3, 0.3) }
+	20% { -webkit-transform: scale3d(1.1, 1.1, 1.1); transform: scale3d(1.1, 1.1, 1.1) }
+	40% { -webkit-transform: scale3d(0.9, 0.9, 0.9); transform: scale3d(0.9, 0.9, 0.9) }
+	60% { -webkit-transform: scale3d(1.03, 1.03, 1.03); transform: scale3d(1.03, 1.03, 1.03) }
+	80% { -webkit-transform: scale3d(0.97, 0.97, 0.97); transform: scale3d(0.97, 0.97, 0.97) }
+	to { -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1) }
+}
+.tada {
+	-webkit-animation: tada 0.75s 1; animation: tada 0.75s 1;
+}
+@-webkit-keyframes tada {
+	from { -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1) }
+	10%, 20% { -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg); transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg) }
+	30%, 50%, 70%, 90% { -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg); transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg) }
+	40%, 60%, 80% { -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg); transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg) }
+	to { -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1) }
+}
+@keyframes tada {
+	from { -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1) }
+	10%, 20% { -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg); transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg) }
+	30%, 50%, 70%, 90% { -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg); transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg) }
+	40%, 60%, 80% { -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg); transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg) }
+	to { -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1) }
+}
+
+/*shake animate by pany*/
+@keyframes shakeUp{
+	0% {
+        transform: translateX(10px);
+    }
+    20% {
+        transform: translateX(-10px);
+    }
+    40% {
+        transform: translateX(10px);
+    }
+    60% {
+        transform: translateX(-10px);
+    }
+    80% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+@-webkit-keyframes shakeUp{
+	0% {
+        -webkit-transform: translateX(10px);
+    }
+    20% {
+        -webkit-transform: translateX(-10px);
+    }
+    40% {
+        -webkit-transform: translateX(10px);
+    }
+    60% {
+        -webkit-transform: translateX(-10px);
+    }
+    80% {
+        -webkit-transform: translateX(10px);
+    }
+    100% {
+        -webkit-transform: translateX(0px);
+    }
+}
+.shake{
+	animation: shakeUp 0.3s both ease-in;
+	-webkit-animation: shakeUp 0.3s both ease-in;
+	-moz-animation: shakeUp 0.3s both ease-in;
+	-o-animation: shakeUp 0.3s both ease-in;
+	-ms-animation: shakeUp 0.3s both ease-in;
+}
+
+.lightBox{
+    position: absolute;
+    bottom: -3rem;
+    left: 50%;
+    width: 19.2rem;
+    height: 6rem;
+    margin-left: -9.6rem;
+    opacity: 0;
+}
+
+.light0{
+    background: -webkit-radial-gradient(#bc3ea2 , rgba(188, 62, 162,0),transparent); 
+    background: -o-radial-gradient(#bc3ea2 , rgba(188, 62, 162,0),transparent); 
+    background: -moz-radial-gradient(#bc3ea2 , rgba(188, 62, 162,0),transparent); 
+    background: -radial-gradient(#bc3ea2 , rgba(188, 62, 162,0),transparent); 
+}
+.light1{
+    background: -webkit-radial-gradient(#eedc41 , rgba(238, 220, 65,0),transparent); 
+    background: -o-radial-gradient(#eedc41 , rgba(238, 220, 65,0),transparent); 
+    background: -moz-radial-gradient(#eedc41 , rgba(238, 220, 65,0),transparent); 
+    background: -radial-gradient(#eedc41 , rgba(238, 220, 65,0),transparent); 
+}
+.light2{
+    background: -webkit-radial-gradient(#8fe55a , rgba(143, 229, 90,0),transparent); 
+    background: -o-radial-gradient(#8fe55a , rgba(143, 229, 90,0),transparent); 
+    background: -moz-radial-gradient(#8fe55a , rgba(143, 229, 90,0),transparent); 
+    background: -radial-gradient(#8fe55a , rgba(143, 229, 90,0),transparent); 
+}
+.light3{
+    background: -webkit-radial-gradient(#899ba2 , rgba(255, 255, 255,0),transparent); 
+    background: -o-radial-gradient(#899ba2 , rgba(255, 255, 255,0),transparent); 
+    background: -moz-radial-gradient(#899ba2 , rgba(255, 255, 255,0),transparent); 
+    background: -radial-gradient(#899ba2 , rgba(255, 255, 255,0),transparent); 
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>TSP0002_花朵游戏</title>
+	<link rel="stylesheet" href="form/css/style.css">
+	<link rel="stylesheet" href="form/js/QuillEditor/quill.snow.css">
+	<script src='form/js/jquery-2.1.1.min.js'></script>
+	<script src='form/js/vue.min.js'></script>
+	<script src='form/js/QuillEditor/quill.min.js'></script>
+</head>
+
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="module-title">TSP0002_花朵游戏</div>
+			
+			<% include ./src/common/template/common_head %>
+
+			<div class="c-group">
+				<div class="c-title">编辑问题</div>
+				<div class="c-area upload img-upload">
+					<div class="c-well">
+						<label for="" style="color:red;">仅当花朵位置居右时显示文字区域</label>
+						<div class="well-con">
+							<!-- 单选按钮 -->
+							<div class="radioBox" style="display: flex;">		
+								<div class="field-tools" style="display: flex;">
+									<div class="field-radio-wrap radio ">
+										<label class='field-label' for="">花朵位置</label>
+									</div>
+									<div class="field-radio-wrap radio ">
+										<div class="circle radio-outer " v-bind:class="{ active:configData.source.pos == 'left'}" v-on:click="changePos('left')">
+											<div class="circle radio-inner pos-center"></div>
+										</div>
+										<label class='field-label' for="">左</label>
+									</div>
+									<div class="field-radio-wrap radio ">
+										<div class="circle radio-outer " v-bind:class="{ active:configData.source.pos == 'center'}" v-on:click="changePos('center')">
+											<div class="circle radio-inner pos-center"></div>
+										</div>
+										<label class='field-label' for="">中</label>
+									</div>
+									<div class="field-radio-wrap radio ">
+										<div class="circle radio-outer " v-bind:class="{ active:configData.source.pos == 'right'}" v-on:click="changePos('right')">
+											<div class="circle radio-inner pos-center"></div>
+										</div>
+										<label class='field-label' for="">右</label>
+									</div>
+								</div>
+							</div>
+							<div v-show="configData.source.pos == 'right'">
+								<label>左侧文章 使用下划线工具
+									<em>如需文字变红给该文字下加入下划线</em>
+								</label>
+								<div id="QuillEditor"></div>
+								<div id="QuillEditor-toolbar" style="margin-bottom: 20px"></div>
+							</div>
+							<!-- 上传图片 -->
+
+							<span>花瓣中心图片（按钮）<em style="color: red; margin-bottom: 20px;"> 必填*</em></span>
+							<div class="c-well">
+								<div class="well-con">
+									<div class="field-wrap">
+										<label class="field-label"  for="">图片</label><label for="img-upload-btn" class="btn btn-show upload" v-if="configData.source.btnImg==''?true:false">上传</label><label  for="img-upload-btn" class="btn upload re-upload" v-if="configData.source.btnImg!=''?true:false">重新上传</label><span class='txt-info'>（尺寸：330X280 大小：≤50KB)<em>*</em></span>
+										<input type="file"  v-bind:key="Date.now()" class="btn-file" id="img-upload-btn" size="330*280" accept=".gif,.jpg,.jpeg,.png" v-on:change="imageUpload($event,configData.source,'btnImg',50)">
+									</div>
+									<div class="img-preview" v-if="configData.source.btnImg!=''?true:false">
+										<img v-bind:src="configData.source.btnImg" alt=""/>
+										<div class="img-tools">
+											<span class="btn btn-delete" v-on:click="configData.source.btnImg=''">删除</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<span>花瓣图片<em style="color: red; margin-bottom: 20px;"> 必填*</em></span>
+							<div class="c-well" v-for="(item,index) in configData.source.list">
+								<div class="well-title">
+									<p>选项{{index+1}}</p>
+									<!-- <span class="dele-tg-btn" v-on:click="delSele(item)" v-show='configData.source.cardList.length>3?true:false'></span> -->
+								</div>
+								<div class="well-con">
+									<div class="field-wrap">
+										<label class="field-label"  for="">图片</label><label v-bind:for="'img-upload'+index" class="btn btn-show upload" v-if="item.img==''?true:false">上传</label><label  v-bind:for="'img-upload'+index" class="btn upload re-upload" v-if="item.img!=''?true:false">重新上传</label><span class='txt-info'>（尺寸：385X340 大小：≤50KB)<em>*</em></span>
+										<input type="file"  v-bind:key="Date.now()" class="btn-file" v-bind:id="'img-upload'+index" size="385*340" accept=".gif,.jpg,.jpeg,.png" v-on:change="imageUpload($event,item,'img',50)">
+									</div>
+									<div class="img-preview" v-if="item.img!=''?true:false">
+										<img v-bind:src="item.img" alt=""/>
+										<div class="img-tools">
+											<span class="btn btn-delete" v-on:click="item.img=''">删除</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- <button type="button" class="add-tg-btn" v-on:click="addSele()" v-show='configData.source.cardList.length<4?true:false'>+</button> -->
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/preview.png?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li>
+						<em>图片格式：</em>JPG/PNG/GIF</li>
+					<li>
+						<em>声音格式：</em>MP3/WAV</li>
+					<li>
+						<em>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+
+</html>

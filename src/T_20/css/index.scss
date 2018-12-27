@@ -1,0 +1,176 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.hide{
+    display: none;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.png) no-repeat;
+    background-size: auto 100%;
+	position: relative;
+    // font-family:"ARLRDBD";
+
+}
+.stage{
+	width: 100%;
+    height: 100%;
+    position: relative;
+    height: 100%;
+    .table {
+        position: absolute;
+        width: 6.9rem;
+        height: 8.5em;
+        // background: red;
+        // background: url(../image/tables.png) no-repeat;
+        // background-size: contain;
+        right: 0;
+        top: 0;
+    }
+    .pos{
+        position: absolute;
+        width: 2rem;
+        height: 2rem;
+        z-index: 10;
+        .ani{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            height: 100%;
+            width: auto;
+        }
+        .star {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            height: 100%;
+            width: auto;
+            display: none;
+        }
+        .changeMin {
+            animation: min 1s;
+        }
+        @keyframes min {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(.2);
+            }
+        }
+    }
+    .pos_1{
+        right: 4.5rem;
+        top: 3.5rem;
+        z-index: 2;
+    }
+    .pos_2{
+        right: 2.5rem;
+        top: 3.5rem;
+        z-index: 4;
+    }
+    .pos_3{
+        right: .5rem;
+        top: 3.5rem;
+        z-index: 2;
+    }
+    .mom {
+        position: absolute;
+        width: 4rem;
+        height: 9rem;
+        left:4.8rem;
+        bottom: 0;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        .box {
+            position: absolute;
+            left: 1rem;
+            top: 3rem;
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+    .child {
+        position: absolute;
+        left:8.2rem;
+        bottom: 0;
+        width: 4rem;
+        height: 9rem;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        .box {
+            position: absolute;
+            right: -1rem;
+            bottom: 0;
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+    .dad {
+        position: absolute;
+        left:1.5rem;
+        bottom: 0;
+        width: 4rem;
+        height: 9rem;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        .box {
+            position: absolute;
+            left: -.8rem;
+            top: 3rem;
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+    .hand{
+        width: 1.5rem;
+        height: 1.5rem;
+        background:  url('../image/hand.png') no-repeat;
+        background-size: contain;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        animation: handClick 1s infinite;
+        cursor: pointer;
+        opacity: 0;
+    }
+    @keyframes handClick {
+        0%{
+            transform: translateY(.2rem)
+        }
+        100%{
+            transform: translateY(-.2rem)
+        }
+    }
+}
+

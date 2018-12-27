@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="max-age=60">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=0">
+    <title>THM0001_打地鼠(
+        <%= new Date().getFullYear()%>-
+            <%= new Date().getMonth()+1 %>-
+                <%= new Date().getDate() %>)</title>
+    <link rel="stylesheet" href="css/index.css?v=<%=new Date().getTime()%>">
+    <script src="../../jquery-2.1.1.min.js"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<script src="/assets/js/jquery/2.1.1/jquery.min.js"><\/script>');
+        } 
+    </script>
+    <script src="js/tracking.js?v=<%=new Date().getTime()%>"></script>
+    <script src="js/sdk.js?v=<%=new Date().getTime()%>"></script>
+    <script src="js/fit.js?v=<%=new Date().getTime()%>"></script>
+</head>
+
+<body>
+    <div class="container" id="container" data-syncresult='show-result-1'>
+        <section class="commom">
+            <div class="desc"></div>
+            <div class="title">
+                <h3></h3>
+            </div>
+        </section>
+
+        <section class="main">
+            <div class="diglettList">
+                <div class="diglet diglet_1"></div>
+                <div class="diglet diglet_2"></div>
+                <div class="diglet diglet_3"></div>
+                <div class="diglet diglet_4"></div>
+                <div class="diglet diglet_5"></div>
+            </div>
+            <!-- 积分台 -->
+            <div class="intSatge">
+                <div class="face"></div>
+                <span class="score">x <span class="scoreNum">0</span></span>
+            </div>
+            <!-- 计时器 -->
+            <div class="time">
+                <div class="proprogressBarBox">
+                    <p class="proprogressBar"></p>
+                </div>
+                <div class="watch"></div>
+            </div>
+            <!-- 遮罩层 -->
+            <div class="mask">
+                <div class="startBox">
+                    <img src="./image/startFont.png" class="startFont"/>
+                    <img src="./image/startBtn.png" class="startBtn" data-syncactions="startBtn"/>
+                </div>
+                <div class="timeChangeBox hide">
+                    <div class="timeBg">
+                        <div class="numberList"></div>
+                        <audio src="./audio/timeLow.mp3" class="timeLowAudio_1"></audio>
+                        <audio src="./audio/timeLow.mp3" class="timeLowAudio_2"></audio>
+                        <audio src="./audio/timeLow.mp3" class="timeLowAudio_3"></audio>
+                        <audio src="./audio/timehigh.mp3" class="timeLowAudio_4"></audio>
+                    </div>
+                </div>
+                <div class="endAlert hide">
+                    <div class="endImg"></div>
+                    <h2>x <span>0</span></h2>
+                    <audio src="./audio/fail.mp3" class="failAudio"></audio>
+                    <audio src="./audio/win.mp3" class="winAudio"></audio>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <script type="text/javascript" src="content.js?v=<%=new Date().getTime()%>"></script>
+    <script type="text/javascript" src="js/index.js?v=<%=new Date().getTime()%>"></script>
+</body>
+
+</html>

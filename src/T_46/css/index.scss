@@ -1,0 +1,265 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.hide{
+    display: none;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.png) no-repeat;
+    background-size: auto 100%;
+	position: relative;
+    // font-family:"ARLRDBD";
+
+}
+.tv {
+    position: absolute;
+    bottom: 1.4rem;
+    left: 2.8rem;
+    width: 8.05rem;
+    height: 6.63rem;
+    background: url(../image/tv.png) no-repeat;
+    background-size: 100% 100%;
+    z-index: 6;
+    .list {
+        position: absolute;
+        top: .6rem;
+        left: .65rem;
+        width: 6.8rem;
+        height: 5rem;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        ul{
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            height: 100%;
+            li {
+                height: 100%;
+                width: 6.8rem;
+                border-radius: 1.5rem;
+                overflow: hidden;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 1.5rem;
+                }
+            }
+        }
+    }
+    .pageNum {
+        position: absolute;
+        bottom: .5rem;
+        left: 50%;
+        margin-left: -.5rem;
+        width: 1.05rem;
+        height: .45rem;
+        background: #eeeeee;
+        font-size: .35rem;
+        text-align: center;
+        line-height: .45rem;
+        border-radius: .5rem;
+        color: #4c4c4c;
+    }
+}
+.leftBtn {
+    position: absolute;
+    left: 1.1rem;
+    bottom: 4.1rem;
+    width: 1.61rem;
+    height: 1.55rem;
+    background: url(../image/button.png) no-repeat;
+    background-size: 100% 100%;
+    transform: rotateY(180deg);
+    cursor: pointer;
+}
+
+.rightBtn {
+    position: absolute;
+    left: 11rem;
+    bottom: 4.1rem;
+    width: 1.61rem;
+    height: 1.55rem;
+    background: url(../image/button.png) no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+}
+.noClick {
+    opacity: .5;
+    cursor: not-allowed;
+}
+.voice {
+    position: absolute;
+    width: 9.42rem;
+    height: 2.48rem;
+    bottom: 0;
+    left: 5.3rem;
+    background: url(../image/voice.png) no-repeat;
+    background-size: 100% 100%;
+    z-index: 5;
+}
+// 声音区域
+.control {
+    position: absolute;
+    right: 4.1rem;
+    top: 3.3rem;
+    height: 5.75rem;
+    width: 1.4rem;
+    background: #ededed;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 0.4rem rgba(0,0,0,0.4);
+    box-sizing: border-box;
+    padding: .15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    span {
+        width: 100%;
+        background: #574360;
+        overflow: hidden;
+        cursor: pointer;
+        position: relative;
+        em {
+            display: block;
+            width: 100%;
+            height: 0;
+            position: absolute;
+            bottom: 0;
+            transition: all 1s linear;
+        }
+    }
+    .high {
+        height: 2.25rem;
+        border-radius: 1.1rem 1.1rem 0 0;
+    }
+    .middle {
+        height: 1.4rem;
+    }
+    .low {
+        height: 1.45rem;
+        border-radius: 0 0 1.1rem 1.1rem;
+    }
+    .highChoose {
+        background: linear-gradient(#ff4e00,#fca309);
+    }
+    .middleChoose {
+        background: linear-gradient(#fca309,#ffc900);
+    }
+    .lowChoose {
+        background: linear-gradient(#ffc900,#ffed24);
+    }
+    .toMax {
+        animation: toMax .8s linear forwards;
+    }
+    .toMin {
+        animation: toMin .8s linear forwards;
+    }
+    @keyframes toMax {
+        0% {
+            height: 0;
+        }
+        100%{
+            height: 100%;
+        }
+    }
+    @keyframes toMin {
+        0% {
+            height:100%;
+        }
+        100%{
+            height: 0;
+        }
+    }
+}
+// 选择按钮
+.chooseBtns {
+    position: absolute;
+    top: 4rem;
+    right: 1.2rem;
+    width: 2.4rem;
+    height: 4.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .monkey {
+        position: absolute;
+        top: -1.7rem;
+        left: -2.4rem;
+        height: 2.2rem;
+        width: 2.4rem;
+        background: url(../image/monkey.png) no-repeat;
+        background-size: 6.6rem 3.02rem;
+        background-position: -3.5rem -.5rem;
+    }
+    .monkeyNow {
+        background-position: -.8rem -.5rem;
+        animation: shake 2s;
+    }
+    @keyframes shake {
+        0% {
+            transform: rotateZ(10deg)
+        }
+        20%{
+            transform: rotateZ(-10deg)
+        }
+        40% {
+            transform: rotateZ(10deg)
+        }
+        60% {
+            transform: rotateZ(-10deg)
+        }
+        80%{
+            transform: rotateZ(10deg)
+        }
+        100% {
+            transform: rotateZ(0deg)
+        }
+    }
+    .choose {
+        width: 2.4rem;
+        height: 1.1rem;
+        background: url(../image/chooseBtn.png) no-repeat;
+        background-size: 10rem 5rem;
+        cursor: pointer;
+    }
+    .choose:hover{
+        transform: scale(1.1)
+    }
+    .initPre {
+        background-position: -6.6rem -1.03rem;
+    }
+    .initGreat {
+        background-position: -3.85rem -1.03rem;
+    }
+    .initGood {
+        background-position: -1rem -1.03rem;
+    }
+    .choosePre {
+        background-position: -6.6rem -2.6rem;
+    }
+    .chooseGreat {
+        background-position: -3.85rem -2.6rem;
+    }
+    .chooseGood {
+        background-position: -1rem -2.6rem;
+    }
+}

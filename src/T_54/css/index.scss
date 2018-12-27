@@ -1,0 +1,319 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@import '../../common/template/resultPage/style.scss';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.hide{
+    display: none;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.jpg) no-repeat;
+    background-size: auto 100%;
+    position: relative;
+    .main {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        // 计时器
+    .time {
+        position: absolute;
+        left: 1.3rem;
+        bottom: 1.05rem;
+        height: 1.2rem;
+        width: 5.3rem;
+        .proprogressBarBox {
+            position: absolute;
+            left: .3rem;
+            bottom: 0;
+            width: 4.6rem;
+            height: .65rem;
+            border: .1rem solid #fcf354;
+            border-radius: 1rem;
+            background: #fff;
+            .proprogressBar {
+                width:3.9rem;
+                height: 100%;
+                background: #f9bc2e;
+                // border-radius: 1rem;
+                border-top-right-radius: 1rem;
+                border-bottom-right-radius: 1rem;
+                transition: .5s;
+                position: relative;
+                right: -.5rem;
+            }
+        }
+        .watch {
+            position: absolute;
+            left: -.2rem;
+            top: 0;
+            width: 1.36rem;
+            height: 1.32rem;
+            background: url(../image/watch.png) no-repeat;
+            background-size: 100% 100%;
+        }
+    }
+        // 控制台
+        .control {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3.32rem;
+            width: 6.65rem;
+            height: 1.15rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: .3rem;
+            z-index: 3;
+            cursor: move;
+            .font {
+                width: 3.68rem;
+                height: .27rem;
+                background: url(../image/font.png) no-repeat;
+                background-size: 100% 100%;
+                position: absolute;
+                left: .36rem;
+                top: .47rem;
+            }
+            .btns {
+                position: absolute;
+                width: 2.59rem;
+                height: 1.62rem;
+                background: url(../image/btn.png) no-repeat;
+                background-size: 7.77rem 100%;
+                background-position-x: 0;
+                border-radius: .4rem;
+                bottom: -.3rem;
+                right: -.1rem;
+                z-index: 2;
+                span{
+                    cursor: pointer;
+                    position: absolute;
+                    width: .7rem;
+                    height: .7rem;
+                    border-radius: .4rem;
+                    top: .45rem;
+                }
+                .trueBtn {
+                    left: .35rem;
+                }
+                .falseBtn {
+                    right: .35rem;
+                }
+            }
+            .trueBg {
+                background-position-x: -2.59rem
+            }
+            .falseBg {
+                background-position-x: -5.18rem
+            }
+        }
+        // 初始泡泡
+        .initBubble {
+            position: absolute;
+            left: 50%;
+            margin-left:-8rem; 
+            top: 1rem;
+            width: 16rem;
+            height: 4rem;
+            .initBubbleList{
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                li {
+                    width: 2rem;
+                    height: 2rem;
+                    // background: red;
+                }
+            }
+            .bubbleBoxList {
+                position: absolute;
+                left: 0;
+                top: 0;
+                .bubbleBox {
+                    position: absolute;
+                    width: 2rem;
+                    height: 2rem;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+        // 添加泡泡
+        .addBubble {
+            position: absolute;
+            left: 50%;
+            margin-left:-7rem; 
+            top: 2.8rem;
+            width: 16rem;
+            height: 2rem;
+            .addBubbleList{
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                li {
+                    width: 2rem;
+                    height: 2rem;
+                }
+            }
+        }
+        // 炮弹区域
+        .table {
+            position: absolute;
+            bottom: -.8rem;
+            left: 50%;
+            margin-left: -2.49rem;
+            background: url(../image/table.png) no-repeat;
+            background-size: 100% 100%;
+            width: 4.98rem;
+            height: 3.08rem;
+            z-index: 2;
+        }
+        .showBubble {
+            position: absolute;
+            left: 50%;
+            margin-left: -1.6rem;
+            bottom: 1.1rem;
+            width: 3rem;
+            height: 3rem;
+            z-index: 1;
+            .showBubbleList{
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                div {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 3rem;
+                    height: 3rem;
+                    display: none;
+                    // background: red;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    };
+                }
+                .min {
+                    width: 2rem;
+                    height: 2rem;
+                    top: .5rem;
+                    left: .5rem;
+                }
+            }
+        }
+        
+        // 倒计时
+        .timeMask {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width:100%;
+            height: 100%;
+            z-index: 10;
+            // display: none;
+            .startBox {
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                margin: auto;
+                height: 4.8rem;
+                width: 7.2rem;
+                background: rgba(0,0,0,.8);
+                border-radius: .5rem;
+                .startFont {
+                    width:100%;
+                    height: auto;
+                    position: absolute;
+                    // top: 1rem;
+                }
+                .startBtn {
+                    width: 1.74rem;
+                    height: auto;
+                    position: absolute;
+                    left: 2.7rem;
+                    bottom: .65rem;
+                    cursor: pointer;
+                }
+            }
+            .timeChangeBox {
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                margin: auto;
+                height: 4.8rem;
+                width: 7.2rem;
+                background: rgba(0,0,0,.8);
+                border-radius: .5rem;
+                .timeBg {
+                    width:3.79rem;
+                    height: 3.84rem;
+                    position: absolute;
+                    top: 1rem;
+                    background: url(../image/timeBg.png) no-repeat;
+                    background-size: 100% 100%;
+                    left: 50%;
+                    margin-left: -1.9rem;
+                    top: 50%;
+                    margin-top: -1.92rem;
+                    .numberList {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        right: 0;
+                        top:0;
+                        margin: auto;
+                        background: url(../image/number1.png) no-repeat;
+                        background-size: 6rem 100%;
+                        background-position-x: .1rem;
+                    }
+                }
+            }
+        }
+    }
+} 
+
+@keyframes scaleSize{
+    0%{
+        transform: scale(1,1)
+    }
+    100%{
+        transform: scale(0,0)
+    }
+}
+

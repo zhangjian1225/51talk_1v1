@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>THI0001_卡片放大</title>
+	<link rel="stylesheet" href="form/css/style.css">
+	<link rel="stylesheet" href="form/js/QuillEditor/quill.snow.css">
+	<script src='form/js/jquery-2.1.1.min.js'></script>
+	<script src='form/js/vue.min.js'></script>
+	<script src='form/js/QuillEditor/quill.min.js'></script>
+</head>
+
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="h-title">THI0001_卡片放大</div>
+			
+			<% include ./src/common/template/common_head %>
+			<div class="c-group">
+				<div class="c-title">编辑问题</div>
+				<div class="c-area upload img-upload">
+					<div class="c-well">
+						<div class="well-con">
+							<label>句子
+								<em>使用下划线工具</em>
+							</label>
+							<div id="QuillEditor"></div>
+							<div id="QuillEditor-toolbar"></div>
+							<!-- 上传图片 -->
+							<div class="c-well" v-for="(item,index) in configData.source.cardList">
+								<div class="well-title">
+									<p>选项{{index+1}}</p>
+									<span class="dele-tg-btn" v-on:click="delSele(item)" v-show='configData.source.cardList.length>3?true:false'></span>
+								</div>
+								<div class="well-con">
+									<div class="field-wrap">
+										<label class="field-label"  for="">图片</label><label v-bind:for="'img-upload'+index" class="btn btn-show upload" v-if="item.img==''?true:false">上传</label><label  v-bind:for="'img-upload'+index" class="btn upload re-upload" v-if="item.img!=''?true:false">重新上传</label><span class='txt-info'>（尺寸:500X375，330X420大小≤50KB)<em>*</em></span>
+										<input type="file"  v-bind:key="Date.now()" class="btn-file" v-bind:id="'img-upload'+index" size="500*375,330*420" accept=".gif,.jpg,.jpeg,.png" v-on:change="imageUpload($event,item,'img',50)">
+									</div>
+									<div class="img-preview" v-if="item.img!=''?true:false">
+										<img v-bind:src="item.img" alt=""/>
+										<div class="img-tools">
+											<span class="btn btn-delete" v-on:click="item.img=''">删除</span>
+										</div>
+									</div>
+									<label>选项单词<em> 最多为15个字符</em></label>
+									<input type="text" class='c-input-txt' placeholder="单词" v-model="item.font" maxlength='15'>
+								</div>
+							</div>
+							<button type="button" class="add-tg-btn" v-on:click="addSele()" v-show='configData.source.cardList.length<4?true:false'>+</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/preview.jpg?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li>
+						<em>图片格式：</em>JPG/PNG/GIF</li>
+					<li>
+						<em>声音格式：</em>MP3/WAV</li>
+					<li>
+						<em>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+
+</html>

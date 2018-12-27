@@ -1,0 +1,238 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.container{
+	background-image: url(../image/back_56bg.jpg);
+	position: relative;
+    font-family:"ARLRDBD";
+
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+audio{
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+.visibility{
+    visibility: hidden;
+}
+.hide{
+    display: none !important;
+}
+.mainArea{
+    width: 16.4rem;
+    height: 7.1rem;
+    position: absolute;
+    top: 2.5rem;
+    left: 50%;
+    margin-left: -8.2rem;
+    .box{
+        width: 4.4rem;
+        height: 3.6rem;
+        position: absolute;
+        top: 0;
+        left:8.72rem ;
+        background: url('../image/boxClose.png') no-repeat;
+        background-size: contain; 
+    }
+    .boxOpen{
+        background: url('../image/box.png') no-repeat;
+        background-size: contain;
+    }
+    .lockArea{
+        .lock{
+            position: absolute;
+            width: 1.33rem;
+            height: 1.33rem;
+            background: url('../image/lock.png') no-repeat;
+            background-size: contain;
+            .lockIcon{
+                position: absolute;
+                top: .65rem;
+                left: .43rem;
+                width: .5rem;
+                height: .27rem;
+            }
+        }
+        .openLock{
+            background: url('../image/openLock.png') no-repeat;
+            background-size: contain;
+        }
+        .lock0{
+            top: 5.7rem;
+            left: .3rem;
+        }
+        .lock1{
+            top: 4.78rem;
+            left: 3.58rem;
+        }
+        .lock2{
+            top: 5.48rem;
+            left: 7.4rem;
+        }
+        .lock3{
+            top: 5.35rem;
+            left:11.4rem;
+        }
+        .lock4{
+            top: 3.85rem;
+            left: 14.85rem;
+        }
+    }
+    .optionsArea{
+        .options{
+            position: absolute;
+            top: .2rem;
+            left: 4.3rem;
+            width: 7.74rem;
+            height: 4.47rem;
+            background: url('../image/zhou.png') no-repeat;
+            background-size: contain;
+            .audioList{
+                position: absolute;
+                width: 1rem;
+                height: 1rem;
+                background: url('../image/btn-audio-bg.png') no-repeat;
+                background-size: 102% 92%;
+                z-index: 10;
+                left: 50%;
+                transform: translateX(-50%);
+                top: -0.1rem;
+                cursor: pointer;
+                img{
+                    position: absolute;
+                    top: 0.25rem;
+                    left: 0.23rem;
+                    width: 0.56rem;
+                    height: 0.45rem;
+                }
+                audio{
+                    width:0;
+                    height: 0;
+                    opacity: 0;
+                    position:absolute;
+                }
+            }
+            .wordsList{
+                position: absolute;
+                top: 1rem;
+                left: 0;
+                width: 100%;
+                height:.9rem ;
+                line-height: .9rem;
+                text-align: center;
+                .ques{
+                    font-size:.62rem;
+                }
+                .hideQues{
+                    color: transparent;
+                    border-bottom: .05rem solid #333;
+                    margin: 0 .2rem;
+
+                }
+                .showQues{
+                    color: #333;
+                    border-bottom: .05rem solid #333;
+                    margin: 0 .2rem;  
+                }
+            }
+            .chooseArea{
+                position: absolute;
+                left: 50%;
+                bottom: .65rem;
+                width: 4.6rem;
+                height: .97rem;
+                margin-left: -2.3rem;
+                .choose{
+                   width: 1.81rem;
+                   height: .97rem; 
+                   line-height: .97rem;
+
+                   float: left;
+                   text-align: center;
+                   font-size: .62rem;
+                   font-weight: bold;
+                   color: #ffffff;
+                }
+                .chooseChild{
+                    width: 100%;
+                    height: 100%;
+                    background: url('../image/gemstoneOp.png') no-repeat;
+                    background-size: contain;
+                }
+                .one{
+                    margin-right: .95rem;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+@keyframes shake{
+	0% {
+        transform: translateX(10px) ;
+    }
+    20% {
+        transform: translateX(-10px);
+    }
+    40% {
+        transform: translateX(10px);
+    }
+    60% {
+        transform: translateX(-10px);
+    }
+    80% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+@-webkit-keyframes shake{
+	0% {
+        transform: translateX(10px) ;
+    }
+    20% {
+        transform: translateX(-10px);
+    }
+    40% {
+        transform: translateX(10px);
+    }
+    60% {
+        transform: translateX(-10px);
+    }
+    80% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+
+
+
+
+

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TCL0001_线索猜词</title>
+	<link rel="stylesheet" href="form/css/style.css">
+	<script src='form/js/jquery-2.1.1.min.js'></script>
+	<script src='form/js/vue.min.js'></script>
+</head>
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="h-title">TCL0001_线索猜词</div>
+			
+			<% include ./src/common/template/common_head %>
+
+			<div class="c-group">
+				<div class="c-title">设置线索内容（必填）</div>
+				<div class="c-area upload img-upload">
+					<span>3个线索，请从难到易，依次设置</span>
+					<ul>
+						<li v-for="(item, index) in configData.source.options">	
+							<div class="field-wrap">
+								<label class="field-label"  for="">图片{{index+1}}</label>
+								<span class='txt-info'><em>文件大小≤50KB  尺寸大小385x285 *  </em></span> 
+								<input type="file"  v-bind:key="Date.now()" class="btn-file" :id="'content-pic-'+index" size="385*285" @change="imageUpload($event,item,'image',50)">
+							</div>
+	
+							<div class="field-wrap">
+								<label :for="'content-pic-'+index" class="btn btn-show upload" v-if="!item.image">上传</label>
+								<label :for="'content-pic-'+index" class="btn upload re-upload" v-if="item.image">重新上传</label>
+							</div>
+							<div class="img-preview" v-if="item.image">
+								<img :src="item.image" alt=""/>
+								<div class="img-tools">
+									<span class="btn btn-delete" @click="delPrew(item)">删除</span>
+								</div>
+							</div>						
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="c-group">
+				<div class="c-title">设置答案内容（必填）</div>
+				<div class="c-area upload img-upload">
+						<div class="field-wrap">
+							<label class="field-label" for="">上传图片</label>
+							<span class='txt-info'><em>尺寸：492*378。文件大小≤50KB</em></span>
+							<input type="file" v-bind:key="Date.now()" class="btn-file" id="answerImg" size="492*378" v-on:change="imageUpload($event,configData.source,'answerImg',50)">
+						</div>
+						<div class="field-wrap">
+							<label for="answerImg" class="btn btn-show upload" v-if="!configData.source.answerImg">上传</label>
+							<label for="answerImg" class="btn upload re-upload" v-if="configData.source.answerImg">重新上传</label>
+						</div>
+						<div class="img-preview" v-if="configData.source.answerImg">
+							<img v-bind:src="configData.source.answerImg" alt="" />
+							<div class="img-tools">
+								<span class="btn btn-delete" v-on:click="configData.source.answerImg=''">删除</span>
+							</div>
+						</div>
+				</div>
+			</div>
+			<div class="c-group">
+				<div class="c-title">环境素材 - 线索背面 （非必填）</div>
+				<div class="c-area upload img-upload">
+					<div class="field-wrap">
+						<label class="field-label" for="">上传图片</label>
+						<span class='txt-info'><em>尺寸：385x285。文件大小≤50KB</em></span>
+						<input type="file" v-bind:key="Date.now()" class="btn-file" id="optionsBg" size="385*285" v-on:change="imageUpload($event,configData.source,'optionsBg',50)">
+					</div>
+					<div class="field-wrap">
+						<label for="optionsBg" class="btn btn-show upload" v-if="!configData.source.optionsBg">上传</label>
+						<label for="optionsBg" class="btn upload re-upload" v-if="configData.source.optionsBg">重新上传</label>
+					</div>
+					<div class="img-preview" v-if="configData.source.optionsBg">
+						<img v-bind:src="configData.source.optionsBg" alt="" />
+						<div class="img-tools">
+							<span class="btn btn-delete" v-on:click="configData.source.optionsBg=''">删除</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="c-group">
+					<div class="c-title">环境素材 - 答案背面（非必填）</div>
+					<div class="c-area upload img-upload">
+							<div class="field-wrap">
+								<label class="field-label" for="">上传图片</label>
+								<span class='txt-info'><em>尺寸：492*378。文件大小≤50KB</em></span>
+								<input type="file" v-bind:key="Date.now()" class="btn-file" id="answerBg" size="492*378" v-on:change="imageUpload($event,configData.source,'answerBg',50)">
+							</div>
+							<div class="field-wrap">
+								<label for="answerBg" class="btn btn-show upload" v-if="!configData.source.answerBg">上传</label>
+								<label for="answerBg" class="btn upload re-upload" v-if="configData.source.answerBg">重新上传</label>
+							</div>
+							<div class="img-preview" v-if="configData.source.answerBg">
+								<img v-bind:src="configData.source.answerBg" alt="" />
+								<div class="img-tools">
+									<span class="btn btn-delete" v-on:click="configData.source.answerBg=''">删除</span>
+								</div>
+							</div>
+					</div>
+				</div>
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/preview.jpg?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li><em>图片格式：</em>JPG/PNG/GIF</li>
+					<li><em>声音格式：</em>MP3/WAV</li>
+					<li><em>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+</html>

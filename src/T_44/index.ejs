@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="max-age=60">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=0">
+    <title>TPD0001_小火车(<%= new Date().getFullYear()%>-<%= new Date().getMonth()+1 %>-<%= new Date().getDate() %>)</title>
+    <link rel="stylesheet" href="css/index.css?v=<%=new Date().getTime()%>">
+    <script src="../../jquery-2.1.1.min.js"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<script src="/assets/js/jquery/2.1.1/jquery.min.js"><\/script>');
+        } 
+    </script>
+    <script src="js/tracking.js?v=<%=new Date().getTime()%>"></script>
+    <script src="js/sdk.js?v=<%=new Date().getTime()%>"></script>
+    <script src="js/fit.js?v=<%=new Date().getTime()%>"></script>
+</head>
+<body>
+<div class="container" id="container" data-syncresult='show-result-1'>
+    <section class="commom">
+        <div class="desc"></div>
+        <div class="title">
+            <h3></h3>
+        </div>
+    </section>
+    
+    <section class="main">
+        <div class="stage">
+            <audio src="./audio/1.mp3" class="inOutAudio" loop="loop"></audio>
+            <audio src="./audio/2.mp3" class="trueAudio"></audio>
+            <audio src="./audio/2.mp3" class="trueAudio1"></audio>
+            <div class="audioBg" data-syncactions="audioBtn">
+                <img src="./image/btn-audio.png" class="audioInit"/>
+                <img src="./image/btn-audio.gif" class="audioGif"/>
+            </div>
+            <div class="light">
+                <img src="./image/red.png" class="redLight"/>
+                <img src="./image/green.png" class="greenLight"/>
+            </div>
+            <div class="train">
+                <div class="trainH">
+                    <span class="cloud1"></span>
+                    <span class="cloud2"></span>
+                    <span class="cloud3"></span>
+                </div>
+                <div class="trainB"></div>
+            </div>
+            <div class="cardList"></div>
+            <div class="alertBox">
+                <p>click “GO” and the train will leave. </p>
+                <span class="btn" data-syncactions="btn">GO</span>
+            </div>
+        </div>
+        <div class="Allmask"></div>
+    </section>
+
+</div>
+<script type="text/javascript" src="content.js?v=<%=new Date().getTime()%>"></script>
+<script type="text/javascript" src="js/index.js?v=<%=new Date().getTime()%>"></script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+@charset "UTF-8";
+/*!
+ * 
+ * copyright (c) 2016 innovation
+ * author: windsolider
+ * update: Tue Jun 05 2018 17:03:38 GMT+0800 (中国标准时间)
+ */
+@import url(../../common/css/reset.css);
+@import url(../../common/css/animation.css);
+* {
+  box-sizing: border-box; }
+
+.desc-visi {
+  visibility: hidden; }
+
+.tae, .stu {
+  width: 100%;
+  height: 100%; }
+
+.container {
+  background-image: url(../image/defaultBg.png);
+  position: relative;
+  font-family: "ARLRDBD"; }
+
+.stage {
+  width: 100%;
+  height: 100%;
+  position: relative; }
+  .stage .curtain {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto; }
+    .stage .curtain img {
+      width: 100%; }
+  .stage .box {
+    position: absolute;
+    bottom: 0;
+    left: 1.47rem;
+    width: 8.67rem;
+    height: 9.62rem;
+    background: url(../image/box.png) no-repeat;
+    background-size: 100%; }
+    .stage .box .animate {
+      height: 2rem;
+      position: absolute;
+      left: .5rem;
+      bottom: 1rem;
+      width: 100%; }
+      .stage .box .animate img {
+        width: 2rem;
+        height: auto; }
+      .stage .box .animate .e_1 {
+        position: absolute;
+        top: -1rem;
+        left: 1rem; }
+      .stage .box .animate .e_2 {
+        position: absolute;
+        top: -.8rem;
+        left: 2.8rem; }
+      .stage .box .animate .e_3 {
+        position: absolute;
+        top: -1rem;
+        right: 2.5rem; }
+      .stage .box .animate .e_4 {
+        position: absolute;
+        top: 0rem;
+        left: 3rem; }
+      .stage .box .animate .e_5 {
+        position: absolute;
+        top: -.2rem;
+        right: 2rem; }
+    .stage .box .rod {
+      position: absolute;
+      left: .55rem;
+      top: .4rem;
+      width: 7.5rem;
+      height: .2rem;
+      background: url(../image/rod.png) no-repeat;
+      background-size: contain; }
+    .stage .box .move_box {
+      position: absolute;
+      left: .5rem;
+      top: .35rem;
+      width: 2rem;
+      height: auto; }
+      .stage .box .move_box .move {
+        width: .69rem;
+        height: .3rem;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        margin-left: -.345rem;
+        background: url(../image/move.png) no-repeat;
+        background-size: contain; }
+      .stage .box .move_box .line {
+        width: .1rem;
+        height: 2rem;
+        position: absolute;
+        top: .1rem;
+        left: 50%;
+        margin-left: -.05rem;
+        background: #dee3f2; }
+      .stage .box .move_box .claw {
+        width: 1.7rem;
+        height: 1.65rem;
+        position: absolute;
+        left: 50%;
+        margin-left: -0.85rem;
+        top: 2rem; }
+        .stage .box .move_box .claw .init_img {
+          width: 1.03rem;
+          height: auto;
+          position: absolute;
+          left: 50%;
+          margin-left: -0.5rem;
+          top: 0; }
+        .stage .box .move_box .claw .left_img {
+          width: .58rem;
+          height: auto;
+          position: absolute;
+          left: .1rem;
+          top: .35rem;
+          -webkit-transform-origin: top right;
+              -ms-transform-origin: top right;
+                  transform-origin: top right;
+          -webkit-transform: rotateZ(30deg);
+              -ms-transform: rotate(30deg);
+                  transform: rotateZ(30deg);
+          -webkit-animation: left_animate 2s;
+                  animation: left_animate 2s; }
+        .stage .box .move_box .claw .right_img {
+          position: absolute;
+          right: .05rem;
+          top: .35rem;
+          width: .58rem;
+          height: auto;
+          -webkit-transform-origin: top left;
+              -ms-transform-origin: top left;
+                  transform-origin: top left;
+          -webkit-transform: rotateZ(-30deg);
+              -ms-transform: rotate(-30deg);
+                  transform: rotateZ(-30deg); }
+
+@-webkit-keyframes left_animate_start {
+  from {
+    -webkit-transform: rotateZ(30deg);
+            transform: rotateZ(30deg); }
+  to {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg); } }
+
+@keyframes left_animate_start {
+  from {
+    -webkit-transform: rotateZ(30deg);
+            transform: rotateZ(30deg); }
+  to {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg); } }
+
+@-webkit-keyframes left_animate_stop {
+  from {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg); }
+  to {
+    -webkit-transform: rotateZ(30deg);
+            transform: rotateZ(30deg); } }
+
+@keyframes left_animate_stop {
+  from {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg); }
+  to {
+    -webkit-transform: rotateZ(30deg);
+            transform: rotateZ(30deg); } }
+
+@-webkit-keyframes right_animate_start {
+  from {
+    -webkit-transform: rotateZ(-30deg);
+            transform: rotateZ(-30deg); }
+  to {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg); } }
+
+@keyframes right_animate_start {
+  from {
+    -webkit-transform: rotateZ(-30deg);
+            transform: rotateZ(-30deg); }
+  to {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg); } }
+
+@-webkit-keyframes right_animate_stop {
+  from {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg); }
+  to {
+    -webkit-transform: rotateZ(-30deg);
+            transform: rotateZ(-30deg); } }
+
+@keyframes right_animate_stop {
+  from {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg); }
+  to {
+    -webkit-transform: rotateZ(-30deg);
+            transform: rotateZ(-30deg); } }
+    .stage .box .glass {
+      position: absolute;
+      width: 1.96rem;
+      left: 1rem;
+      bottom: .8rem;
+      height: 2.22rem;
+      background: url(../image/galss.png) no-repeat;
+      background-size: contain; }
+  .stage .table {
+    width: 7.26rem;
+    height: 4.13rem;
+    background: url(../image/table.png) no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: 1.2rem;
+    bottom: 0; }
+    .stage .table .button {
+      position: absolute;
+      left: 1.5rem;
+      top: 1.2rem;
+      width: 1.86rem;
+      height: 1.35rem;
+      background: url(../image/button.png) no-repeat;
+      background-size: contain; }
+    .stage .table .animateButton {
+      -webkit-transform-origin: bottom left;
+          -ms-transform-origin: bottom left;
+              transform-origin: bottom left;
+      -webkit-animation: buttonChange 1s;
+              animation: buttonChange 1s; }
+
+@-webkit-keyframes buttonChange {
+  0% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg); }
+  50% {
+    -webkit-transform: rotateX(40deg);
+            transform: rotateX(40deg); }
+  100% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg); } }
+
+@keyframes buttonChange {
+  0% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg); }
+  50% {
+    -webkit-transform: rotateX(40deg);
+            transform: rotateX(40deg); }
+  100% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg); } }
+    .stage .table .rocker {
+      position: absolute;
+      right: 1.6rem;
+      top: -.2rem;
+      width: 1.31rem;
+      height: 2.14rem;
+      background: url(../image/rocker.png) no-repeat;
+      background-size: contain; }
+
+.box_move {
+  -webkit-animation: box_move_animate 1s forwards;
+          animation: box_move_animate 1s forwards; }
+
+@-webkit-keyframes box_move_animate {
+  0% {
+    left: .5rem; }
+  100% {
+    left: 1.5rem;
+    top: .45rem; } }
+
+@keyframes box_move_animate {
+  0% {
+    left: .5rem; }
+  100% {
+    left: 1.5rem;
+    top: .45rem; } }
+
+.rodMove {
+  -webkit-animation: rodMoveAnimate 1s forwards;
+          animation: rodMoveAnimate 1s forwards; }
+
+@-webkit-keyframes rodMoveAnimate {
+  0% {
+    left: .55rem;
+    width: 7.5rem; }
+  100% {
+    left: 1rem;
+    top: .5rem;
+    width: 6.5rem; } }
+
+@keyframes rodMoveAnimate {
+  0% {
+    left: .55rem;
+    width: 7.5rem; }
+  100% {
+    left: 1rem;
+    top: .5rem;
+    width: 6.5rem; } }

@@ -1,0 +1,248 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.png) no-repeat;
+    background-size: 100%;
+	position: relative;
+    // font-family:"ARLRDBD";
+
+}
+.stage{
+	width: 100%;
+    height: 100%;
+    position: relative;
+    .hand{
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        left: 0rem;
+        top: 4.6rem;
+        animation: handClick 1s infinite;
+        display: none;
+        cursor: pointer;
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+    @keyframes handClick {
+        0%{
+            transform: translateY(.2rem)
+        }
+        100%{
+            transform: translateY(-.2rem)
+        }
+    }
+    .button{
+        width: 2.1rem;
+        height: 1.86rem;
+        background: url(../image/button.png) no-repeat;
+        background-size: 100%;
+        position: absolute;
+        left: 0;
+        top: 2.86rem;
+        cursor: pointer;
+        opacity: 0;
+    }
+    .start{
+        animation: button_start .5s;
+    }
+    @keyframes button_start {
+        from{
+            transform: rotateX(-50deg)
+        }
+        to {
+            transform: rotateX(0deg)
+        }
+    }
+    .car{
+        width: 2.45rem;
+        height: 2.54rem;
+        background: url(../image/car.png) no-repeat;
+        background-size: 100%;
+        position: absolute;
+        z-index: 10;
+    }
+    .card_1{
+        width: 2.86rem;
+        height: 2.7rem;
+        background: url(../image/card_1.png) no-repeat;
+        background-size: 100%;
+        position: absolute;
+        left: 8.9rem;
+        top: 1rem;
+        z-index: 8;
+    }
+    .card_2{
+        width: 2.86rem;
+        height: 2.7rem;
+        background: url(../image/card_2.png) no-repeat;
+        background-size: 100%;
+        position: absolute;
+        right: .95rem;
+        top: 4rem;
+        z-index: 8;
+    }
+    .card_3{
+        width: 2.86rem;
+        height: 2.7rem;
+        background: url(../image/card_3.png) no-repeat;
+        background-size: 100%;
+        position: absolute;
+        left:2.35rem;
+        top: 4.4rem;
+        z-index: 8;
+    }
+    .card_4{
+        width: 2.86rem;
+        height: 2.7rem;
+        background: url(../image/card_4.png) no-repeat;
+        background-size: 100%;
+        position: absolute;
+        left:8.5rem;
+        bottom: .3rem;
+        z-index: 8;
+    }
+    .flag{
+        width: 1.84rem;
+        height: 1.94rem;
+        background: url(../image/flag.png) no-repeat;
+        background-size: 100%;
+        position: absolute;
+        right:.7rem;
+        bottom: .13rem;
+        z-index: 16;
+    }
+}
+.pos_1{
+    left: .9rem;
+    top: .36rem;
+}
+.pos_2{
+    left: 8.9rem;
+    top: 1rem;
+    transform: rotateZ(-90deg);
+}
+.pos_3{
+    left: 15.6rem;
+    top: 4rem;
+}
+.pos_4{
+    transform: rotateZ(90deg);
+    left: 2.3rem;
+    top:4.3rem;
+}
+.pos_5{
+    transform: rotateZ(-90deg);
+    left: 8.5rem;
+    top:8rem;
+}
+.step_1 {
+    animation: step_1 2s forwards;
+}
+@keyframes step_1 {
+    0%{
+        transform: rotateZ(-90deg);
+        left: .9rem;
+        top:1rem;
+    }
+    100%{
+        transform: rotateZ(-90deg);
+        left: 8.9rem;
+        top:1rem;
+    }
+}
+.step_2 {
+    animation: step_2 2s forwards;
+}
+@keyframes step_2 {
+    0%{
+        transform: rotateZ(-90deg);
+        left: 8.9rem;
+        top:1rem;
+    }
+    50%{
+        left: 15.6rem;
+        top:1rem;
+    }
+    100%{
+        left: 15.6rem;
+        top:4rem;
+    }
+}
+
+.step_3 {
+    animation: step_3 3s forwards;
+}
+@keyframes step_3 {
+    0%{
+        transform: rotateZ(90deg);
+        left: 15.6rem;
+        top:4.3rem;
+    }
+    100%{
+        transform: rotateZ(90deg);
+        left: 2.3rem;
+        top:4.3rem;
+    }
+}
+.step_4 {
+    animation: step_4 3s forwards;
+}
+@keyframes step_4 {
+    0%{
+        left: 2rem;
+        top:4.3rem;
+    }
+    40%{
+        left: 1.3rem;
+        top:8rem;
+    }
+    50%{
+        transform: rotateZ(-90deg);
+        left: 1.3rem;
+        top:8rem;
+    }
+    100%{
+        transform: rotateZ(-90deg);
+        left: 8.5rem;
+        top:8rem;
+    }
+}
+
+.step_5 {
+    animation: step_5 3s forwards;
+}
+@keyframes step_5 {
+    0%{
+        transform: rotateZ(-90deg);
+        left: 8.5rem;
+        top:8rem;
+    }
+    100%{
+        transform: rotateZ(-90deg);
+        left: 14.7rem;
+        top:8rem;
+    }
+}
+

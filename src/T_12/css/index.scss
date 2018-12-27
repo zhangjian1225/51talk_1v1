@@ -1,0 +1,152 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.png) no-repeat;
+    background-size: 100%;
+	position: relative;
+    // font-family:"ARLRDBD";
+
+}
+.stage{
+	width: 100%;
+    height: 100%;
+    position: relative;
+    .main_img{
+        width: 6.72rem;
+        height: 6.72rem;
+        background: url(../image/box_img.png) no-repeat;
+        background-size: contain;
+        position: absolute;
+        left: 50%;
+        top: 1rem;
+        margin-left: -3.36rem;
+        img {
+            width: 5rem;
+            height: 5rem;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -2.5rem;
+            margin-top: -2.5rem;
+        }
+    }
+    .choose_list{
+        position: absolute;
+        width: 100%;
+        span{
+            position: absolute;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 1rem;
+            cursor: pointer;
+            background: url(../image/font.png) no-repeat;
+            background-size:auto 100%;
+            background-position: 0rem;
+            z-index: 10;
+        }
+        :nth-child(1){
+            left: .62rem;
+            top: 1rem;
+        }
+        :nth-child(2){
+            left: 3.23rem;
+            top: .8rem;
+        }
+        :nth-child(3){
+            left: 2.1rem;
+            top: 3.35rem;
+        }
+        :nth-child(4){
+            left: 1.2rem;
+            top: 5.8rem;
+        }
+        :nth-child(5){
+            left: 3.9rem;
+            top: 5.25rem;
+        }
+        :nth-child(6){
+            right: 3.15rem;
+            top: .95rem;
+        }
+        :nth-child(7){
+            right: .7rem;
+            top: .56rem;
+        }
+        :nth-child(8){
+            right: 3.76rem;
+            top: 3.9rem;
+        }
+        :nth-child(9){
+            right: .86rem;
+            top: 3.1rem;
+        }
+        :nth-child(10){
+            right: 1.27rem;
+            top: 5.7rem;
+        }
+
+    }
+    .empty_list{
+        position: absolute;
+        left: 0;
+        bottom: .65rem;
+        width: 100%;
+        height: 2rem;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        span {
+            display: block;
+            height: 1.9rem;
+            width: 1.9rem;
+            background: rgba(0,0,0,.3);
+            border-radius: 1rem;
+            margin-left: .2rem;
+            margin-right: .2rem;
+            box-shadow: .1rem .1rem .5rem inset;
+        }
+    }
+}
+.shake {
+    animation:shake .2s 2;
+}
+@keyframes shake {
+    0% {
+        transform:scale(1.1);
+    }
+    20% {
+        transform: translateX(.9)
+    }
+    40% {
+        transform: translateX(1.1)
+    }
+    60% {
+        transform: translateX(.9)
+    }
+    80% {
+        transform: translateX(1.1)
+    }
+    100% {
+        transform: translateX(1)
+    }
+}

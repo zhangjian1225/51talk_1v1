@@ -1,0 +1,209 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.png) no-repeat;
+    background-size: 100%;
+	position: relative;
+    // font-family:"ARLRDBD";
+
+}
+.stage{
+	width: 100%;
+    height: 100%;
+    position: relative;
+    .palette{
+        position: absolute;
+        left: 0rem;
+        top: .7rem;
+        width: 1.8rem;
+        // height: 7.2rem;
+        background: rgba(0,0,0,.3);
+        border-radius: .2rem;
+        box-sizing: border-box;
+        padding: .1rem;
+        .palette_color{
+            cursor: pointer;
+            width: 100%;
+            // height: 100%;
+            background: #fdffd0;
+            border-radius: .2rem;
+            box-sizing: border-box;
+            padding: .08rem;
+            .color_box {
+                width: 100%;
+                border-radius: .2rem .2rem .2rem .2rem;
+                overflow: hidden;
+                .color{
+                    width: 100%;
+                    height: 1.65rem;
+                    margin-bottom: .09rem;
+                }
+                // .color_1{
+                //     // border-radius: .2rem .2rem 0 0;
+                //     background: #f4be70;
+                // }
+                // .color_4{
+                //     // border-radius: 0 0 .2rem .2rem;
+                //     background: #a09fc5;
+                // }
+                // .color_2{
+                //     background: #d1a11c;
+                // }
+                // .color_3{
+                //     background: #ffeebd;
+                // }
+            }
+        }
+    }
+    .eye_box{
+        width: 3.4rem;
+        background: rgba(0,0,0,.3);
+        border-radius: .2rem;
+        position: absolute;
+        left: 1.8rem;
+        top: 1.75rem;
+        box-sizing: border-box;
+        padding: .1rem .1rem 0 .1rem;
+        .eye{
+            width: 100%;
+            height: 1.7rem;
+            background: #fdffd0;
+            position: relative;
+            border-radius: .2rem;
+            margin-bottom: .1rem;
+            box-sizing: border-box;
+            cursor: pointer;
+            img{
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                margin: auto;
+                width: 90%;
+                height: auto;
+                z-index: 11;
+            }
+            .eye_move {
+                width: 5rem;
+                height: auto;
+            }
+        }
+    }
+    .nose_box {
+        width: 3.6rem;
+        border-radius: .2rem;
+        position: absolute;
+        right: .3rem;
+        top: .3rem;
+        box-sizing: border-box;
+        padding: .1rem .1rem 0 .1rem;
+        background: #fdffd0;
+        .nose {
+            width: 100%;
+            height: 1.75rem;
+            margin-bottom: .1rem;
+            position: relative;
+            cursor: pointer;
+            img{
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                margin: auto;
+                width:auto;
+                height: 100%;
+                z-index: 11;
+            }
+            .nose_move {
+                width: 2.3rem;
+                height: auto;
+            }
+        }
+    }
+    .ear_box {
+        width: 3.6rem;
+        border-radius: .2rem;
+        position: absolute;
+        right: .3rem;
+        bottom: .3rem;
+        box-sizing: border-box;
+        padding: .1rem .1rem 0 .1rem;
+        background: #fdffd0;
+        .ear {
+            width: 100%;
+            height: 1.35rem;
+            margin-bottom: .1rem;
+            position: relative;
+            cursor: pointer;
+            img{
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                margin: auto;
+                width:auto;
+                height: 100%;
+                z-index: 10;
+            }
+            .ear_move {
+                width: 6.6rem;
+                height: auto;
+            }
+        }
+    }
+    .cat_body{
+        width: 8.95rem;
+        height: 7.65rem;
+        position: absolute;
+        left: 5.45rem;
+        bottom: .85rem;
+        background: url('../assets/images/cat_1.png') no-repeat;
+        background-size: contain;
+        z-index: 9;
+        .eye_pos{
+            width: 5rem;
+            height: 1.6rem;
+            position: absolute;
+            left: 2.1rem;
+            top: 1.15rem;
+        }
+        .nose_pos{
+            width: 2.3rem;
+            height: 1.7rem;
+            position: absolute;
+            left: 3.5rem;
+            top: 2.75rem;
+        }
+        .ear_pos{
+            width: 6.6rem;
+            height: 3.5rem;
+            position: absolute;
+            left:1rem;
+            top: -1.1rem;
+        }
+    }
+}
+

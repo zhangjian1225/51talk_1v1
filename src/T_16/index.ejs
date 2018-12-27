@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=0">
+    <title>TCP0001_拼图翻转选择(
+        <%= new Date().getFullYear()%>-
+            <%= new Date().getMonth()+1 %>-
+                <%= new Date().getDate() %>)</title>
+    <link rel="stylesheet" href="css/index.css?v=<%=new Date().getTime()%>">
+    <script src="../../jquery-2.1.1.min.js"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<script src="/assets/js/jquery/2.1.1/jquery.min.js"><\/script>')
+        } 
+    </script>
+    <script src="js/tracking.js?v=<%=new Date().getTime()%>"></script>
+    <script src="js/sdk.js?v=<%=new Date().getTime()%>"></script>
+    <script src="js/fit.js?v=<%=new Date().getTime()%>"></script>
+</head>
+
+<body>
+    <div class="container" id="container" data-syncresult="show-result-1" style="background-image: url('./image/bk.png');">
+        <section class="commom">
+            <div class="desc"></div>
+            <div class="title">
+                <h3></h3>
+            </div>
+        </section>
+        <audio class="audioWrong" id="audioWrong" webkit-playsinline controls src="audio/wrong.mp3"></audio>
+        <audio class="audioRight" id="audioRight" webkit-playsinline controls src="audio/Right.mp3"></audio>
+        <audio class="audioClick" id="audioClick" webkit-playsinline controls src="audio/click.mp3"></audio>
+        <audio class="audioScroll" id="audioScroll" webkit-playsinline controls src="audio/fan.mp3"></audio>
+        <section class="main">
+            <div class="show">
+                <div class="left">
+                    <div class="answerImg">
+                        <img src="" alt="">
+                        <div class="mainInfor">
+                            <div class="answerAudio audioClicks" data-syncactions="audioEnd">
+                                <img class="audioBack" src="image/btn-Audios.png">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="d-box d-box1 scroll" data-syncactions="scroll_1">
+                        <div class="showPicBox showPicBox1">
+                            <div class="showBack">
+                                <img src="image/cover.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-box d-box2 scroll" data-syncactions="scroll_2">
+                        <div class="showPicBox showPicBox2">
+                            <div class="showBack">
+                                <img src="image/cover.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-box d-box3 scroll" data-syncactions="scroll_3">
+                        <div class="showPicBox showPicBox3">
+                            <div class="showBack">
+                                <img src="image/cover.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-box d-box4 scroll" data-syncactions="scroll_4">
+                        <div class="showPicBox showPicBox4">
+                            <div class="showBack">
+                                <img src="image/cover.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-box d-box5 scroll" data-syncactions="scroll_5">
+                        <div class="showPicBox showPicBox5">
+                            <div class="showBack">
+                                <img src="image/cover.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-box d-box6 scroll" data-syncactions="scroll_6">
+                        <div class="showPicBox showPicBox6">
+                            <div class="showBack">
+                                <img src="image/cover.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-box d-box7 scroll" data-syncactions="scroll_7">
+                        <div class="showPicBox showPicBox7">
+                            <div class="showBack">
+                                <img src="image/cover.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-box d-box8 scroll" data-syncactions="scroll_8">
+                        <div class="showPicBox showPicBox8">
+                            <div class="showBack">
+                                <img src="image/cover.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-box d-box9 scroll" data-syncactions="scroll_9">
+                        <div class="showPicBox showPicBox9">
+                            <div class="showBack">
+                                <img src="image/cover.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="optBox">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script type="text/javascript" src="content.js?v=<%=new Date().getTime()%>"></script>
+    <script type="text/javascript" src="js/index.js?v=<%=new Date().getTime()%>"></script>
+</body>
+
+</html>

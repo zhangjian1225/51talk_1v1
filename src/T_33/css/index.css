@@ -1,0 +1,317 @@
+@charset "UTF-8";
+/*!
+ * 
+ * copyright (c) 2016 innovation
+ * author: windsolider
+ * update: Fri May 11 2018 17:15:26 GMT+0800 (中国标准时间)
+ */
+@import url(../../common/css/reset-2.css);
+@import url(../../common/css/animation.css);
+.drag {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 101;
+  display: none; }
+
+.desc-visi {
+  visibility: hidden; }
+
+.tg {
+  z-index: 999; }
+
+.stu {
+  width: 100%;
+  height: 100%; }
+
+.tea {
+  width: 100%;
+  height: 100%; }
+
+.stage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  left: 0;
+  top: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  .stage .imgList {
+    width: 2.8rem;
+    height: 100%;
+    background: #e9e3d2;
+    position: relative; }
+    .stage .imgList .upMask {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 1.6rem;
+      z-index: 40;
+      background: #e9e3d2; }
+    .stage .imgList .downMask {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2.3rem;
+      z-index: 40;
+      background: #e9e3d2; }
+    .stage .imgList .btns {
+      position: absolute;
+      width: 2.4rem;
+      height: .73rem;
+      left: .2rem;
+      bottom: 1.29rem;
+      box-shadow: 0 0 0.12rem rgba(0, 0, 0, 0.25);
+      background: #ffc600;
+      border-radius: .37rem;
+      overflow: hidden;
+      z-index: 41; }
+      .stage .imgList .btns .upBtn {
+        float: left;
+        width: 1.2rem;
+        height: 100%;
+        cursor: pointer;
+        background: #fdd132;
+        position: relative; }
+        .stage .imgList .btns .upBtn img {
+          width: auto;
+          height: .5rem;
+          position: absolute;
+          left: .3rem;
+          top: .12rem;
+          opacity: .8; }
+      .stage .imgList .btns .downBtn {
+        float: left;
+        width: 1.2rem;
+        height: 100%;
+        cursor: pointer;
+        background: #ffc600;
+        position: relative; }
+        .stage .imgList .btns .downBtn img {
+          width: auto;
+          height: .5rem;
+          position: absolute;
+          left: .25rem;
+          top: .13rem; }
+  .stage .imgFont {
+    position: absolute;
+    left: 0rem;
+    top: 0rem;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; }
+    .stage .imgFont .ans-area {
+      position: absolute;
+      width: 2.4rem;
+      height: 1.8rem;
+      left: .2rem;
+      z-index: 20;
+      cursor: pointer; }
+      .stage .imgFont .ans-area img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto; }
+      .stage .imgFont .ans-area p {
+        width: 100%;
+        height: .96rem;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        background: #fff;
+        border-radius: .32rem;
+        box-shadow: 0 0.04rem 0.08rem rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: .1rem;
+        font-size: .32rem;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            -ms-flex-align: center;
+                align-items: center;
+        text-align: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        word-break: break-all; }
+  .stage .freeArea {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    background-size: 100% 100%; }
+    .stage .freeArea .descTitle {
+      width: 100%; }
+      .stage .freeArea .descTitle .desc {
+        width: 100%;
+        height: .56rem;
+        background: rgba(255, 255, 255, 0.75);
+        font-size: .32rem;
+        line-height: .56rem;
+        box-sizing: border-box;
+        color: #333333;
+        padding-left: .34rem; }
+      .stage .freeArea .descTitle .title {
+        width: 13.2rem;
+        height: 1.2rem;
+        margin: auto;
+        margin-top: .16rem;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: .65rem;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 0 .44rem 0 .44rem; }
+        .stage .freeArea .descTitle .title h3 {
+          width: 100%;
+          height: 100%;
+          font-size: .4rem;
+          color: #ffffff;
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -webkit-align-items: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          text-align: center;
+          -webkit-box-pack: center;
+          -webkit-justify-content: center;
+              -ms-flex-pack: center;
+                  justify-content: center; }
+    .stage .freeArea .freeDom {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      width: 100%; }
+      .stage .freeArea .freeDom #ansFont {
+        width: 2.4rem;
+        height: .96rem;
+        background: #fff;
+        border-radius: .32rem;
+        box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.3);
+        left: .2rem;
+        box-sizing: border-box;
+        overflow: hidden;
+        padding: 0 .09rem 0 .09rem; }
+        .stage .freeArea .freeDom #ansFont p {
+          width: 100%;
+          height: 100%;
+          font-size: .32rem;
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -webkit-align-items: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          text-align: center;
+          -webkit-box-pack: center;
+          -webkit-justify-content: center;
+              -ms-flex-pack: center;
+                  justify-content: center;
+          word-break: break-all; }
+      .stage .freeArea .freeDom ul {
+        width: 14.75rem;
+        height: 100%;
+        margin-left: .3rem;
+        margin-top: .22rem;
+        position: relative; }
+        .stage .freeArea .freeDom ul li {
+          width: 2.44rem;
+          height: 2.44rem;
+          position: absolute; }
+          .stage .freeArea .freeDom ul li div {
+            z-index: 20; }
+  .stage .cloneHtml {
+    position: absolute;
+    width: 2rem;
+    height: 2rem; }
+    .stage .cloneHtml img {
+      width: 100%;
+      height: 100%; }
+
+.line {
+  width: 14.75rem;
+  height: 7.4rem;
+  background: url(../image/lines.png) no-repeat;
+  background-size: 100%;
+  position: absolute;
+  left: 3.1rem;
+  top: 2.15rem;
+  z-index: 10;
+  display: none; }
+
+.emShake {
+  -webkit-animation: shake 0.5s;
+          animation: shake 0.5s; }
+
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: translateX(0.05rem);
+            transform: translateX(0.05rem); }
+  20% {
+    -webkit-transform: translateX(-0.1rem);
+            transform: translateX(-0.1rem); }
+  40% {
+    -webkit-transform: translateX(0.1rem);
+            transform: translateX(0.1rem); }
+  60% {
+    -webkit-transform: translateX(-0.1rem);
+            transform: translateX(-0.1rem); }
+  80% {
+    -webkit-transform: translateX(0.1rem);
+            transform: translateX(0.1rem); }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0); } }
+
+@keyframes shake {
+  0% {
+    -webkit-transform: translateX(0.05rem);
+            transform: translateX(0.05rem); }
+  20% {
+    -webkit-transform: translateX(-0.1rem);
+            transform: translateX(-0.1rem); }
+  40% {
+    -webkit-transform: translateX(0.1rem);
+            transform: translateX(0.1rem); }
+  60% {
+    -webkit-transform: translateX(-0.1rem);
+            transform: translateX(-0.1rem); }
+  80% {
+    -webkit-transform: translateX(0.1rem);
+            transform: translateX(0.1rem); }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0); } }
+
+.showDrag {
+  display: block; }

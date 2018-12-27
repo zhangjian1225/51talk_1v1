@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>TMA0001_连线</title>
+	<link rel="stylesheet" href="form/css/style.css">
+	<script src='form/js/jquery-2.1.1.min.js'></script>
+	<script src='form/js/vue.min.js'></script>
+</head>
+
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="module-title">TMA0001_连线</div>
+
+			<% include ./src/common/template/common_head_nontitle %>
+
+			<div class="c-group">
+				<div class="c-title">连线区域</div>
+				<div class="c-areAtation img-upload">
+					<font>注:如果有4个选项</font><em>图片尺寸：344*194,&nbsp;&nbsp;</em><font>若只有3或2个选项：</font><em>图片尺寸：460*260</em>
+				</div>
+				<div class="c-area upload img-upload">
+					<div class="c-well" v-for="(item, index) in configData.source.options">
+						<span class="dele-tg-btn" @click="delOption(item)" v-show="configData.source.options.length>2"></span>
+						<div class="field-wrap">
+							<label class="field-label"  for="">图片</label>
+							<span class='txt-info'>（显示位置：2）<em>文件大小≤50KB * </em></span> 
+							<input type="file"  v-bind:key="Date.now()" class="btn-file" :id="'content-pic-'+index" size="344*194,460*260" @change="imageUpload($event,item,'pic',index,50)">
+						</div>
+
+						<div class="field-wrap">
+							<label :for="'content-pic-'+index" class="btn btn-show upload" v-if="!item.pic">上传</label>
+							<label :for="'content-pic-'+index" class="btn upload re-upload" v-if="item.pic">重新上传</label>
+						</div>
+						<div class="img-preview" v-if="item.pic">
+							<img :src="item.pic" alt=""/>
+							<div class="img-tools">
+								<span class="btn btn-delete" @click="delPrew(item)">删除</span>
+							</div>
+						</div>
+						<!-- 上传声音 -->
+						<div class="field-wrap">
+							<label class="field-label"  for="">内容声音（显示位置：4<em>文件大小≤50KB</em></label>
+							<div>
+								<label :for="'audio-upload-'+index" class="btn btn-show upload" v-if="!item.audio">上传</label>
+								<label  :for="'audio-upload-'+index" class="btn upload re-upload mar" v-if="item.audio">重新上传</label>
+							</div>
+							<div class="audio-preview" v-show="item.audio">
+								<div class="audio-tools">
+									<p v-show="item.audio">{{item.audio}}</p>
+								</div>
+								<span class="play-btn" v-on:click="play($event)">
+									<audio v-bind:src="item.audio"></audio>
+								</span>
+							</div>
+							<span class="btn btn-audio-dele" v-show="item.audio" v-on:click="item.audio=''">删除</span>
+							
+							<input type="file" :id="'audio-upload-'+index" class="btn-file upload" size="" accept=".mp3" v-on:change="audioUpload($event,item,index,'audio',50)" v-bind:key="Date.now()">
+						</div>
+						<label>文字 （显示位置：3）<em>字符：≤100 * </em></label>
+						<input type="text" class='c-input-txt' placeholder="请在此输入问题" v-model="configData.source.options[index].text" maxlength="100">
+					</div>
+					<button v-if="configData.source.options.length<4" type="button" class="add-tg-btn" @click="addOption" >+</button>
+				</div> 
+			</div>
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/preview.jpg?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li>
+						<em>图片格式：</em>JPG/PNG/GIF</li>
+					<li>
+						<em>声音格式：</em>MP3/WAV</li>
+					<li>
+						<em>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+
+</html>

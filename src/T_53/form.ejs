@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TRE0002_魔术帽子 </title>
+	<link rel="stylesheet" href="form/css/style.css">
+	<script src='form/js/jquery-2.1.1.min.js'></script>
+	<script src='form/js/vue.min.js'></script>
+</head>
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="h-title">TRE0002_魔术帽子 </div>
+			
+			<% include ./src/common/template/common_head %>
+
+			<div class="c-group">
+				<div class="c-title">设置学习内容（必填）</div>
+				<div class="c-area upload img-upload">
+					<label for="">- 五组内容为选填、但至少上传一组。
+							若该组上传了图片，则答案为必填项、音效为选填。
+							- 上传序号和图片的位置一一对应。
+					</label>
+					<ul>
+						<li v-for="(item, index) in configData.source.options">	
+							<div class="c-well">
+							<span>序号{{index+1}}</span>
+								<div class="field-wrap">
+									<label class="field-label" for="">上传图片</label>
+									<span class='txt-info'><em>&nbsp;&nbsp;文件大小:≤50KB 尺寸大小:220x220 </em></span>
+									<input type="file" v-bind:key="Date.now()" class="btn-file" :id="'content-pic-'+index" size="220*220" @change="imageUpload($event,item,'image',50)">
+								</div>
+								
+								<div class="field-wrap">
+									<label :for="'content-pic-'+index" class="btn btn-show upload" v-if="!item.image">上传</label>
+									<label :for="'content-pic-'+index" class="btn upload re-upload" v-if="item.image">重新上传</label>
+								</div>
+								<div class="img-preview" v-if="item.image">
+									<img :src="item.image" alt="" />
+									<div class="img-tools">
+										<span class="btn btn-delete" @click="delPrew(item)">删除</span>
+									</div>
+								</div>
+
+								<!-- 上传声音 -->
+								<div class="field-wrap">
+									<label class="field-label"  for="">上传音效&nbsp;&nbsp;<em>文件大小≤50KB</em></label>
+									<div>
+										<label :for="'audio-upload-'+index" class="btn btn-show upload" v-if="item.audio==''?true:false">上传</label>
+										<label  :for="'audio-upload-'+index" class="btn upload re-upload mar" v-if="item.audio!=''?true:false">重新上传</label>
+									</div>
+									<div class="audio-preview" v-show="item.audio!=''?true:false">
+										<div class="audio-tools">
+											<p v-show="item.audio!=''?true:false">{{item.audio}}</p>
+										</div>
+										<span class="play-btn" v-on:click="play($event)">
+											<audio v-bind:src="item.audio"></audio>
+										</span>
+									</div>
+									<span class="btn btn-audio-dele" v-show="item.audio!=''?true:false" v-on:click="item.audio=''">删除</span>
+									<input type="file" :id="'audio-upload-'+index" class="btn-file upload" size="" accept=".mp3" v-on:change="audioUpload($event,item,'audio',50)" v-bind:key="Date.now()">
+								</div>
+									<!-- 答案 -->
+								<div class="field-wrap">
+									<label>答案：&nbsp;&nbsp;<em>字符≤20</em></label>
+									<input type="text" class='c-input-txt' maxlength="20" placeholder="" v-model="item.text">
+								</div>
+							</div>
+						</li>
+					</ul>
+					<!-- <button v-if="configData.source.options.length<6" type="button" class="add-tg-btn" @click="addSele" >+</button>	 -->
+				</div>
+			</div>
+			<div class="c-group">
+				<div class="c-title">魔术手势动作（非必填）</div>
+				<div class="c-area upload img-upload">
+					<div class="c-well">
+						<div class="field-wrap">
+							<label class="field-label" for="">上传图片</label>
+							<span class='txt-info'><em>&nbsp;&nbsp;文件大小:≤50KB 尺寸大小:760x320 </em></span>
+							<input type="file" v-bind:key="Date.now()" class="btn-file" id="pic-hand" size="760*320" @change="imageUpload($event,configData.source,'handImg',50)">
+						</div>
+						
+						<div class="field-wrap">
+							<label for="pic-hand" class="btn btn-show upload" v-if="!configData.source.handImg">上传</label>
+							<label for="pic-hand" class="btn upload re-upload" v-if="configData.source.handImg">重新上传</label>
+						</div>
+						<div class="img-preview" v-if="configData.source.handImg">
+							<img :src="configData.source.handImg" alt="" />
+							<div class="img-tools">
+								<span class="btn btn-delete" @click="delHand()">删除</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/preview.jpg?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li><em>图片格式：</em>JPG/PNG/GIF</li>
+					<li><em>声音格式：</em>MP3/WAV</li>
+					<li><em>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+</html>

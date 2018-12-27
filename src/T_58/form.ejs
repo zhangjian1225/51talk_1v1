@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>TRE0001_芝麻开门</title>
+	<link rel="stylesheet" href="form/css/style.css">
+	<script src='form/js/jquery-2.1.1.min.js'></script>
+	<script src='form/js/vue.min.js'></script>
+</head>
+
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="module-title">TRE0001_芝麻开门</div>
+
+			<% include ./src/common/template/common_head %>
+
+				<div class="c-group">
+					<div class="c-title">学习内容_答案 （必填）</div>
+					<div class="c-area upload img-upload radio-group">
+						<div class="field-wrap">
+							<label class="field-label" for="">上传图片</label>
+							<span class='txt-info'><em>2帧雪碧图 尺寸：2000X670。文件大小≤50KB</em> <em style="color:red;">*</em></span>
+							<input type="file" v-bind:key="Date.now()" class="btn-file" id="doorImg" size="2000*670" v-on:change="imageUpload($event,configData.source,'doorImg',100)">
+						</div>
+						<div class="field-wrap">
+							<label for="doorImg" class="btn btn-show upload" v-if="configData.source.doorImg==''?true:false">上传</label>
+							<label for="doorImg" class="btn upload re-upload" v-if="configData.source.doorImg!=''?true:false">重新上传</label>
+						</div>
+						<div class="img-preview" v-if="configData.source.doorImg!=''?true:false">
+							<img v-bind:src="configData.source.doorImg" alt="" />
+							<div class="img-tools">
+								<span class="btn btn-delete" v-on:click="configData.source.doorImg=''">删除</span>
+							</div>
+						</div>
+					</div>
+					<div class="well-con" style="font-size: 14px; color:#666; margin-top: 10px; margin-bottom: 10px;">
+						<label style="margin-left:20px;">答案</label>
+						<input type="text" class='c-input-txt' v-model="configData.source.font" style="width: 100px; height: 20px; margin-left:10px" maxlength='20'>
+						<label>（英文文本，字符数量少于20个 ）</label>
+						<em style="color:red;">*</em>
+					</div>
+					<div class="c-area upload img-upload radio-group">
+						<div class="field-wrap">
+							<label class="field-label"  for="">上传音频</label>
+							<span class='txt-info'>&nbsp;&nbsp; 大小：≤50KB</span>
+							<input type="file" accept=".mp3" class="btn-file"
+								v-bind:key="Date.now()"  
+								id="audio" 
+								volume="50"
+								@change="audioUpload($event,configData.source,'audio',50)">
+						</div>
+						<div class="field-wrap">
+							<label for="audio" class="btn btn-show upload" v-if="!configData.source.audio">上传</label>
+							<div class="audio-preview" v-show="configData.source.audio">
+								<div class="audio-tools">
+									<p v-show="configData.source.audio">{{configData.source.audio}}</p>
+								</div>
+								<span class="play-btn" v-on:click="play($event)">
+									<audio v-bind:src="configData.source.audio"></audio>
+								</span>
+							</div>
+							<label for="audio" class="btn upload btn-audio-dele" v-if="configData.source.audio" @click="configData.source.audio=''">删除</label>
+							<label for="audio" class="btn upload re-upload" v-if="configData.source.audio">重新上传</label>
+						</div>
+					</div>
+					<div class="well-con" style="font-size: 14px; color:#666; margin-top: 10px; margin-bottom: 10px;">
+						<label style="margin-left:20px;">答案动图&声音播放次数</label>
+						<input type="text" class='c-input-txt' v-model="configData.source.num" style="width: 50px; height: 20px; margin-left:10px" maxlength='1'>
+						<label>（数字：限制范围：1~5 ）</label>
+					</div>
+				</div>
+
+				<div class="c-group">
+					<div class="c-title"> 环境素材：门的状态图 （非必填） 如不上传，将使用默认图</div>
+					<span style="color:red; font-size:14px; display:block; width:90%; margin-left: 5%; margin-top:10px;">校验填写完整性，仅允许全部上传替换，或者全不替换；不允许仅上传一部分。</span>
+					<div class="c-area upload img-upload radio-group">
+						<div class="field-wrap">
+							<label class="field-label" for="">门的底图</label>
+							<input type="file" v-bind:key="Date.now()" class="btn-file" id="doorBg" size="1000*670" v-on:change="imageUpload($event,configData.source,'doorBg',50)">
+						</div>
+						<div class="field-wrap">
+							<label for="doorBg" class="btn btn-show upload" v-if="configData.source.doorBg==''?true:false">上传</label>
+							<label for="doorBg" class="btn upload re-upload" v-if="configData.source.doorBg!=''?true:false">重新上传</label>
+							<span class='txt-info'><em>尺寸：1000X670。文件大小≤50KB</em></span>
+						</div>
+						<div class="img-preview" v-if="configData.source.doorBg!=''?true:false">
+							<img v-bind:src="configData.source.doorBg" alt="" />
+							<div class="img-tools">
+								<span class="btn btn-delete" v-on:click="configData.source.doorBg=''">删除</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="c-area upload img-upload radio-group">
+						<div class="field-wrap">
+							<label class="field-label" for="">状态图_已解锁1个 </label>
+							<input type="file" v-bind:key="Date.now()" class="btn-file" id="lockOne" size="640*500" v-on:change="imageUpload($event,configData.source,'lockOne',50)">
+						</div>
+						<div class="field-wrap">
+							<label for="lockOne" class="btn btn-show upload" v-if="configData.source.lockOne==''?true:false">上传</label>
+							<label for="lockOne" class="btn upload re-upload" v-if="configData.source.lockOne!=''?true:false">重新上传</label>
+							<span class='txt-info'><em>尺寸：640X500。文件大小≤50KB</em></span>
+						</div>
+						<div class="img-preview" v-if="configData.source.lockOne!=''?true:false">
+							<img v-bind:src="configData.source.lockOne" alt="" />
+							<div class="img-tools">
+								<span class="btn btn-delete" v-on:click="configData.source.lockOne=''">删除</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="c-area upload img-upload radio-group">
+						<div class="field-wrap">
+							<label class="field-label" for="">状态图_已解锁2个</label>
+							<input type="file" v-bind:key="Date.now()" class="btn-file" id="lockTwo" size="640*500" v-on:change="imageUpload($event,configData.source,'lockTwo',50)">
+						</div>
+						<div class="field-wrap">
+							<label for="lockTwo" class="btn btn-show upload" v-if="configData.source.lockTwo==''?true:false">上传</label>
+							<label for="lockTwo" class="btn upload re-upload" v-if="configData.source.lockTwo!=''?true:false">重新上传</label>
+							<span class='txt-info'><em>尺寸：640X500。文件大小≤50KB</em></span>
+						</div>
+						<div class="img-preview" v-if="configData.source.lockTwo!=''?true:false">
+							<img v-bind:src="configData.source.lockTwo" alt="" />
+							<div class="img-tools">
+								<span class="btn btn-delete" v-on:click="configData.source.lockTwo=''">删除</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="c-area upload img-upload radio-group">
+						<div class="field-wrap">
+							<label class="field-label" for="">状态图_已解锁3个</label>
+							<input type="file" v-bind:key="Date.now()" class="btn-file" id="lockThree" size="640*500" v-on:change="imageUpload($event,configData.source,'lockThree',50)">
+						</div>
+						<div class="field-wrap">
+							<label for="lockThree" class="btn btn-show upload" v-if="configData.source.lockThree==''?true:false">上传</label>
+							<label for="lockThree" class="btn upload re-upload" v-if="configData.source.lockThree!=''?true:false">重新上传</label>
+							<span class='txt-info'><em>尺寸：640X500。文件大小≤50KB</em></span>
+						</div>
+						<div class="img-preview" v-if="configData.source.lockThree!=''?true:false">
+							<img v-bind:src="configData.source.lockThree" alt="" />
+							<div class="img-tools">
+								<span class="btn btn-delete" v-on:click="configData.source.lockThree=''">删除</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/preview.jpg?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li>
+						<em>图片格式：</em>JPG/PNG/GIF</li>
+					<li>
+						<em>声音格式：</em>MP3/WAV</li>
+					<li>
+						<em>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+
+</html>

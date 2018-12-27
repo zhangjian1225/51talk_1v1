@@ -1,0 +1,126 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.png) no-repeat;
+    background-size: 100%;
+	position: relative;
+    // font-family:"ARLRDBD";
+
+}
+.stage{
+	width: 100%;
+    height: 100%;
+    position: relative;
+    .box {
+        width: 18rem;
+        height: 9rem;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -4.5rem 0 0 -9rem;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items:center;
+        cursor: pointer;
+        li{
+            width: 3rem;
+            height: 3rem;
+            cursor: pointer;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .shake {
+            animation: shake .5s;
+        }
+        @keyframes shake {
+            0%{
+                transform: translate(10px)
+            }
+            20%{
+                transform: translate(-10px)
+            }
+            40%{
+                transform: translate(10px)
+            }
+            60%{
+                transform: translate(-10px)
+            }
+            70%{
+                transform: translate(10px)
+            }
+            80%{
+                transform: translate(-10px)
+            }
+            100%{
+                transform: translate(0px)
+            }
+        }
+    }
+    .text_show{
+        width: 100%;
+        height: 1rem;
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #fff;
+        font-size: .8rem;
+        text-align: center;
+        line-height: 1rem;
+        display: none;
+    }
+    .mask{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: rgba(0,0,0,.5);
+        display: none;
+        .text{
+            width: 100%;
+            height: 2rem;
+            position: absolute;
+            top: 50%;
+            margin-top: -1rem;
+            text-align: center;
+            line-height: 2rem;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+        .textAnimate {
+            animation: textAnimate 1s;
+        }
+        @keyframes textAnimate {
+            0%{
+                transform: scale(0)
+            }
+            100%{
+                transform: scale(1)
+            }
+        }
+    }
+}
+

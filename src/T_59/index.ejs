@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="max-age=60">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=0">
+    <title>TTR0001_过渡页(
+        <%= new Date().getFullYear()%>-
+            <%= new Date().getMonth()+1 %>-
+                <%= new Date().getDate() %>)</title>
+    <link rel="stylesheet" href="css/index.css?v=<%=new Date().getTime()%>">
+    <script src="../../jquery-2.1.1.min.js"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<script src="/assets/js/jquery/2.1.1/jquery.min.js"><\/script>');
+        } 
+    </script>
+    <script src="js/tracking.js?v=<%=new Date().getTime()%>"></script>
+    <script src="js/sdk.js?v=<%=new Date().getTime()%>"></script>
+    <script src="js/fit.js?v=<%=new Date().getTime()%>"></script>
+</head>
+
+<body>
+    <div class="container" id="container" data-syncresult='show-result-1'>
+        <section class="commom">
+            <div class="desc"></div>
+            <div class="title">
+                <h3></h3>
+            </div>
+        </section>
+
+        <section class="main">
+            <audio src="./audio/audio.mp3"></audio>
+            <div class="boxList">
+                <ul class="boxUl"></ul>
+            </div>
+            <div class="moveImg">
+                <img src="./image/light.png" class="light"/>
+            </div>
+            <div class="hand" data-syncactions="btns"></div>
+        </section>
+
+    </div>
+    <script type="text/javascript" src="content.js?v=<%=new Date().getTime()%>"></script>
+    <script type="text/javascript" src="js/funParabola.js"></script>
+    <script type="text/javascript" src="js/index.js?v=<%=new Date().getTime()%>"></script>
+</body>
+
+</html>

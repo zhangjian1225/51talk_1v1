@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="max-age=60">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>TDR0001_拖拽_可选(<%= new Date().getMonth()+1 %>-<%= new Date().getDate() %>-<%= Date.now() %>)</title>
+    <link rel="stylesheet" href="css/index.css?v=<%=new Date().getTime()%>">
+    <script src="../../jquery-2.1.1.min.js"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<script src="/assets/js/jquery/2.1.1/jquery.min.js"><\/script>');
+        } 
+    </script>
+    <script src="js/tracking.js?v=<%=new Date().getTime()%>"></script>
+    <script src="js/sdk.js?v=<%=new Date().getTime()%>"></script>
+    <script src="js/fit.js?v=<%=new Date().getTime()%>"></script>
+</head>
+<body>
+<div class="container" id="container" data-syncresult='1'>
+    <div class="cover"></div>
+    <section class="commom">
+        <div class="desc"></div>
+        <div class="title">
+            <h3></h3>
+        </div>
+    </section>
+    
+    <section class="main">
+        <div class="stage">
+            <div class="btns">
+                <span class="upBtn sameBtn noChange" data-syncactions="upBtn"><img src="./image/up.png"/></span>
+                <span class="downBtn sameBtn" data-syncactions="downBtn"><img src="./image/down.png"/></span>
+            </div>
+            <div class="dis-area"></div>
+            <div class="ansButton-area">
+                <div class="ans-btn" data-syncactions='btn-1'>Submit</div>
+            </div>
+        </div>
+    </section>
+</div>
+<script type="text/javascript" src="content.js?v=<%=new Date().getTime()%>"></script>
+<script type="text/javascript" src="js/index.js?v=<%=new Date().getTime()%>"></script>
+</body>
+</html>

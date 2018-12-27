@@ -1,0 +1,327 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+
+.desc-visi{
+	visibility: hidden;
+}
+.container{
+	background-image: url(../image/defaultBg.png);
+	position: relative;
+    font-family:"ARLRDBD";
+    position: relative;
+}
+.main{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+.hide{
+    display: none;
+}
+.stage{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    .main_box {
+        position: absolute;
+        left: 2rem;
+        top: 1.5rem;
+        width: 9rem;
+        height: 8.5rem;
+        overflow: hidden;
+        .catch_doll {
+            height: 2.7rem;
+            width: 2.5rem;
+            position: absolute;
+            z-index: 3;
+            bottom: 0;
+            left:2.4rem;
+            // background: red;
+        }
+        .upDoll {
+            animation: doll_move 1s linear forwards;
+        }
+        .leftDoll {
+            animation: doll_left 1s linear forwards;
+        }
+        .downDoll {
+            animation: doll_down 1s linear forwards;
+        }
+        // 顶部横杆
+        .billot {
+            position: absolute;
+            width: 6.7rem;
+            height: 0.6rem;
+            background: url("../image/8.png") no-repeat;
+            background-size: 100% auto;
+            top: .35rem;
+            left: 1rem;
+            z-index: 3;
+        }
+        .billotAn {
+            animation: move_billot 1s linear forwards;
+        }
+        // 移动块
+        .moveItem {
+            position: absolute;
+            width: .69rem;
+            height: 0.3rem;
+            background: url("../image/6.png") no-repeat;
+            background-size: contain;
+            top: -.1rem;
+            left: 6rem;
+            z-index: 3;
+        }
+        .moveItemAn {
+            animation: move_moveItem 1s linear forwards;
+        }
+        .moveItemAn_2 {
+            animation: move_moveItem_2 1s linear forwards;
+        }
+        // 线
+        .line {
+            position: absolute;
+            left: .3rem;
+            top: .3rem;
+            width: .08rem;
+            height: 1.8rem;
+            background: #d4c9c7;
+            z-index: 3;
+        }
+        .lineAn {
+            animation: line_long 1s linear forwards;
+        }
+        .lineAn_2 {
+            animation: line_sort 1s linear forwards;
+        }
+        // 夹子
+        .claw {
+            position: absolute;
+            width: 1.01rem;
+            height: .88rem;
+            background: url("../image/4.png") no-repeat;
+            background-size: contain;
+            bottom: -.8rem;
+            right: -.45rem;
+            z-index: 4;
+            .left_claw{
+                position: absolute;
+                width:.59rem;
+                height: 1.3rem;
+                background: url("../image/1.png") no-repeat;
+                background-size: contain;
+                bottom: -.85rem;
+                left: -.35rem;
+                z-index: 4;
+            }
+            .catchLe {
+                transform-origin: top right;
+                transform: rotateZ(-20deg)
+            }
+            .right_claw{
+                position: absolute;
+                width:.59rem;
+                height: 1.3rem;
+                background: url("../image/2.png") no-repeat;
+                background-size: contain;
+                bottom: -.85rem;
+                right: -.35rem;
+                z-index: 4;
+            }
+            .catchRi {
+                transform-origin: top left;
+                transform: rotateZ(20deg);
+            }
+            .behind_claw{
+                position: absolute;
+                width:.15rem;
+                height: .96rem;
+                background: url("../image/5.png") no-repeat;
+                background-size: contain;
+                top: .7rem;
+                left:.45rem;
+                z-index: 1;
+            }
+        }
+    }
+    .table {
+        position: absolute;
+        width: 5.64rem;
+        height: 3.21rem;
+        background: url("../image/table.png") no-repeat;
+        background-size: contain;
+        right: 1.18rem;
+        bottom: 0;
+        .button {
+            position: absolute;
+            width: 1.19rem;
+            height: .99rem;
+            background: url("../image/button.png") no-repeat;
+            background-size: contain;
+            left: 1rem;
+            bottom:1.3rem;
+        }
+        .buttonAn {
+            animation: button_an .3s linear;
+        }
+        .rod {
+            position: absolute;
+            width: .88rem;
+            height: 1.58rem;
+            background: url("../image/3.png") no-repeat;
+            background-size: contain;
+            right: 1.3rem;
+            top: -.1rem;
+            transform-origin: bottom center;
+            cursor: pointer;
+            .hand{
+                width: 2rem;
+                height: 2rem;
+                position: absolute;
+                right: -.7rem;
+                bottom: -.8rem;
+                cursor: pointer;
+                img{
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+        .rodDown {
+            animation: rod_down 1s linear;
+        }
+        .rodLeft {
+            animation: rod_left 1s linear;
+        }
+    }
+    #animate{
+        width: 100%;
+        height: 100%;
+    }
+    
+    .handAnimate {
+        animation: handClick 1s infinite;
+    }
+    @keyframes handClick {
+        0%{
+            transform: translateY(.2rem)
+        }
+        100%{
+            transform: translateY(-.2rem)
+        }
+    }
+    //顶部横杆
+    @keyframes move_billot {
+        0%{
+            top: .35rem;
+            left: 1rem;
+            width: 6.7rem;
+        }
+        100%{
+            width: 8.5rem;
+            top: .1rem;
+            left: .1rem;
+        }
+    }
+    // 移动块
+    @keyframes move_moveItem {
+        0%{
+           left: 6rem;
+        }
+        100%{
+            left: 3.2rem;
+        }
+    }
+    // 移动块
+    @keyframes move_moveItem_2 {
+        0%{
+           left: 3.2rem;
+        }
+        100%{
+            left: .8rem;
+        }
+    }
+    // 线
+    @keyframes line_long {
+        0%{
+            height: 1.8rem;
+        }
+        100%{
+            height:5rem;
+        }
+    }
+     // 线
+     @keyframes line_sort {
+        0%{
+            height: 5rem;
+        }
+        100%{
+            height:1.8rem;
+        }
+    }
+    // 娃娃动
+    @keyframes doll_move {
+        0%{
+            bottom: 0;
+        }
+        100%{
+            bottom: 3.2rem;
+        }
+    }
+    @keyframes doll_left {
+        0%{
+            left: 2.4rem;
+            bottom: 3.2rem;
+        }
+        100%{
+            left: 0rem;
+            bottom: 3.2rem;
+        }
+    }
+    @keyframes doll_down {
+        0%{
+            left: 0rem;
+            bottom: 3.2rem;
+        }
+        100%{
+            left: 0rem;
+            bottom:-7rem;
+        }
+    }
+    // 要动手杆
+    @keyframes rod_down {
+        0%{
+            transform: rotateX(0)
+        }
+        100%{
+            transform: rotateX(50deg)
+        }
+    }
+    // 要动手杆
+    @keyframes rod_left {
+        0%{
+            transform: rotateZ(0)
+        }
+        100%{
+            transform: rotateZ(-50deg)
+        }
+    }
+    // 按钮
+    @keyframes button_an {
+        0%{
+            transform: rotateX(0)
+        }
+        100%{
+            transform: rotateX(-40deg)
+        }
+    }
+}
+

@@ -1,0 +1,155 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.hide{
+    display: none;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/defaultBg.jpg) no-repeat;
+    background-size: auto 100%;
+	position: relative;
+} 
+.main {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    .img {
+        position: absolute;
+        width: 10rem;
+        height: 6.7rem;
+        left: 50%;
+        bottom: 1.8rem;
+        margin-left: -5rem;
+        display: none;
+    }
+    .doorAre {
+        position: absolute;
+        left: 4.6rem;
+        top: 2.42rem;
+        width: 10rem;
+        height: 6.7rem;
+        border-top-left-radius: .82rem;
+        border-top-right-radius: .82rem;
+        overflow: hidden;
+    }
+    .door {
+        position: absolute;
+        left: 0rem;
+        top: 0rem;
+        width: 10rem;
+        height: 6.7rem;
+        background: url(../image/doorBg.jpg) no-repeat;
+        background-size:contain;
+        border-top-left-radius: .82rem;
+        border-top-right-radius: .82rem;
+        // display: none;
+        .lock {
+            position: absolute;
+            left: 1.8rem;
+            top: 1.1rem;
+            width: 6.4rem;
+            height: 5rem;
+            display: none;
+        }
+        .step_1 {
+            background: url(../image/oneStep.png) no-repeat;
+            background-size: 100% 100%;
+        }
+        .step_2 {
+            background: url(../image/twoStep.png) no-repeat;
+            background-size: 100% 100%;
+        }
+        .step_3 {
+            background: url(../image/threeStep.png) no-repeat;
+            background-size: 100% 100%;
+        }
+    }
+    .doorAn {
+        animation: doorAn 1.5s forwards;
+    }
+    @keyframes doorAn {
+        0% {
+            left:0;
+        }
+        100% {
+            left:-10rem;
+        }
+    }
+    .controls {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        margin-left: -4rem;
+        width: 8rem;
+        height: 1rem;
+        background: #e8f1d8;
+        border-radius: .2rem;
+        z-index: 100;
+        cursor: move;
+        .font {
+            position: absolute;
+            left: 0rem;
+            width: 4.8rem;
+            height: 1rem;
+            text-align: center;
+            line-height: 1.1rem;
+            font-size: .4rem;
+            overflow: hidden;
+            white-space:nowrap
+            // background: red;
+        }
+        .trueBtn {
+            position: absolute;
+            right: .5rem;
+            top: .13rem;
+            width: 2.06rem;
+            height: .74rem;
+            background: url('../image/btn.png') no-repeat;
+            background-size: 100% 100%;
+            cursor: pointer;
+        }
+        .grey {
+            filter: grayscale(100%);
+        }
+    }
+} 
+
+@keyframes showStyle{
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: 200% 0;
+    }
+}
+
+@-webkit-keyframes showStyle{
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: 200% 0;
+    }
+}
+

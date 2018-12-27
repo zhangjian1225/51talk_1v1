@@ -1,0 +1,172 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.desc-visi{
+	visibility: hidden;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+	background-image: url(../image/defaultBg.png);
+	position: relative;
+    // font-family:"ARLRDBD";
+
+}
+.stage{
+	width: 100%;
+    height: 100%;
+    position: relative;
+    .card_list {
+        width: 9.5rem;
+        height: 4.3rem;
+        position: absolute;
+        left: 5.5rem;
+        top: 3.5rem;
+        .card{
+            width: 3rem;
+            height: 4.3rem;
+            position: absolute;
+            border: .5rem;
+            transform-style: preserve-3d;
+            transition: .3s linear;
+            .num_box{
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 6;
+                backface-visibility: hidden;
+                border-radius: .2rem;
+                overflow: hidden;
+                // transition: .5s;
+                .card_img{
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+                .num_img{
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    margin: auto;
+                    width: 1.6rem;
+                    height: auto;
+                    display: none; 
+                }
+               /*  .num_shake{
+                    animation: numshake 1s;
+                }
+                @keyframes numshake {
+                    0%{
+                        transform: scale(1)
+                    }
+                    20%{
+                        transform: scale(1.1)
+                    }
+                    40%{
+                        transform: scale(0.9)
+                    }
+                    60%{
+                        transform: scale(1.1)
+                    }
+                    80%{
+                        transform: scale(0.9)
+                    }
+                    100%{
+                        transform: scale(1)
+                    }
+                } */
+            }
+            .img_box{
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 4;
+                transform:rotateY(-180deg);
+                backface-visibility: hidden;
+                border-radius: .2rem;
+                overflow: hidden;
+                .main_img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+        // .c_1{
+        //     left: .17rem;
+        // }
+        // .c_2{
+        //     left:3.96rem; 
+        // }
+        // .c_3{
+        //     left:7.62rem;
+        // }
+        .card_rotate_one {
+            transform: rotateY(180deg);
+        }
+    }
+
+    .person{
+        width: 5.55rem;
+        height:6.54rem;
+        cursor: pointer;
+        position: absolute;
+        bottom: 0rem;
+        left: .1rem;
+        background: url('../image/person_list.png') no-repeat;
+        background-size: 33.3rem auto;
+    }
+    .person_animate {
+        animation: person steps(6) .8s 2;
+    }
+    @keyframes person {
+        0%{
+            background-position: 0 0;
+        }
+        100%{
+            background-position: -33.3rem 0;
+        }
+    }
+    .hand{
+        width: 1.5rem;
+        height: 1.5rem;
+        background:  url('../image/hand.png') no-repeat;
+        background-size: contain;
+        position: absolute;
+        bottom: 0;
+        left: 2rem;
+        animation: handClick 1s infinite;
+        opacity: 0;
+        cursor: pointer;
+    }
+    @keyframes handClick {
+        0%{
+            transform: translateY(.2rem)
+        }
+        100%{
+            transform: translateY(-.2rem)
+        }
+    }
+}
+

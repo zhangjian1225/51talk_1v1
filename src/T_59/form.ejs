@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>TTR0001_过渡页</title>
+	<link rel="stylesheet" href="form/css/style.css">
+	<script src='form/js/jquery-2.1.1.min.js'></script>
+	<script src='form/js/vue.min.js'></script>
+</head>
+
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="module-title">TTR0001_过渡页</div>
+
+			<% include ./src/common/template/common_head %>
+
+				<div class="c-group">
+					<div class="c-title"> 设置移动的图片</div>
+					<div class="c-area upload img-upload radio-group">
+						<div class="field-wrap">
+							<label class="field-label" for="">上传图片</label>
+							<span class='txt-info'><em>大小无限制</em> <em style="color:red;">*</em></span>
+							<input type="file" v-bind:key="Date.now()" class="btn-file" id="img" size="" v-on:change="imageUpload($event,configData.source,'img',50)">
+						</div>
+						<div class="field-wrap">
+							<label for="img" class="btn btn-show upload" v-if="configData.source.img==''?true:false">上传</label>
+							<label for="img" class="btn upload re-upload" v-if="configData.source.img!=''?true:false">重新上传</label>
+						</div>
+						<div class="img-preview" v-if="configData.source.img!=''?true:false">
+							<img v-bind:src="configData.source.img" alt="" />
+							<div class="img-tools">
+								<span class="btn btn-delete" v-on:click="configData.source.img=''">删除</span>
+							</div>
+						</div>
+					</div>
+					<div style=" width:100%; font-size:14px; color:#666; margin-bottom: 20px;">
+						<label for="" style="display:inline-block; margin-left:20px;">图片初始位置：</label>
+						<input type="text" style="width:100px; height:20px;" v-model="configData.source.startPos"/>
+						<label for=""> 以图片的左上顶点，填写坐标值</label> <em>*</em>
+					</div>
+					<div style=" width:100%; font-size:14px; color:#666; margin-bottom: 20px;">
+						<label for="" style="display:inline-block; margin-left:20px;">图片终点位置：</label>
+						<input type="text" style="width:100px; height:20px;" v-model="configData.source.endPos"/>
+						<label for=""> 以图片的左上顶点，填写坐标值</label> <em>*</em>
+					</div>
+
+
+				</div>
+				<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/preview.jpg?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li>
+						<em>图片格式：</em>JPG/PNG/GIF</li>
+					<li>
+						<em>声音格式：</em>MP3/WAV</li>
+					<li>
+						<em>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+
+</html>

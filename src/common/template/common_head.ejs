@@ -1,0 +1,92 @@
+<!-- 背景/描述 -->
+<div class="c-group">
+  <div class="c-title">背景/标题</div> 
+  <!-- 上传图片 -->
+  <div class="c-area upload img-upload radio-group">
+    <div class="field-wrap">
+      <label class="field-label"  for="">上传背景</label>
+      <span class='txt-info'><em>尺寸：1920X1080。文件大小≤100KB</em></span>
+      <input type="file"  v-bind:key="Date.now()" class="btn-file" id="bg" size="1920*1080" v-on:change="imageUpload($event,configData,'bg',100)">
+    </div>
+    <div class="field-wrap">
+      <label for="bg" class="btn btn-show upload" v-if="configData.bg==''?true:false">上传</label>
+      <label for="bg" class="btn upload re-upload" v-if="configData.bg!=''?true:false">重新上传</label>
+    </div>
+    <div class="img-preview" v-if="configData.bg!=''?true:false">
+      <img v-bind:src="configData.bg" alt=""/>
+      <div class="img-tools">
+        <span class="btn btn-delete" v-on:click="configData.bg=''">删除</span>
+      </div>
+    </div>
+  </div>
+  <!-- 描述 -->
+  <div class="c-area"> 
+    <label>一级标题 字符：≤40</label>
+    <input type="text" class='c-input-txt' placeholder="请在此输入描述" v-model="configData.desc" maxlength='40'> 
+
+    <label>二级标题 字符：≤100</label>
+    <input type="text" class='c-input-txt' placeholder="请在此输入描述" v-model="configData.title" maxlength='100'> 
+  </div>
+</div>
+
+<!-- TG -->
+<div class="c-group">
+  <div class="c-title">添加TG</div>
+  <div class="c-area">
+    <div class="c-well" v-for="(item,index) in configData.tg">
+      <div class="well-title">
+        <p>TG {{index+1}}</p>
+        <span class="dele-tg-btn" v-on:click="deleTg(item)" v-show="configData.tg.length>1"></span>
+      </div>
+      <div class="well-con">
+        <label>标题</label>
+        <input type="text" class='c-input-txt' placeholder="请在此输入TG标题" v-model="item.title">
+        <label>内容 <em>&nbsp;&nbsp;需换行位置输入“&lt;br&gt;”符号</em></label>
+        <textarea name="" cols="56" rows="2" placeholder="请在此输入TG内容" v-model="item.content"></textarea>
+      </div>
+    </div>
+    <button type="button" class="add-tg-btn" v-on:click="addTg" >+</button>
+  </div>
+</div>
+<!-- level -->
+<div class="c-group">
+  <div class="c-title">添加分层 H 教学</div>
+  <div class="c-area">
+    <div class="c-well" v-for="(item,index) in configData.level.high">
+      <div class="well-title">
+        <p>H {{index+1}}</p>
+        <span class="dele-tg-btn" v-on:click="deleH(item)" v-show="configData.level.high.length>1"></span>
+      </div>
+      <div class="well-con">
+        <label>标题</label>
+        <input type="text" class='c-input-txt' placeholder="请在此输入 H 标题" v-model="item.title">
+        <label>内容
+          <em>&nbsp;&nbsp;需换行位置输入“&lt;br&gt;”符号</em>
+        </label>
+        <textarea name="" cols="56" rows="2" placeholder="请在此输入 H 内容" v-model="item.content"></textarea>
+      </div>
+    </div>
+    <button type="button" class="add-tg-btn" v-on:click="addH">+</button>
+  </div>
+</div>
+
+<div class="c-group">
+  <div class="c-title">添加分层 L 教学</div>
+  <div class="c-area">
+    <div class="c-well" v-for="(item,index) in configData.level.low">
+      <div class="well-title">
+        <p>L {{index+1}}</p>
+        <span class="dele-tg-btn" v-on:click="deleL(item)" v-show="configData.level.low.length>1"></span>
+      </div>
+      <div class="well-con">
+        <label>标题</label>
+        <input type="text" class='c-input-txt' placeholder="请在此输入 L 标题" v-model="item.title">
+        <label>内容
+          <em>&nbsp;&nbsp;需换行位置输入“&lt;br&gt;”符号</em>
+        </label>
+        <textarea name="" cols="56" rows="2" placeholder="请在此输入 L 内容" v-model="item.content"></textarea>
+      </div>
+    </div>
+    <button type="button" class="add-tg-btn" v-on:click="addL">+</button>
+  </div>
+</div>

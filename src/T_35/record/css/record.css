@@ -1,0 +1,88 @@
+/*老师端录音按钮样式*/
+.recordBtn{
+	width: 1.46rem;
+	height: 1.9rem;
+	position: absolute;
+	top: 2rem;
+	left: 10rem;
+	z-index: 500;
+	background:url('../image/recorsBg.png') no-repeat;
+	background-size: contain;
+}
+.startBtn{
+	width: 1.12rem;
+	height: 0.72rem;
+	position: absolute;
+	left: 0.17rem;
+	bottom: 0.2rem;
+	background:url('../image/recordStart.png') no-repeat;
+	background-size: contain;
+}
+.stopBtn{
+	background:url('../image/recordStop.png') no-repeat;
+	background-size: contain;
+}
+.statusIcon{
+	position: absolute;
+	left: 0;
+	top: 0.14rem;
+	width: 1.46rem;
+	height: 0.73rem;
+	line-height: 0.73rem;
+	text-align: center;
+	font-size: 0.4rem;
+	font-weight: bolder;
+}
+.statusOff{
+	font-size: 0;
+	background: url('../image/mk.png') no-repeat;
+	background-position:  center;
+	background-size: contain;
+}
+
+.shake_tip{
+	animation:shake 0.3s 2 ease;
+	-webkit-animation:shake 0.3s 2 ease;
+}
+
+@keyframes shake {
+	0% {
+        transform: translateX(2px) ;
+    }
+    20% {
+        transform: translateX(-2px);
+    }
+    40% {
+        transform: translateX(2px);
+    }
+    60% {
+        transform: translateX(-2px);
+    }
+    80% {
+        transform: translateX(2px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+@-webkit-keyframes shake {
+	0% {
+        transform: translateX(2px) ;
+    }
+    20% {
+        transform: translateX(-2px);
+    }
+    40% {
+        transform: translateX(2px);
+    }
+    60% {
+        transform: translateX(-2px);
+    }
+    80% {
+        transform: translateX(2px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+

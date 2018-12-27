@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>TGR0001_抓娃娃机</title>
+	<link rel="stylesheet" href="form/css/style.css">
+	<script src='form/js/jquery-2.1.1.min.js'></script>
+	<script src='form/js/vue.min.js'></script>
+</head>
+
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="h-title">TGR0001_抓娃娃机</div>
+			<% include ./src/common/template/common_head %>
+
+			<div class="c-group">
+				<div class="c-title">编辑问题</div>
+				<div class="c-area upload img-upload">
+					<div class="c-well">
+						<div class="well-con">
+							<div class="c-well" >
+									<div class="well-con">
+										<div class="field-wrap">
+											<label class="field-label"  for="">图片</label><label for="img-upload" class="btn btn-show upload" v-if="configData.source.img ==''?true:false">上传</label><label  for="img-upload" class="btn upload re-upload" v-if="configData.source.img !=''?true:false">重新上传</label><span class='txt-info'>（尺寸：250X270，大小：≤50KB)<em>*</em></span>
+											<input type="file"  volume="50" v-bind:key="Date.now()" class="btn-file" id="img-upload" size="250*270" accept=".gif,.jpg,.jpeg,.png" v-on:change="imageUpload($event,configData.source,'img',50)">
+										</div>
+										<div class="img-preview" v-if="configData.source.img !=''?true:false">
+											<img v-bind:src="configData.source.img " alt=""/>
+											<div class="img-tools">
+												<span class="btn btn-delete" v-on:click="configData.source.img =''">删除</span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/preview.jpg?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li>
+						<em>图片格式：</em>JPG/PNG/GIF</li>
+					<li>
+						<em>声音格式：</em>MP3/WAV</li>
+					<li>
+						<em>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+
+</html>

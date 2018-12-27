@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>T07大富翁</title>
+	<link rel="stylesheet" href="form/css/style.css">
+	<script src='form/js/jquery-2.1.1.min.js'></script>
+	<script src='form/js/vue.min.js'></script>
+</head>
+
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="h-title">T07大富翁</div>
+			
+			<% include ./src/common/template/common_head %>
+
+			<div class="c-group">
+				<div class="c-title">自定义7个坐标点的位置</div>
+				<div class="c-area upload img-upload">  
+					<label><em> * 必须为数字并且在1~400之间</em></label>
+					<p class="sel" v-for="(item,index) in configData.source.position">
+						位置{{index}}:
+						<input type="input" v-model="configData.source.position[index]" /> 
+					</p>
+				</div>
+			</div>
+			
+			<div class="c-group">
+				<div class="c-title">编辑问题</div>
+				<div class="c-area upload img-upload"> 
+					<p class="sel">
+						<em>玩的次数：</em>
+						<select v-model="configData.source.time">
+							<option v-for="playTime in updataTime" name="playTime" :value="playTime">{{playTime}}</option>
+						</select>
+					</p>
+					<p class="sel">
+						<em>起始位置：</em>
+						<select v-model="configData.source.personPos">
+							<option v-for="conPos in updata2" name="optive" :value="conPos">{{conPos}}</option>
+						</select>
+					</p>
+					<p class="sel" v-if="configData.source.time == 'once'? true : false ">
+						<em></em>终点位置：</em>
+						<select v-model="configData.source.diceNum">
+							<option v-for="conPos in updata" name="optive" :value="conPos">{{conPos}}</option>
+						</select>
+					</p>
+					<div class="field-wrap">
+						<label class="field-label" for="">移动图片</label>
+						<label for="personImg-upload" class="btn btn-show upload" v-if="configData.source.personImg==''?true:false">上传</label>
+						<label for="personImg-upload" class="btn upload re-upload" v-if="configData.source.personImg!=''?true:false">重新上传</label>
+						<span class='txt-info'>（尺寸：200X200，大小：≤50KB）</span>
+						<input type="file" v-bind:key="Date.now()" class="btn-file" id="personImg-upload" size="200*200" accept=".gif,.jpg,.jpeg,.png"
+							v-on:change="imageUpload($event,configData.source,'personImg',50)">
+					</div>
+					<div class="img-preview" v-if="configData.source.personImg!=''?true:false">
+						<img v-bind:src="configData.source.personImg" alt="" />
+						<div class="img-tools">
+							<span class="btn btn-delete" v-on:click="configData.source.personImg=''">删除</span>
+						</div>
+					</div>
+
+					
+					<div class="field-wrap">
+						<label class="field-label"  for="">移动动画声音<em>（选填）</em></em></label>
+						<div>
+							<em>上传声音</em>
+							<label for="audio-upload" class="btn btn-show upload" v-if="configData.source.audio==''?true:false">上传</label>
+							<label  for="audio-upload" class="btn upload re-upload mar" v-if="configData.source.audio!=''?true:false">重新上传</label>
+							<em>文件大小≤50KB</em>
+						</div>
+						<div class="audio-preview" v-show="configData.source.audio!=''?true:false">
+							<div class="audio-tools">
+								<p v-show="configData.source.audio!=''?true:false">{{configData.source.audio}}</p>
+							</div>
+							<span class="play-btn" v-on:click="play($event)">
+								<audio v-bind:src="configData.source.audio"></audio>
+							</span>
+						</div>
+						<span class="btn btn-audio-dele" v-show="configData.source.audio!=''?true:false" v-on:click="configData.source.audio=''">删除</span>
+						<input type="file" id="audio-upload" class="btn-file upload" volume="50" size="" accept=".mp3" v-on:change="audioUpload($event,configData.source,'audio',50)" v-bind:key="Date.now()">
+					</div>
+					
+				</div>
+			</div>
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/preview.jpg?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li>
+						<em>图片格式：</em>JPG/PNG/GIF</li>
+					<li>
+						<em>声音格式：</em>MP3/WAV</li>
+					<li>
+						<em>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+
+</html>

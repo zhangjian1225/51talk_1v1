@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=0">
+    <title>TCH0002_选择(<%= new Date().getFullYear()%>-<%= new Date().getMonth()+1 %>-<%= new Date().getDate() %>)</title>
+    <link rel="stylesheet" href="css/index.css?v=<%=new Date().getTime()%>">
+
+    <script src="../../jquery-2.1.1.min.js"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<script src="/assets/js/jquery/2.1.1/jquery.min.js"><\/script>');
+        } 
+    </script>
+
+    <script src="js/tracking.js?v=<%=new Date().getTime()%>"></script>
+    <script src="js/sdk.js?v=<%=new Date().getTime()%>"></script> 
+    <script src="js/fit.js?v=<%=new Date().getTime()%>"></script> <!-- 更改后3 -->
+
+</head>
+<body>
+
+<div class="container" id="container" data-syncresult="show-result-1" style="background-image: url('./image/bk.png');">
+    <section class="commom">
+        <div class="desc"></div>
+        <div class="title">
+            <h3></h3>
+        </div>
+    </section>
+    <section class="main">
+        <div class="stage">
+
+        </div>
+    </section>
+</div>
+<script type="text/javascript" src="content.js?v=<%=new Date().getTime()%>"></script>
+<script type="text/javascript" src="js/index.js?v=<%=new Date().getTime()%>"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>TSC0001_师生比分</title>
+	<link rel="stylesheet" href="form/css/style.css">
+	<script src='form/js/jquery-2.1.1.min.js'></script>
+	<script src='form/js/vue.min.js'></script>
+</head>
+
+<body>
+	<div id="container">
+		<div class="edit-form">
+			<div class="module-title">TSC0001_师生比分</div>
+
+			<% include ./src/common/template/common_head %>
+
+			<div class="c-group">
+				<div class="c-title">学习内容</div>
+				<div class="c-areAtation img-upload">
+					<font>注:卡片数量3～6个</font>
+				</div>
+				<div class="c-area upload img-upload" >
+					<div class="c-well" v-for="(item, index) in configData.source.pics">
+						<span class="dele-tg-btn" @click="delCards(item)" v-show="configData.source.pics.length>3"></span>
+						<div class="field-wrap">
+							<label class="field-label"  for="">图片</label>
+							<span class='txt-info'><em>文件大小≤50KB,尺寸660x494 * </em></span> 
+							<input type="file"  v-bind:key="Date.now()" class="btn-file" :id="'content-pic-'+index" size="660*494" accept=".gif,.jpg,.jpeg,.png" @change="imageUpload($event,item,'pic',50)">
+						</div>
+
+						<div class="field-wrap">
+							<label :for="'content-pic-'+index" class="btn btn-show upload" v-if="!item.pic">上传</label>
+							<label :for="'content-pic-'+index" class="btn upload re-upload" v-if="item.pic">重新上传</label>
+						</div>
+						<div class="img-preview" v-if="item.pic">
+							<img :src="item.pic" alt=""/>
+							<div class="img-tools">
+								<span class="btn btn-delete" @click="delPrew(item)">删除</span>
+							</div>
+						</div>
+					</div>
+					<button v-if="configData.source.pics.length<6" type="button" class="add-tg-btn" @click="addCards" >+</button>	
+				</div> 
+			</div>
+			<button class="send-btn" v-on:click="onSend">提交</button>
+		</div>
+		<div class="edit-show">
+			<div class="show-fixed">
+				<div class="show-img">
+					<img src="form/img/preview.jpg?v=<%=new Date().getTime()%>" alt="">
+				</div>
+				<ul class="show-txt">
+					<li>
+						<em>图片格式：</em>JPG/PNG/GIF</li>
+					<li>
+						<em>声音格式：</em>MP3/WAV</li>
+					<li>
+						<em>视频格式：</em>MP4</li>
+					<li>带有“ * ”号为必填项</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='form/js/form.js?v=<%=new Date().getTime()%>'></script>
+
+</html>

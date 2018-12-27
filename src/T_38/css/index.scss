@@ -1,0 +1,195 @@
+@import '../../common/css/reset-title.css';
+@import '../../common/css/animation.css';
+@mixin setEle($l:0rem,$t:0rem,$w:0rem,$h:0rem){
+	position: absolute;
+	left: $l;
+	top: $t;
+	width: $w;
+	height: $h;
+}
+*{
+    box-sizing: border-box;
+}
+.stars{
+    position: relative;
+    .starList{
+        position: absolute;
+        background:url('../image/star1.png') no-repeat;
+        opacity: 0.3;
+    }
+    .star0{
+        top:0;
+        left:3.1rem;
+        width: 1.12rem;
+        height: 1.12rem;
+        background-size: contain;
+    }
+    .star1{
+        top: 1.7rem;
+        left: .5rem;
+        width: 1.3rem;
+        height: 1.3em;
+        background-size: contain;
+    }
+    .star2{
+        top: 2rem;
+        left: 16.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        background-size: contain;
+    }
+    .star3{
+        top: 9rem;
+        left: 14.5rem;
+        width: 1.8rem;
+        height: 1.8rem;
+        background-size: contain;
+    }
+    .star4{
+        top: 8.05rem;
+        left: 1.15rem;
+        width: 2rem;
+        height: 2rem;
+        background-size: contain;
+    }
+}
+.points{
+    position: relative;
+    .pointList{
+        position: absolute;
+        width: .8rem;
+        height: .8rem;
+        background:url('../image/point.png') no-repeat;
+        background-size: contain;
+    }
+    .point0{
+        left: .3rem;
+        top: 2.9rem;
+    }
+    .point1{
+        left: .25rem;
+        top: 5.4rem;   
+    }
+    .point2{
+        left: 18.2rem;
+        top: 2.6rem;   
+    }
+    .point3{
+        left: 18.5rem;
+        top: 3.5rem;   
+    }
+    .point4{
+        left: 18.46rem;
+        top: 8.9rem;  
+    }
+}
+@keyframes starAnima{
+    0%{
+        background:url('../image/star1.png') no-repeat;
+        background-size: contain;
+    }
+    100%{
+        background:url('../image/star2.png') no-repeat;
+        background-size: contain;
+    }
+}
+@-webkit-keyframes starAnima{
+    0%{
+        background:url('../image/star1.png') no-repeat;
+        background-size: contain;
+    }
+    100%{
+        background:url('../image/star2.png') no-repeat;
+        background-size: contain;
+    }
+}
+@keyframes pointAnima{
+    0%{
+        opacity: 0.5;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0.5;
+    }
+}
+@-webkit-keyframes pointAnima{
+    0%{
+        opacity: 0.5;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0.5;
+    }
+}
+.desc-visi{
+	visibility: hidden;
+}
+.hide{
+    opacity: 0;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container{
+    background: url(../image/bg.jpg) no-repeat;
+    background-size: auto 100%;
+	position: relative;
+    // font-family:"ARLRDBD";
+} 
+
+.words{ 
+    position: absolute;
+    top: 3rem;
+    left: 10%;
+    width: 80%;
+    height: 6rem; 
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row; 
+    justify-content: center;
+    align-items:center;
+    .word{   
+        width: 4.9rem;
+        height: 2.8rem;  
+        margin: .1rem;
+        color: #470000; 
+        display: flex;
+        justify-content:center;
+        align-items:center;
+        text-align: center;
+        cursor: pointer;
+        p{ 
+            font-size: 0.52rem;
+            font-weight: 600;
+            line-height: .5rem;
+        }
+    }
+    .bg-hui{
+        background: url(../image/word_bg_hui.png) no-repeat;
+        background-size: 90% 80%;
+        background-position: center;
+    }
+    .bg-huang{
+        // background: url(../image/word_bg_huang.png) no-repeat;
+        // background-size: 100% 100%;
+    }
+    .bg-lv{
+        // background: url(../image/word_bg_lv.png) no-repeat;
+        // background-size: 100% 100%;
+    }
+    .word-white{
+        color: #b6ea52;
+    }
+    .word-grey{
+        color: #727272;
+    }
+}
+
